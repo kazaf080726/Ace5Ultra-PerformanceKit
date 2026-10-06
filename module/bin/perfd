@@ -1,11 +1,15 @@
 #!/system/bin/sh
+# shellcheck shell=dash
+# shellcheck disable=SC3043  # Android /system/bin/sh is mksh and supports local
 # perfd - root daemon for ace5ultra_perfkit, started by service.sh.
 # On boot: discover (first run) + restore the last profile from state.json.
 # If adaptive is ON: run the adaptive loop forever, choosing among
 # powersave/balanced/performance/game from load, temperature and the foreground
 # app, recording the reason. If adaptive is OFF: stay idle (boot restore only).
 
+# shellcheck disable=SC2034  # CALLER consumed by sourced perflib.sh
 CALLER="$0"
+# shellcheck source=/dev/null  # perflib.sh is runtime-relative, not present at lint time
 . "$(cd "$(dirname "$0")" && pwd)/perflib.sh"
 
 need_root

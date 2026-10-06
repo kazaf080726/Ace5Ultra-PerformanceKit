@@ -1,4 +1,6 @@
 #!/system/bin/sh
+# shellcheck shell=dash
+# shellcheck disable=SC3043  # Android /system/bin/sh is mksh and supports local
 # perflib.sh - shared runtime library for ace5ultra_perfkit.
 # Sourced by perfctl and perfd. POSIX sh only. Runs as root on the phone.
 #
@@ -19,6 +21,7 @@
 # snapshots its original value; restore/uninstall writes them back.
 
 # ---------- caller / module layout ----------
+# shellcheck disable=SC2034  # CALLER/MODROOT/BINDIR used by sourced scripts
 CALLER="${CALLER:-$0}"
 _PDIR=$(cd "$(dirname "$CALLER")" 2>/dev/null && pwd)   # .../module/bin
 MODROOT=$(dirname "$_PDIR")                              # module root
@@ -31,8 +34,9 @@ LOGDIR="$RUNDIR/logs"
 LOG="$LOGDIR/perfkit.log"
 CAP="$RUNDIR/capabilities.json"
 
+# shellcheck disable=SC2034  # read by perfctl version/status
 VERSION="1.0.0"
-VERSIONCODE=100
+VERSIONCODE=10000
 CONTRACT=1
 
 # ---------- infra ----------
@@ -80,7 +84,7 @@ save_state() {
 _snap_file_for() { echo "$1" | sed 's#^/##; s#/#_#g'; }
 
 snap_path() {
-  local node=$1; local old=$2
+  local node="$1"; local old="$2"
   local fn
   fn=$(_snap_file_for "$node")
   if [ ! -f "$SNAP/$fn" ]; then
@@ -93,7 +97,8 @@ snap_path() {
 # write a sysfs/procfs node, guarded + logged + snapshotted
 # usage: write_node PATH VALUE
 write_node() {
-  local node=$1; local new=$2
+  local node="$1"; local new="$2"
+  local old
   ensure_runtime
   if [ ! -e "$node" ]; then
     printf 'node=%s old= new=%s ok=0 reason=absent\n' "$node" "$new"
@@ -103,7 +108,7 @@ write_node() {
     printf 'node=%s old= new=%s ok=0 reason=readonly\n' "$node" "$new"
     return 1
   fi
-  old=$(cat "$node" 2>/dev/null | tr -d '\n\r')
+  old=$(tr -d '\n\r' < "$node" 2>/dev/null)
   snap_path "$node" "$old"
   if printf '%s' "$new" > "$node" 2>/dev/null; then
     printf 'node=%s old=%s new=%s ok=1\n' "$node" "$old" "$new"
@@ -141,7 +146,8 @@ wipe_runtime() { rm -rf "$RUNDIR" 2>/dev/null; }
 discover() {
   [ -f "$CAP" ] && return 0
   ensure_runtime
-  _c="$CAP.tmp"
+  local _c="$CAP.tmp"
+  local first p pol up down c cc f d b zn z
   {
     printf '{\n'
     # policies + sugov_ext tunables
@@ -150,7 +156,7 @@ discover() {
     for p in /sys/devices/system/cpu/cpufreq/policy*; do
       [ -d "$p" ] || continue
       pol=$(basename "$p" | sed 's/policy//')
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       up="$p/sugov_ext/up_rate_limit_us"; down="$p/sugov_ext/down_rate_limit_us"
       printf '\n    {"policy":%s,"path":"%s","gov":"%s","min":"%s","max":"%s","cur":"%s","ag":"%s","af":"%s","fmin":"%s","fmax":"%s","sugovUp":"%s","sugovDown":"%s"}' \
@@ -168,7 +174,7 @@ discover() {
       [ -d "$c" ] || continue
       cn=$(basename "$c" | sed 's/cpu//')
       case "$cn" in *[!0-9]*) continue;; esac
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       printf '\n    {"cpu":%s,"online":"%s","corectl":"%s/core_ctl"}' "$cn" "$c/online" "$c"
     done
@@ -178,7 +184,7 @@ discover() {
     first=1
     for cc in /sys/devices/system/cpu/cpu[0-9]*/core_ctl; do
       [ -d "$cc" ] || continue
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       printf '\n    "%s"' "$cc"
     done
@@ -188,7 +194,7 @@ discover() {
     first=1
     for f in /proc/sys/kernel/sched_*; do
       [ -f "$f" ] || continue
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       printf '\n    "%s"' "$f"
     done
@@ -198,7 +204,7 @@ discover() {
     first=1
     for f in /dev/cpuctl/cpu.schedtune.boost /dev/cpuctl/foreground/cpu.schedtune.boost; do
       [ -e "$f" ] || continue
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       printf '\n    "%s"' "$f"
     done
@@ -208,7 +214,7 @@ discover() {
     first=1
     for f in /sys/module/*boost*/parameters/enabled; do
       [ -e "$f" ] || continue
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       printf '\n    "%s"' "$f"
     done
@@ -226,7 +232,7 @@ discover() {
       [ -d "$d" ] || continue
       b=$(basename "$d")
       case "$b" in loop*|ram*|zram*|dm-*|md*|bd*) continue;; esac
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       printf '\n    {"dev":"%s","scheduler":"%s","ra":"%s"}' \
         "$b" "$d/queue/scheduler" "$d/queue/read_ahead_kb"
@@ -239,7 +245,7 @@ discover() {
     first=1
     for f in /proc/gpufreqv2/*; do
       [ -e "$f" ] || continue
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       printf '\n    "%s"' "$f"
     done
@@ -250,7 +256,7 @@ discover() {
     for z in /sys/class/thermal/thermal_zone[0-9]*; do
       [ -d "$z" ] || continue
       zn=$(basename "$z" | sed 's/thermal_zone//')
-      [ $first -eq 1 ] || printf ','
+      [ "$first" -eq 1 ] || printf ','
       first=0
       printf '\n    {"zone":%s,"temp":"%s","type":"%s"}' "$zn" "$z/temp" "$z/type"
     done
@@ -266,17 +272,19 @@ discover() {
 # ---------- profile application ----------
 # pick_gov AVAIL PREF1 PREF2 ... -> first available governor, else first listed
 pick_gov() {
-  local avail=$1; shift
+  local avail="$1"; shift
   local want
   for want in "$@"; do
     case " $avail " in *" $want "*) echo "$want"; return 0;; esac
   done
+  # governor list is space-separated on purpose; pick the first listed
+  # shellcheck disable=SC2086
   set -- $avail; echo "$1"
 }
 
 # sugov_ext rate-limit tunables per policy
 apply_sugov_tunables() {
-  local p=$1; local prof=$2
+  local p="$1"; local prof="$2"
   local up down
   up="$p/sugov_ext/up_rate_limit_us"; down="$p/sugov_ext/down_rate_limit_us"
   { [ -e "$up" ] || [ -e "$down" ]; } || return 0
@@ -301,13 +309,13 @@ apply_sugov_tunables() {
 }
 
 apply_cpufreq_policy() {
-  local p=$1; local prof=$2
+  local p="$1"; local prof="$2"
   local gov mn mx avail fmin fmax g mid
   gov="$p/scaling_governor"; mn="$p/scaling_min_freq"; mx="$p/scaling_max_freq"
   [ -w "$gov" ] || return 0
-  avail=$(cat "$p/scaling_available_governors" 2>/dev/null | tr '\n' ' ')
-  fmin=$(cat "$p/cpuinfo_min_freq" 2>/dev/null | tr -d '\n')
-  fmax=$(cat "$p/cpuinfo_max_freq" 2>/dev/null | tr -d '\n')
+  avail=$(tr '\n' ' ' < "$p/scaling_available_governors" 2>/dev/null)
+  fmin=$(tr -d '\n' < "$p/cpuinfo_min_freq" 2>/dev/null)
+  fmax=$(tr -d '\n' < "$p/cpuinfo_max_freq" 2>/dev/null)
   case "$fmin" in ''|*[!0-9]*) fmin=0;; esac
   case "$fmax" in ''|*[!0-9]*) fmax=0;; esac
   case "$prof" in
@@ -343,7 +351,7 @@ apply_cpufreq_policy() {
 }
 
 apply_block() {
-  local prof=$1
+  local prof="$1"
   local ra d node
   case "$prof" in
     powersave) ra=128 ;;
@@ -384,7 +392,7 @@ apply_schedtune() {
 # tables but no confirmed writable min/max setter; only write a node if a known
 # setter name exists AND is writable. Never guess.
 apply_gpu() {
-  local prof=$1
+  local prof="$1"
   local node
   case "$prof" in
     game) ;;
@@ -399,7 +407,7 @@ apply_gpu() {
 }
 
 apply_profile() {
-  local prof=$1
+  local prof="$1"
   case "$prof" in
     powersave|balanced|performance|game) ;;
     *) log "apply_profile bad=$prof"; return 1 ;;
@@ -425,22 +433,24 @@ snapshot_all() {
     for f in scaling_governor scaling_min_freq scaling_max_freq; do
       node="$p/$f"
       [ -e "$node" ] || continue
-      v=$(cat "$node" 2>/dev/null | tr -d '\n\r')
+      v=$(tr -d '\n\r' < "$node" 2>/dev/null)
       snap_path "$node" "$v"; n=$((n+1))
     done
     for f in sugov_ext/up_rate_limit_us sugov_ext/down_rate_limit_us; do
       node="$p/$f"; [ -e "$node" ] || continue
-      snap_path "$node" "$(cat "$node" 2>/dev/null | tr -d '\n\r')"; n=$((n+1))
+      snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)"; n=$((n+1))
     done
   done
   for d in /sys/block/sd*; do
     [ -d "$d" ] || continue
     node="$d/queue/read_ahead_kb"; [ -e "$node" ] || continue
-    snap_path "$node" "$(cat "$node" 2>/dev/null | tr -d '\n\r')"; n=$((n+1))
+    snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)"; n=$((n+1))
   done
-  [ -e /proc/sys/vm/swappiness ] && snap_path /proc/sys/vm/swappiness "$(cat /proc/sys/vm/swappiness 2>/dev/null | tr -d '\n\r')" && n=$((n+1))
+  if [ -e /proc/sys/vm/swappiness ]; then
+    snap_path /proc/sys/vm/swappiness "$(tr -d '\n\r' < /proc/sys/vm/swappiness 2>/dev/null)" && n=$((n+1))
+  fi
   for node in /dev/cpuctl/cpu.schedtune.boost /dev/cpuctl/foreground/cpu.schedtune.boost; do
-    [ -e "$node" ] && snap_path "$node" "$(cat "$node" 2>/dev/null | tr -d '\n\r')" && n=$((n+1))
+    [ -e "$node" ] && snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)" && n=$((n+1))
   done
   echo "$n"
 }
@@ -451,10 +461,10 @@ gprop() { getprop "$1" 2>/dev/null; }
 memfield() { awk -v k="$1" '$1==k":"{print $2}' /proc/meminfo 2>/dev/null | head -n1; }
 
 max_temp_c() {
-  best=-1
+  local best=-1 z t
   for z in /sys/class/thermal/thermal_zone[0-9]*/temp; do
     [ -f "$z" ] || continue
-    t=$(cat "$z" 2>/dev/null | tr -d '\n')
+    t=$(tr -d '\n' < "$z" 2>/dev/null)
     case "$t" in ''|*[!0-9]*) continue ;; esac
     [ "$t" -gt "$best" ] 2>/dev/null && best=$t
   done
@@ -467,10 +477,14 @@ max_temp_c() {
 
 # two-sample average total cpu util 0..100
 cpu_util_pct() {
+  local s1 s2 t1 i1 t2 i2 dt di
   s1=$(awk '/^cpu /{t=0; for(i=2;i<=NF;i++)t+=$i; print t, $5+$6}' /proc/stat)
+  # sample pair is whitespace-separated on purpose
+  # shellcheck disable=SC2086
   set -- $s1; t1=$1; i1=$2
   sleep 0.2
   s2=$(awk '/^cpu /{t=0; for(i=2;i<=NF;i++)t+=$i; print t, $5+$6}' /proc/stat)
+  # shellcheck disable=SC2086
   set -- $s2; t2=$1; i2=$2
   dt=$((t2 - t1)); di=$((i2 - i1))
   if [ "$dt" -gt 0 ] 2>/dev/null; then
@@ -481,6 +495,7 @@ cpu_util_pct() {
 }
 
 fg_app() {
+  local a
   a=$(dumpsys window 2>/dev/null | grep -m1 -E 'mCurrentFocus|mFocusedApp' | sed -E 's/.*[ \/]([A-Za-z0-9_.]+)\/.*/\1/')
   [ -z "$a" ] && a=$(dumpsys activity activities 2>/dev/null | grep -m1 -E 'topResumedActivity|ResumedActivity' | sed -E 's/.*[ \/]([A-Za-z0-9_.]+)\/.*/\1/')
   echo "$a"
@@ -494,6 +509,7 @@ is_game_pkg() {
 }
 
 num_cores() {
+  local n lo hi
   n=$(cat /sys/devices/system/cpu/present 2>/dev/null)
   case "$n" in *-*) lo=${n%-*}; hi=${n#*-}; echo $((hi - lo + 1));; *) echo 1;; esac
 }

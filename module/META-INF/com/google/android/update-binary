@@ -18,12 +18,15 @@ require_new_magisk() {
 # Load util_functions.sh
 #########################
 
+# shellcheck disable=SC2034  # OUTFD/ZIPFILE are consumed by sourced util_functions.sh
 OUTFD=$2
+# shellcheck disable=SC2034
 ZIPFILE=$3
 
 [ -f /data/adb/magisk/util_functions.sh ] || require_new_magisk
+# shellcheck source=/dev/null  # Magisk/KSU runtime helper, not present at lint time
 . /data/adb/magisk/util_functions.sh
-[ $MAGISK_VER_CODE -lt 20400 ] && require_new_magisk
+[ "$MAGISK_VER_CODE" -lt 20400 ] && require_new_magisk
 
 install_module
 exit 0

@@ -1,9 +1,13 @@
 #!/system/bin/sh
+# shellcheck shell=dash
+# shellcheck disable=SC3043  # Android /system/bin/sh is mksh and supports local
 # perfctl - hardened root CLI / IPC endpoint for ace5ultra_perfkit.
 # Mode 0700 root. The ONLY caller path is a root shell (libsu / SukiSU / KSU su),
 # so every caller is already authorized by the root manager. Refuses non-root.
 
+# shellcheck disable=SC2034  # CALLER consumed by sourced perflib.sh
 CALLER="$0"
+# shellcheck source=/dev/null  # perflib.sh is runtime-relative, not present at lint time
 . "$(cd "$(dirname "$0")" && pwd)/perflib.sh"
 
 need_root
@@ -65,10 +69,10 @@ build_status() {
     pn=$(basename "$p" | sed 's/policy//')
     aff=$(cat "$p/affected_cpus" 2>/dev/null)
     affjson=$(expand_range "$aff")
-    gov=$(cat "$p/scaling_governor" 2>/dev/null | tr -d '\n')
-    cur=$(cat "$p/scaling_cur_freq" 2>/dev/null | tr -d '\n'); case "$cur" in ''|*[!0-9]*) cur=0;; esac
-    mn=$(cat "$p/scaling_min_freq" 2>/dev/null | tr -d '\n'); case "$mn" in ''|*[!0-9]*) mn=0;; esac
-    mx=$(cat "$p/scaling_max_freq" 2>/dev/null | tr -d '\n'); case "$mx" in ''|*[!0-9]*) mx=0;; esac
+    gov=$(tr -d '\n' < "$p/scaling_governor" 2>/dev/null)
+    cur=$(tr -d '\n' < "$p/scaling_cur_freq" 2>/dev/null); case "$cur" in ''|*[!0-9]*) cur=0;; esac
+    mn=$(tr -d '\n' < "$p/scaling_min_freq" 2>/dev/null); case "$mn" in ''|*[!0-9]*) mn=0;; esac
+    mx=$(tr -d '\n' < "$p/scaling_max_freq" 2>/dev/null); case "$mx" in ''|*[!0-9]*) mx=0;; esac
     ag=$(cat "$p/scaling_available_governors" 2>/dev/null)
     agjson=$(echo "$ag" | sed 's/^/"/;s/$/"/;s/ /","/g')
     af=$(cat "$p/scaling_available_frequencies" 2>/dev/null)
@@ -83,15 +87,16 @@ build_status() {
   cores=""
   c=0
   while [ "$c" -lt "$num" ]; do
-    on=1; [ -f /sys/devices/system/cpu/cpu$c/online ] && on=$(cat /sys/devices/system/cpu/cpu$c/online 2>/dev/null | tr -d '\n'); case "$on" in ''|*[!0-9]*) on=1;; esac
+    on=1; [ -f /sys/devices/system/cpu/cpu$c/online ] && on=$(tr -d '\n' < /sys/devices/system/cpu/cpu$c/online 2>/dev/null); case "$on" in ''|*[!0-9]*) on=1;; esac
     pol=0
     for p in /sys/devices/system/cpu/cpufreq/policy*; do
       [ -d "$p" ] || continue
       case "$(cat "$p/affected_cpus" 2>/dev/null)" in *"$c"*) pol=$(basename "$p" | sed 's/policy//'); break;; esac
     done
-    cf=$(cat /sys/devices/system/cpu/cpufreq/policy$pol/scaling_cur_freq 2>/dev/null | tr -d '\n'); case "$cf" in ''|*[!0-9]*) cf=0;; esac
-    cmin=$(cat /sys/devices/system/cpu/cpufreq/policy$pol/cpuinfo_min_freq 2>/dev/null | tr -d '\n'); case "$cmin" in ''|*[!0-9]*) cmin=0;; esac
-    cmax=$(cat /sys/devices/system/cpu/cpufreq/policy$pol/cpuinfo_max_freq 2>/dev/null | tr -d '\n'); case "$cmax" in ''|*[!0-9]*) cmax=0;; esac
+    pp="/sys/devices/system/cpu/cpufreq/policy$pol"
+    cf=$(tr -d '\n' < "$pp/scaling_cur_freq" 2>/dev/null); case "$cf" in ''|*[!0-9]*) cf=0;; esac
+    cmin=$(tr -d '\n' < "$pp/cpuinfo_min_freq" 2>/dev/null); case "$cmin" in ''|*[!0-9]*) cmin=0;; esac
+    cmax=$(tr -d '\n' < "$pp/cpuinfo_max_freq" 2>/dev/null); case "$cmax" in ''|*[!0-9]*) cmax=0;; esac
     u=$(cpu_util_core "$c"); case "$u" in ''|*[!0-9.]*) u=-1;; esac
     blk="{\"cpu\":$c,\"policy\":$pol,\"online\":$on,\"curFreq\":$cf,\"minFreq\":$cmin,\"maxFreq\":$cmax,\"util\":$u}"
     [ -z "$cores" ] && cores="$blk" || cores="$cores,$blk"
@@ -104,7 +109,7 @@ build_status() {
   ma=$(memfield MemAvailable); [ -z "$ma" ] && ma=0
   st=$(memfield SwapTotal); [ -z "$st" ] && st=0
   sf=$(memfield SwapFree);  [ -z "$sf" ] && sf=0
-  zt=$(cat /sys/block/zram0/disksize 2>/dev/null | tr -d '\n'); case "$zt" in ''|*[!0-9]*) zt=0;; esac
+  zt=$(tr -d '\n' < /sys/block/zram0/disksize 2>/dev/null); case "$zt" in ''|*[!0-9]*) zt=0;; esac
   mtb=$((mt*1024)); mab=$((ma*1024)); stb=$((st*1024)); sfb=$((sf*1024))
   if [ "$mt" -gt 0 ] 2>/dev/null; then
     used=$((mt - ma)); rp=$(awk -v u="$used" -v t="$mt" 'BEGIN{printf "%.1f", (u/t)*100}')
@@ -113,16 +118,15 @@ build_status() {
   # gpu (no util node on this device -> -1.0)
   gpupresent=false; gpuname=""
   [ -d /proc/gpufreqv2 ] && gpupresent=true
-  gpuname=$(cat /sys/devices/platform/soc/*/mali/gpuinfo 2>/dev/null | head -n1)
+  gpuname=$(head -n1 /sys/devices/platform/soc/*/mali/gpuinfo 2>/dev/null)
   [ -z "$gpuname" ] && gpuname=""
 
   # thermal (all zones, deci-C -> C)
   th=""
   for z in /sys/class/thermal/thermal_zone[0-9]*; do
     [ -d "$z" ] || continue
-    zn=$(basename "$z" | sed 's/thermal_zone//')
-    tt=$(cat "$z/type" 2>/dev/null | tr -d '\n'); [ -z "$tt" ] && tt=""
-    tv=$(cat "$z/temp" 2>/dev/null | tr -d '\n')
+    tt=$(tr -d '\n' < "$z/type" 2>/dev/null); [ -z "$tt" ] && tt=""
+    tv=$(tr -d '\n' < "$z/temp" 2>/dev/null)
     case "$tv" in ''|*[!0-9]*) tv=0;; esac
     tvc=$(awk -v v="$tv" 'BEGIN{printf "%.1f", v/1000}')
     blk="{\"type\":\"$tt\",\"name\":\"$tt\",\"tempC\":$tvc}"
@@ -130,11 +134,11 @@ build_status() {
   done
 
   # battery
-  bl=$(cat /sys/class/power_supply/battery/capacity 2>/dev/null | tr -d '\n'); case "$bl" in ''|*[!0-9]*) bl=-1;; esac
-  bt=$(cat /sys/class/power_supply/battery/temp 2>/dev/null | tr -d '\n'); case "$bt" in ''|*[!0-9]*) bt=-10000;; esac
+  bl=$(tr -d '\n' < /sys/class/power_supply/battery/capacity 2>/dev/null); case "$bl" in ''|*[!0-9]*) bl=-1;; esac
+  bt=$(tr -d '\n' < /sys/class/power_supply/battery/temp 2>/dev/null); case "$bt" in ''|*[!0-9]*) bt=-10000;; esac
   btc=$(awk -v v="$bt" 'BEGIN{ if(v<0){printf "0.0"} else {printf "%.1f", v/10} }')
-  bc=$(cat /sys/class/power_supply/battery/current_now 2>/dev/null | tr -d '\n'); case "$bc" in ''|*[!0-9-]*) bc=0;; esac
-  bs=$(cat /sys/class/power_supply/battery/status 2>/dev/null | tr -d '\n'); [ -z "$bs" ] && bs="Unknown"
+  bc=$(tr -d '\n' < /sys/class/power_supply/battery/current_now 2>/dev/null); case "$bc" in ''|*[!0-9-]*) bc=0;; esac
+  bs=$(tr -d '\n' < /sys/class/power_supply/battery/status 2>/dev/null); [ -z "$bs" ] && bs="Unknown"
 
   up=$(awk '{print int($1)}' /proc/uptime 2>/dev/null); [ -z "$up" ] && up=0
 
@@ -210,8 +214,8 @@ cmd_adaptive_set() {
 }
 
 cmd_tuning_list() {
-  sw=$(cat /proc/sys/vm/swappiness 2>/dev/null | tr -d '\n'); [ -z "$sw" ] && sw=0
-  ra=$(cat /sys/block/sda/queue/read_ahead_kb 2>/dev/null | tr -d '\n'); [ -z "$ra" ] && ra=0
+  sw=$(tr -d '\n' < /proc/sys/vm/swappiness 2>/dev/null); [ -z "$sw" ] && sw=0
+  ra=$(tr -d '\n' < /sys/block/sda/queue/read_ahead_kb 2>/dev/null); [ -z "$ra" ] && ra=0
   printf '{"items":[\n'
   printf ' {"key":"vm.swappiness","value":%s,"min":0,"max":200,"unit":"","safe":true},\n' "$sw"
   printf ' {"key":"block.read_ahead_kb","value":%s,"min":128,"max":4096,"unit":"KB","safe":true}\n' "$ra"
@@ -256,7 +260,10 @@ cmd_selftest() {
   if [ -d "$RUNDIR" ]; then add '{"check":"rundir","ok":true}'; else add '{"check":"rundir","ok":false}'; fail; fi
   if [ -f "$STATE" ]; then add '{"check":"state","ok":true}'; else add '{"check":"state","ok":false}'; fail; fi
   if [ -f "$CAP" ]; then add '{"check":"capabilities","ok":true}'; else add '{"check":"capabilities","ok":false}'; fail; fi
-  np=$(ls -d /sys/devices/system/cpu/cpufreq/policy* 2>/dev/null | wc -l | tr -d ' ')
+  np=0
+  for _pp in /sys/devices/system/cpu/cpufreq/policy*; do
+    [ -d "$_pp" ] && np=$((np+1))
+  done
   if [ "$np" -gt 0 ] 2>/dev/null; then add "{\"check\":\"cpufreq\",\"ok\":true,\"policies\":$np}"; else add '{"check":"cpufreq","ok":false}'; fail; fi
   if [ -d "$LOGDIR" ]; then add '{"check":"log","ok":true}'; else add '{"check":"log","ok":false}'; fail; fi
   printf '{"ok":%s,"checks":[%s]}\n' "$ok" "${chk#,}"

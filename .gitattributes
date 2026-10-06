@@ -1,0 +1,14 @@
+# Keep all shell / module scripts LF-terminated on every platform.
+# CRLF in Android shell scripts breaks shebangs and command substitution.
+*.sh           text eol=lf
+module/bin/perfctl  text eol=lf
+module/bin/perfd   text eol=lf
+module/META-INF/com/google/android/update-binary  text eol=lf
+module/META-INF/com/google/android/updater-script text eol=lf
+
+# Build artifacts are binary - never normalize.
+*.zip          binary
+*.apk          binary
+*.jks          binary
+*.keystore     binary
+*.jar          binary
