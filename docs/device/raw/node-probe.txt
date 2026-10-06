@@ -1,0 +1,48 @@
+﻿EXISTS /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+sugov_ext
+EXISTS /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+339000
+EXISTS /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+2000000
+EXISTS /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+sugov_ext
+EXISTS /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq
+622000
+EXISTS /sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq
+2600000
+EXISTS /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
+sugov_ext
+EXISTS /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq
+798000
+EXISTS /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq
+3000000
+EXISTS /sys/devices/system/cpu/cpufreq/policy0/sugov_ext/up_rate_limit_us
+1000
+EXISTS /sys/devices/system/cpu/cpufreq/policy0/sugov_ext/down_rate_limit_us
+1000
+EXISTS /sys/devices/system/cpu/cpu0/core_ctl/enable
+1
+EXISTS /sys/devices/system/cpu/cpu0/core_ctl/core_ctl_boost
+0
+EXISTS /proc/sys/kernel/sched_energy_aware
+1
+EXISTS /proc/sys/kernel/sched_pelt_multiplier
+1
+EXISTS /proc/sys/kernel/sched_util_clamp_min
+1024
+EXISTS /sys/module/usb_boost/parameters/enabled
+1
+MISSING /sys/module/touch_boost/parameters/enabled
+EXISTS /dev/cpuctl/cpu.schedtune.boost
+0
+EXISTS /proc/sys/vm/swappiness
+125
+MISSING /proc/hps
+MISSING /sys/kernel/hps
+MISSING /sys/devices/system/cpu/cpu_boost
+EXISTS /sys/class/thermal/thermal_zone0/type
+mtk-master-charger
+EXISTS /sys/class/power_supply/battery/capacity
+90
+EXISTS /sys/class/power_supply/battery/current_now
+378

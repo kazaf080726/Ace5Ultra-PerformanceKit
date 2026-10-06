@@ -1,0 +1,329 @@
+﻿
+Aging table index: 0, MOST_AGRRESIVE_AGING_TABLE_ID: 0
+efuse1(0x00000000): 0x00000000, efuse2(0x00000000): 0x00000000
+efuse3(0x00000000): 0x00000000, efuse4(0x00000000): 0x00000000
+a_t0_efuse1: 0, a_t0_efuse2: 0, a_t0_efuse3: 0, a_t0_efuse4: 0
+a_tn_sensor1: 0, a_tn_sensor2: 0, a_tn_sensor3: 0, a_tn_sensor4: 0
+a_diff1: 0, a_diff2: 0, a_diff3: 0, a_diff4: 0
+tj_max: 0, lvts5_0_y_temperature: 0, leakage_power: 0
+===== /proc/gpufreqv2/fix_custom_freq_volt =====
+[GPUFREQ-DEBUG] fix GPU F/V, STACK F/V is disabled
+===== /proc/gpufreqv2/fix_target_opp_index =====
+[GPUFREQ-DEBUG] fix GPU/STACK OPP index is disabled
+===== /proc/gpufreqv2/gpu_signed_opp_table =====
+[00*] freq: 1612000, volt:  83750, vsram:  83750
+[01*] freq: 1612000, volt:  83750, vsram:  83750
+[02*] freq: 1612000, volt:  83750, vsram:  83750
+[03*] freq: 1612000, volt:  83750, vsram:  83750
+[04*] freq: 1508000, volt:  81250, vsram:  81250
+[05*] freq: 1508000, volt:  81250, vsram:  81250
+[06*] freq: 1508000, volt:  81250, vsram:  81250
+[07*] freq: 1430000, volt:  79375, vsram:  79375
+[08*] freq: 1430000, volt:  79375, vsram:  79375
+[09*] freq: 1430000, volt:  79375, vsram:  79375
+[10*] freq: 1430000, volt:  79375, vsram:  79375
+[11*] freq: 1430000, volt:  79375, vsram:  79375
+[12*] freq: 1430000, volt:  79375, vsram:  79375
+[13*] freq: 1430000, volt:  79375, vsram:  79375
+[14*] freq: 1430000, volt:  79375, vsram:  79375
+[15*] freq: 1430000, volt:  79375, vsram:  79375
+[16*] freq: 1430000, volt:  79375, vsram:  79375
+[17*] freq: 1430000, volt:  79375, vsram:  79375
+[18*] freq: 1430000, volt:  79375, vsram:  79375
+[19*] freq: 1430000, volt:  79375, vsram:  79375
+[20*] freq: 1430000, volt:  79375, vsram:  79375
+[21*] freq: 1430000, volt:  79375, vsram:  79375
+[22*] freq: 1430000, volt:  79375, vsram:  79375
+[23*] freq: 1430000, volt:  79375, vsram:  79375
+[24*] freq: 1430000, volt:  79375, vsram:  79375
+[25*] freq: 1430000, volt:  79375, vsram:  79375
+[26*] freq: 1430000, volt:  79375, vsram:  79375
+[27*] freq: 1430000, volt:  79375, vsram:  79375
+[28*] freq: 1430000, volt:  79375, vsram:  79375
+[29*] freq: 1430000, volt:  79375, vsram:  79375
+[30*] freq: 1430000, volt:  79375, vsram:  79375
+[31*] freq: 1378000, volt:  78125, vsram:  78125
+[32*] freq: 1326000, volt:  76875, vsram:  76875
+[33*] freq: 1300000, volt:  76250, vsram:  76250
+[34*] freq: 1248000, volt:  75000, vsram:  75000
+[35*] freq: 1196000, volt:  73750, vsram:  75000
+[36*] freq: 1144000, volt:  71875, vsram:  75000
+[37*] freq: 1118000, volt:  71250, vsram:  75000
+[38*] freq: 1066000, volt:  70000, vsram:  75000
+[39*] freq: 1014000, volt:  68750, vsram:  75000
+[40*] freq:  962000, volt:  67500, vsram:  75000
+[41*] freq:  936000, volt:  66875, vsram:  75000
+[42*] freq:  884000, volt:  65000, vsram:  75000
+[43*] freq:  832000, volt:  63750, vsram:  75000
+[44*] freq:  806000, volt:  63125, vsram:  75000
+[45*] freq:  754000, volt:  61875, vsram:  75000
+[46*] freq:  702000, volt:  60625, vsram:  75000
+[47*] freq:  650000, volt:  59375, vsram:  75000
+[48*] freq:  624000, volt:  58750, vsram:  75000
+[49*] freq:  572000, volt:  56875, vsram:  75000
+[50*] freq:  442000, volt:  53750, vsram:  75000
+[51*] freq:  338000, volt:  50625, vsram:  75000
+===== /proc/gpufreqv2/gpu_working_opp_table =====
+[00] freq: 1612000, volt:  83750, vsram:  83750
+[01] freq: 1612000, volt:  83750, vsram:  83750
+[02] freq: 1612000, volt:  83750, vsram:  83750
+[03] freq: 1612000, volt:  83750, vsram:  83750
+[04] freq: 1508000, volt:  81250, vsram:  81250
+[05] freq: 1508000, volt:  81250, vsram:  81250
+[06] freq: 1508000, volt:  81250, vsram:  81250
+[07] freq: 1430000, volt:  79375, vsram:  79375
+[08] freq: 1430000, volt:  79375, vsram:  79375
+[09] freq: 1430000, volt:  79375, vsram:  79375
+[10] freq: 1430000, volt:  79375, vsram:  79375
+[11] freq: 1430000, volt:  79375, vsram:  79375
+[12] freq: 1430000, volt:  79375, vsram:  79375
+[13] freq: 1430000, volt:  79375, vsram:  79375
+[14] freq: 1430000, volt:  79375, vsram:  79375
+[15] freq: 1430000, volt:  79375, vsram:  79375
+[16] freq: 1430000, volt:  79375, vsram:  79375
+[17] freq: 1430000, volt:  79375, vsram:  79375
+[18] freq: 1430000, volt:  79375, vsram:  79375
+[19] freq: 1430000, volt:  79375, vsram:  79375
+[20] freq: 1430000, volt:  79375, vsram:  79375
+[21] freq: 1430000, volt:  79375, vsram:  79375
+[22] freq: 1430000, volt:  79375, vsram:  79375
+[23] freq: 1430000, volt:  79375, vsram:  79375
+[24] freq: 1430000, volt:  79375, vsram:  79375
+[25] freq: 1430000, volt:  79375, vsram:  79375
+[26] freq: 1430000, volt:  79375, vsram:  79375
+[27] freq: 1430000, volt:  79375, vsram:  79375
+[28] freq: 1430000, volt:  79375, vsram:  79375
+[29] freq: 1430000, volt:  79375, vsram:  79375
+[30] freq: 1430000, volt:  79375, vsram:  79375
+[31] freq: 1378000, volt:  78125, vsram:  78125
+[32] freq: 1326000, volt:  76875, vsram:  76875
+[33] freq: 1300000, volt:  76250, vsram:  76250
+[34] freq: 1248000, volt:  75000, vsram:  75000
+[35] freq: 1196000, volt:  73750, vsram:  75000
+[36] freq: 1144000, volt:  71875, vsram:  75000
+[37] freq: 1118000, volt:  71250, vsram:  75000
+[38] freq: 1066000, volt:  70000, vsram:  75000
+[39] freq: 1014000, volt:  68750, vsram:  75000
+[40] freq:  962000, volt:  67500, vsram:  75000
+[41] freq:  936000, volt:  66875, vsram:  75000
+[42] freq:  884000, volt:  65000, vsram:  75000
+[43] freq:  832000, volt:  63750, vsram:  75000
+[44] freq:  806000, volt:  63125, vsram:  75000
+[45] freq:  754000, volt:  61875, vsram:  75000
+[46] freq:  702000, volt:  60625, vsram:  75000
+[47] freq:  650000, volt:  59375, vsram:  75000
+[48] freq:  624000, volt:  58750, vsram:  75000
+[49] freq:  572000, volt:  56875, vsram:  75000
+[50] freq:  442000, volt:  53750, vsram:  75000
+[51] freq:  338000, volt:  50625, vsram:  75000
+===== /proc/gpufreqv2/gpufreq_status =====
+[GPUFREQ-DEBUG] Current Status of GPUFREQ
+[GPU   OPP]      Index: 51, Freq:   26000, Volt:  50625, Vsram:  75000
+[STACK OPP]      Index: 51, Freq:   26000, Volt:  49500, Vsram:  75000
+[GPU   REALOPP]  FmeterFreq:       0, OutFreq:   26000, ReguVolt:      0, ReguVsram:      0
+[STACK REALOPP]  FmeterFreq:       0, OutFreq:   26000, ReguVolt:      0, ReguVsram:      0
+[GPU   Segment]  SegmentID: 3, WorkingOPPNum: 52, SignedOPPNum: 52, DACLow:      0
+[STACK Segment]  SegmentID: 3, WorkingOPPNum: 52, SignedOPPNum: 52, DACLow:      0
+[PPM Ceiling]    LimitIndex: 24, Limiter: 12, Priority:  6
+[PPM Floor]      LimitIndex: 51, Limiter:  0, Priority:  9
+[Power State]    PowerCount: 0, Active: 0, CG: 0, MTCMOS: 0, BUCK: 0
+[Power State]    Timestamp: 548325758612, DVFSState: 0x0022
+[Power State]    PowerStatus: 0x00000001, ShaderPresent: 0x00ee0077
+[MFGSYS Config]  DualBuck: True, GPUEBSupport: On, StressTest: Off
+[MFGSYS Config]  AgingMargin: Off, AVSMargin: On, GPM1.0: Off, GPM3.0: On, DFD: 6.0
+[MFGSYS Config]  Temperature: -274'C, GPUTemperComp: 0/0, STACKTemperComp: 0/0
+[MFGSYS Config]  DBGVer: 0x20250410, KDBGVer: 0x20241029, PTPVer: 0x0018, SBVer: 0x0000, CType: 0
+[PTP3 Config]    PTP3: On, DVFSMode: HW_LOOP, ImaxProt: 3.5, HBVCFreq: On, HBVCVolt: On
+[PTP3 Config]    BRCAST: AutoDMA, DELSEL: HW, PreOC: On (C=0, T=0, F=7)
+[PTP3 Config]    SES_TOP: On, SES_ST: On, SES_Scheduler: On
+[PTP3 Config]    FLL: On, ATMC: On, Vmeter: On, Tmeter: On, CPmeter: On, CTT: On
+[PTP3 Config]    InFreq: 338/0, OutFreq: 442/0, CC: 3/0, FC: 9/0, Mode: Normal
+===== /proc/gpufreqv2/limit_table =====
+[id]          [name]  [priority]  [ceiling]  [floor]  [c_enable]  [f_enable]
+   0         SEGMENT           9          0       51           1           1
+   1           DEBUG           8         -1       -1           1           1
+   2         GPM_3.0           7         -1       -1           1           1
+   3      PEAK_POWER           7          0       -1           1           1
+   4      THERMAL_AP           6         -1       -1           1           1
+   5      THERMAL_EB           6          7       -1           1           1
+   6          SRAMRC           5         -1       -1           1           1
+   7         BATT_OC           4         -1       -1           1           1
+   8    BATT_PERCENT           4         -1       -1           1           1
+   9        LOW_BATT           4         -1       -1           1           1
+  10             PBM           4         -1       -1           1           1
+  11        APIBOOST           3         -1       51           1           1
+  12        POWERHAL           2         24       51           1           1
+  13          FIXCMD           2         -1       -1           1           1
+===== /proc/gpufreqv2/mfgsys_config =====
+[AGING]  AgingSensor: Off, AgingLoad: Off, AgingMargin: Off
+[AVS]    AVS: On, AVSMargin: On
+[GPM]    GPM1.0: Off, GPM3.0: On
+[TEMPER] TemperComp: On, HTTemperComp: Off
+[IPS]    IPS: Off, Vmin: 0 (0x0)
+[IPS]    AutoKResult: Fail (Trim: 0x0, 0x0, 0x0)
+[Misc]   StressTest: Disable, TestMode: Normal
+
+[##*] [TOP Vaging] [##*] [TOP Vavs] [##*] [STK Vaging] [##*] [STK Vavs]
+[00*]          625 [00*]      83750 [00*]          500 [00*]      80000
+[07*]          625 [07*]      79375 [07*]          500 [07*]      74500
+[51*]          625 [51*]      50625 [51*]          500 [51*]      49500
+[00*]            0 [00*]          0 [00*]            0 [00*]          0
+[00*]            0 [00*]          0 [00*]            0 [00*]          0
+[00*]            0 [00*]          0 [00*]            0 [00*]          0
+[00*]            0 [00*]          0 [00*]            0 [00*]          0
+[00*]            0 [00*]          0 [00*]            0 [00*]          0
+[00*]            0 [00*]          0 [00*]            0 [00*]          0
+[00*]            0 [00*]          0 [00*]            0 [00*]          0
+
+[Temper] [Ceiling] [I_STACK] [I_SRAM] [P_STACK]
+[    25]         2     19711        0         0
+[    30]         2     19765        0         0
+[    35]         2     19822        0         0
+[    40]         2     19886        0         0
+[    45]         2     19958        0         0
+[    50]         3     19590        0         0
+[    55]         3     19689        0         0
+[    60]         3     19807        0         0
+[    65]         3     19979        0         0
+[    70]         4     19569        0         0
+[    75]         4     19766        0         0
+[    80]         4     19994        0         0
+[    85]         5     19807        0         0
+[    90]         6     19526        0         0
+[    95]         6     19861        0         0
+[   100]         7     19659        0         0
+[   105]         8     19636        0         0
+[     0]         0         0        0         0
+[     0]         0         0        0         0
+[     0]         0         0        0         0
+
+[Profiling] [Count###] [Latest] [Average] [Maximum] [Minimum]
+[PWR_ON   ]          0      0us       0us       0us       0us
+[PWR_OFF  ]          0      0us       0us       0us       0us
+[ACTIVE   ]          0      0us       0us       0us       0us
+[SLEEP    ]          0      0us       0us       0us       0us
+[DVFS     ]          0      0us       0us       0us       0us
+
+[GPU BModel]
+VSYS_SEARCH_GPUTOP_DVFS_H1,0
+VSYS_SEARCH_GPUTOP_DVFS_H,0
+VSYS_SEARCH_GPUTOP_DVFS_L,0
+VSYS_SEARCH_GPUSTACK_DVFS_H1,0
+VSYS_SEARCH_GPUSTACK_DVFS_H,0
+VSYS_SEARCH_GPUSTACK_DVFS_L,0
+===== /proc/gpufreqv2/mfgsys_power_control =====
+[GPUFREQ-DEBUG] MFGSYS is DBG_POWER_OFF
+===== /proc/gpufreqv2/stack_signed_opp_table =====
+[00*] freq: 1612000, volt:  80000, vsram:  80000
+[01*] freq: 1586000, volt:  79500, vsram:  79500
+[02*] freq: 1560000, volt:  78500, vsram:  78500
+[03*] freq: 1534000, volt:  78000, vsram:  78000
+[04*] freq: 1508000, volt:  77000, vsram:  77000
+[05*] freq: 1482000, volt:  76500, vsram:  76500
+[06*] freq: 1456000, volt:  75500, vsram:  75500
+[07*] freq: 1430000, volt:  74500, vsram:  75000
+[08*] freq: 1404000, volt:  74000, vsram:  75000
+[09*] freq: 1378000, volt:  73500, vsram:  75000
+[10*] freq: 1352000, volt:  73000, vsram:  75000
+[11*] freq: 1326000, volt:  72500, vsram:  75000
+[12*] freq: 1300000, volt:  72000, vsram:  75000
+[13*] freq: 1274000, volt:  71000, vsram:  75000
+[14*] freq: 1248000, volt:  70500, vsram:  75000
+[15*] freq: 1222000, volt:  70000, vsram:  75000
+[16*] freq: 1196000, volt:  69500, vsram:  75000
+[17*] freq: 1170000, volt:  69000, vsram:  75000
+[18*] freq: 1144000, volt:  68000, vsram:  75000
+[19*] freq: 1118000, volt:  67500, vsram:  75000
+[20*] freq: 1092000, volt:  67000, vsram:  75000
+[21*] freq: 1066000, volt:  66500, vsram:  75000
+[22*] freq: 1040000, volt:  66000, vsram:  75000
+[23*] freq: 1014000, volt:  65000, vsram:  75000
+[24*] freq:  988000, volt:  64500, vsram:  75000
+[25*] freq:  962000, volt:  64000, vsram:  75000
+[26*] freq:  936000, volt:  63500, vsram:  75000
+[27*] freq:  910000, volt:  63000, vsram:  75000
+[28*] freq:  884000, volt:  62000, vsram:  75000
+[29*] freq:  858000, volt:  61500, vsram:  75000
+[30*] freq:  832000, volt:  61000, vsram:  75000
+[31*] freq:  806000, volt:  60500, vsram:  75000
+[32*] freq:  780000, volt:  60000, vsram:  75000
+[33*] freq:  754000, volt:  59500, vsram:  75000
+[34*] freq:  728000, volt:  58500, vsram:  75000
+[35*] freq:  702000, volt:  58000, vsram:  75000
+[36*] freq:  676000, volt:  57500, vsram:  75000
+[37*] freq:  650000, volt:  57000, vsram:  75000
+[38*] freq:  624000, volt:  56500, vsram:  75000
+[39*] freq:  598000, volt:  55500, vsram:  75000
+[40*] freq:  572000, volt:  55000, vsram:  75000
+[41*] freq:  546000, volt:  54500, vsram:  75000
+[42*] freq:  520000, volt:  54000, vsram:  75000
+[43*] freq:  494000, volt:  53500, vsram:  75000
+[44*] freq:  468000, volt:  52500, vsram:  75000
+[45*] freq:  442000, volt:  52000, vsram:  75000
+[46*] freq:  416000, volt:  51500, vsram:  75000
+[47*] freq:  390000, volt:  51000, vsram:  75000
+[48*] freq:  364000, volt:  50500, vsram:  75000
+[49*] freq:  338000, volt:  49500, vsram:  75000
+[50*] freq:  338000, volt:  49500, vsram:  75000
+[51*] freq:  338000, volt:  49500, vsram:  75000
+===== /proc/gpufreqv2/stack_working_opp_table =====
+[00] freq: 1612000, volt:  80000, vsram:  80000
+[01] freq: 1586000, volt:  79500, vsram:  79500
+[02] freq: 1560000, volt:  78500, vsram:  78500
+[03] freq: 1534000, volt:  78000, vsram:  78000
+[04] freq: 1508000, volt:  77000, vsram:  77000
+[05] freq: 1482000, volt:  76500, vsram:  76500
+[06] freq: 1456000, volt:  75500, vsram:  75500
+[07] freq: 1430000, volt:  74500, vsram:  75000
+[08] freq: 1404000, volt:  74000, vsram:  75000
+[09] freq: 1378000, volt:  73500, vsram:  75000
+[10] freq: 1352000, volt:  73000, vsram:  75000
+[11] freq: 1326000, volt:  72500, vsram:  75000
+[12] freq: 1300000, volt:  72000, vsram:  75000
+[13] freq: 1274000, volt:  71000, vsram:  75000
+[14] freq: 1248000, volt:  70500, vsram:  75000
+[15] freq: 1222000, volt:  70000, vsram:  75000
+[16] freq: 1196000, volt:  69500, vsram:  75000
+[17] freq: 1170000, volt:  69000, vsram:  75000
+[18] freq: 1144000, volt:  68000, vsram:  75000
+[19] freq: 1118000, volt:  67500, vsram:  75000
+[20] freq: 1092000, volt:  67000, vsram:  75000
+[21] freq: 1066000, volt:  66500, vsram:  75000
+[22] freq: 1040000, volt:  66000, vsram:  75000
+[23] freq: 1014000, volt:  65000, vsram:  75000
+[24] freq:  988000, volt:  64500, vsram:  75000
+[25] freq:  962000, volt:  64000, vsram:  75000
+[26] freq:  936000, volt:  63500, vsram:  75000
+[27] freq:  910000, volt:  63000, vsram:  75000
+[28] freq:  884000, volt:  62000, vsram:  75000
+[29] freq:  858000, volt:  61500, vsram:  75000
+[30] freq:  832000, volt:  61000, vsram:  75000
+[31] freq:  806000, volt:  60500, vsram:  75000
+[32] freq:  780000, volt:  60000, vsram:  75000
+[33] freq:  754000, volt:  59500, vsram:  75000
+[34] freq:  728000, volt:  58500, vsram:  75000
+[35] freq:  702000, volt:  58000, vsram:  75000
+[36] freq:  676000, volt:  57500, vsram:  75000
+[37] freq:  650000, volt:  57000, vsram:  75000
+[38] freq:  624000, volt:  56500, vsram:  75000
+[39] freq:  598000, volt:  55500, vsram:  75000
+[40] freq:  572000, volt:  55000, vsram:  75000
+[41] freq:  546000, volt:  54500, vsram:  75000
+[42] freq:  520000, volt:  54000, vsram:  75000
+[43] freq:  494000, volt:  53500, vsram:  75000
+[44] freq:  468000, volt:  52500, vsram:  75000
+[45] freq:  442000, volt:  52000, vsram:  75000
+[46] freq:  416000, volt:  51500, vsram:  75000
+[47] freq:  390000, volt:  51000, vsram:  75000
+[48] freq:  364000, volt:  50500, vsram:  75000
+[49] freq:  338000, volt:  49500, vsram:  75000
+[50] freq:  338000, volt:  49500, vsram:  75000
+[51] freq:  338000, volt:  49500, vsram:  75000
+===== /proc/gpufreqv2/whitebox_test =====
+===== gpuinfo =====
+Mali-G925-Immortalis 12 cores r0p1 0x0D080300
+===== devfreq dir =====
+total 0
+drwxr-xr-x 3 root root 0 2026-10-06 23:51 .
+drwxr-xr-x 8 root root 0 2026-10-06 23:51 ..
+drwxr-xr-x 3 root root 0 2026-10-06 23:51 48000000.mali

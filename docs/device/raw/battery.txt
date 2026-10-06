@@ -1,0 +1,20 @@
+﻿== battery supply ==
+battery
+mt6379-gauge1
+mtk-battery
+mtk-master-charger
+mtk-mst-div-charger
+mtk-slave-charger
+mtk-slv-div-charger
+primary_chg
+usb
+--- battery values ---
+capacity:90
+status:Charging
+charge_type:Fast
+voltage_now:4336
+current_now:30
+temp:394
+--- usb ---
+usb/online:1
+usb/status:cat: /sys/class/power_supply/usb/status: No such file or directory

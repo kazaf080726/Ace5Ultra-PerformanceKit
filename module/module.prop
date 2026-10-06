@@ -1,0 +1,7 @@
+id=ace5ultra_perfkit
+name=Ace5Ultra PerformanceKit
+version=1.0.0
+versionCode=10000
+author=Kazaf
+description=Data-driven runtime performance controller for OnePlus Ace 5 Ultra. Applies only reversible sysfs/procfs tuning; never touches boot/vendor/system partitions; snapshots originals and restores on disable/uninstall.
+updateJson=https://raw.githubusercontent.com/kazaf080726/Ace5Ultra-PerformanceKit/main/release/update.json

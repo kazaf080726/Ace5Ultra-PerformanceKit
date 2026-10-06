@@ -1,0 +1,12 @@
+﻿sched_child_runs_first
+sched_deadline_period_max_us
+sched_deadline_period_min_us
+sched_energy_aware
+sched_pelt_multiplier
+sched_rr_timeslice_ms
+sched_rt_period_us
+sched_rt_runtime_us
+sched_schedstats
+sched_util_clamp_max
+sched_util_clamp_min
+sched_util_clamp_min_rt_default

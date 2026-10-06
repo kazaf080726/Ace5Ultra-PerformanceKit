@@ -1,0 +1,104 @@
+﻿
+1
+cpu0/core_ctl_boost: 0
+cpu0/cpu_busy_up_thres: 60
+cpu0/global_state: Cluster0
+	First CPU: 0
+	Active CPUs: 4
+	Need CPUs: 4
+	NR Paused CPUs(pause by core_ctl): 0
+CPU0
+	Online: 1
+	Paused: 0
+	Paused by core_ctl: 0
+	CPU utils(%): 44
+	Is busy: 0
+	Not preferred: 0
+CPU1
+	Online: 1
+	Paused: 0
+	Paused by core_ctl: 0
+	CPU utils(%): 39
+	Is busy: 0
+	Not preferred: 0
+CPU2
+	Online: 1
+	Paused: 0
+	Paused by core_ctl: 0
+	CPU utils(%): 28
+	Is busy: 0
+	Not preferred: 0
+CPU3
+	Online: 1
+	Paused: 0
+	Paused by core_ctl: 0
+	CPU utils(%): 41
+	Is busy: 0
+	Not preferred: 0
+cpu0/max_cpus: 4
+cpu0/min_cpus: 4
+cpu0/not_preferred: CPU#0: 0
+CPU#1: 0
+CPU#2: 0
+CPU#3: 0
+cpu0/offline_throttle_ms: 100
+cpu0/thermal_up_thres: 80
+cpu0/up_thres: 30
+cpu4/enable: 0
+cpu4/core_ctl_boost: 0
+cpu4/cpu_busy_up_thres: 80
+cpu4/global_state: Cluster1
+	First CPU: 4
+	Active CPUs: 3
+	Need CPUs: 3
+	NR Paused CPUs(pause by core_ctl): 0
+CPU4
+	Online: 1
+	Paused: 0
+	Paused by core_ctl: 0
+	CPU utils(%): 51
+	Is busy: 0
+	Not preferred: 0
+CPU5
+	Online: 1
+	Paused: 0
+	Paused by core_ctl: 0
+	CPU utils(%): 53
+	Is busy: 0
+	Not preferred: 0
+CPU6
+	Online: 1
+	Paused: 0
+	Paused by core_ctl: 0
+	CPU utils(%): 56
+	Is busy: 0
+	Not preferred: 0
+cpu4/max_cpus: 3
+cpu4/min_cpus: 3
+cpu4/not_preferred: CPU#4: 0
+CPU#5: 0
+CPU#6: 0
+cpu4/offline_throttle_ms: 100
+cpu4/thermal_up_thres: 100
+cpu4/up_thres: 50
+cpu7/enable: 0
+cpu7/core_ctl_boost: 0
+cpu7/cpu_busy_up_thres: 80
+cpu7/global_state: Cluster2
+	First CPU: 7
+	Active CPUs: 1
+	Need CPUs: 1
+	NR Paused CPUs(pause by core_ctl): 0
+CPU7
+	Online: 1
+	Paused: 0
+	Paused by core_ctl: 0
+	CPU utils(%): 41
+	Is busy: 0
+	Not preferred: 0
+cpu7/max_cpus: 1
+cpu7/min_cpus: 1
+cpu7/not_preferred: CPU#7: 0
+cpu7/offline_throttle_ms: 100
+cpu7/thermal_up_thres: 2147483647
+cpu7/up_thres: 2147483647

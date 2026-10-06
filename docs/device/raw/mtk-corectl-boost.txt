@@ -1,0 +1,20 @@
+﻿== core_ctl ==
+total 0
+drwxr-xr-x 2 root root    0 2026-10-06 23:42 .
+drwxr-xr-x 9 root root    0 2026-10-06 23:42 ..
+-rw------- 1 root root 4096 2026-10-06 23:50 core_ctl_boost
+-rw------- 1 root root 4096 2026-10-06 23:50 cpu_busy_up_thres
+-rw------- 1 root root 4096 2026-10-06 23:50 enable
+-r-------- 1 root root 4096 2026-10-06 23:44 global_state
+-r--r--r-- 1 root root 4096 2026-10-06 23:50 max_cpus
+-r--r--r-- 1 root root 4096 2026-10-06 23:50 min_cpus
+-rw------- 1 root root 4096 2026-10-06 23:50 not_preferred
+-rw------- 1 root root 4096 2026-10-06 23:50 offline_throttle_ms
+-rw------- 1 root root 4096 2026-10-06 23:50 thermal_up_thres
+-rw------- 1 root root 4096 2026-10-06 23:50 up_thres
+/sys/devices/system/cpu/cpu7/core_ctl
+/sys/devices/system/cpu/cpu4/core_ctl
+/sys/devices/system/cpu/cpu0/core_ctl
+
+== cpu_boost ==
+ls: /sys/devices/system/cpu/cpu_boost: No such file or directory

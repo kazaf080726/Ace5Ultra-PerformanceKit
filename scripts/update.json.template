@@ -1,0 +1,6 @@
+{
+  "version": "__VERSION__",
+  "versionCode": __VERSION_CODE__,
+  "zipUrl": "https://github.com/__OWNER__/Ace5Ultra-PerformanceKit/releases/download/v__VERSION__/ace5ultra_perfkit-v__VERSION__.zip",
+  "changelog": "https://raw.githubusercontent.com/__OWNER__/Ace5Ultra-PerformanceKit/main/release/changelog.md"
+}

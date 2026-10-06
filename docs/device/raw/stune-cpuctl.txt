@@ -1,0 +1,92 @@
+﻿== stune ==
+ls: /dev/stune: No such file or directory
+== cpuctl ==
+total 0
+dr-xr-xr-x 31 system system           0 2026-10-06 23:44 .
+drwxrwxrwx 27 root   root         11380 2026-10-06 23:44 ..
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 background
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 bg
+drwxr-xr-x  2 system cameraserver     0 2026-10-06 23:42 camera
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 camera-background
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 camera-daemon
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cgroup.clone_children
+-rw-rw-rw-  1 system system           0 2026-10-06 23:42 cgroup.procs
+-r--r--r--  1 root   root             0 2026-10-06 23:51 cgroup.sane_behavior
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cpu.hmbird.deadline
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cpu.idle
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cpu.qos_latency
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cpu.qos_level
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cpu.schedtune.boost
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cpu.sg.ddl
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cpu.sg.ddl_rthres
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 cpu.shares
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 dex2oat
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 display
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 foreground
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 foreground_window
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 h-background
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 killing
+drwxrwxrwx  2 root   root             0 2026-10-06 23:44 kswapd
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 l-background
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 log
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 mem
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 multimedia
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 nnapi-hal
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 normal-foreground
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 notify_on_release
+-rw-r--r--  1 root   root             0 2026-10-06 23:51 release_agent
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 restricted-background
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 restricted-foreground
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 rt
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 service-foreground
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 ssfg
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 sstop
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 system
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 system-background
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 systemui
+-rw-rw-rw-  1 system system           0 2026-10-06 23:42 tasks
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 top-app
+drwxr-xr-x  2 system system           0 2026-10-06 23:42 touch
+background
+bg
+camera
+camera-background
+camera-daemon
+cgroup.clone_children
+cgroup.procs
+cgroup.sane_behavior
+cpu.hmbird.deadline
+cpu.idle
+cpu.qos_latency
+cpu.qos_level
+cpu.schedtune.boost
+cpu.sg.ddl
+cpu.sg.ddl_rthres
+cpu.shares
+dex2oat
+display
+foreground
+foreground_window
+h-background
+killing
+kswapd
+l-background
+log
+mem
+multimedia
+nnapi-hal
+normal-foreground
+notify_on_release
+release_agent
+restricted-background
+restricted-foreground
+rt
+service-foreground
+ssfg
+sstop
+system
+system-background
+systemui
+tasks
+top-app
+touch

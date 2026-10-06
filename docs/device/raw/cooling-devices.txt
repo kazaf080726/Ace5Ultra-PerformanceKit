@@ -1,0 +1,25 @@
+﻿== cooling devices ==
+cooling_device0 type=cpufreq-cpu0
+cur=0
+max=21
+cooling_device1 type=cpufreq-cpu4
+cur=0
+max=27
+cooling_device2 type=cpufreq-cpu7
+cur=0
+max=29
+cooling_device3 type=devfreq-48000000.mali
+cur=0
+max=45
+cooling_device4 type=charger-cooler
+cur=0
+max=14
+cooling_device5 type=lcd-backlight
+cur=0
+max=100
+cooling_device6 type=wifi-cooler
+cur=0
+max=5
+cooling_device7 type=flashlight_cooler
+cur=0
+max=4

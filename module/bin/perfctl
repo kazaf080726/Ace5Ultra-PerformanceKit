@@ -1,0 +1,290 @@
+#!/system/bin/sh
+# perfctl - hardened root CLI / IPC endpoint for ace5ultra_perfkit.
+# Mode 0700 root. The ONLY caller path is a root shell (libsu / SukiSU / KSU su),
+# so every caller is already authorized by the root manager. Refuses non-root.
+
+CALLER="$0"
+. "$(cd "$(dirname "$0")" && pwd)/perflib.sh"
+
+need_root
+ensure_runtime
+discover
+
+# ---------- tiny json builders ----------
+# expand "a-b" -> "a,b,c"; single "n" -> "n"
+expand_range() {
+  r=$1
+  case "$r" in
+    *-*) lo=${r%-*}; hi=${r#*-}; out=""; i=$lo
+         while [ "$i" -le "$hi" ]; do
+           out="$out,$i"; i=$((i+1))
+         done
+         echo "${out#,}" ;;
+    *) echo "$r" ;;
+  esac
+}
+
+cpu_util_core() { # cpuN  -> util 0..100 or -1
+  cn=$1
+  awk -v c="cpu$cn" '
+    NR==FNR { if ($1==c){t1=0; for(i=2;i<=NF;i++)t1+=$i; id1=$5+$6} next }
+    { if ($1==c){t2=0; for(i=2;i<=NF;i++)t2+=$i; id2=$5+$6} }
+    END {
+      if (t1=="" || t2=="" || t2-t1<=0) { print "-1"; exit }
+      dt=t2-t1; di=id2-id1
+      printf "%.1f", (1-di/dt)*100
+    }' "$T1" "$T2"
+}
+
+build_status() {
+  num=$(num_cores)
+  prof=$(sg profile); [ -z "$prof" ] && prof=balanced
+  adap=$(sg adaptive); [ -z "$adap" ] && adap=true
+  reason=$(sg reason); [ -z "$reason" ] && reason=""
+  load=$(ng load); [ -z "$load" ] && load=0.0
+  tc=$(ng tempC); [ -z "$tc" ] && tc=0.0
+
+  # per-core util samples (one pair, ~200ms apart)
+  T1="$RUNDIR/.st1"; T2="$RUNDIR/.st2"
+  awk '/^cpu[0-9]/{print}' /proc/stat > "$T1" 2>/dev/null
+  sleep 0.2
+  awk '/^cpu[0-9]/{print}' /proc/stat > "$T2" 2>/dev/null
+
+  # device block
+  brand=$(gprop ro.product.brand)
+  model=$(gprop ro.product.model)
+  device=$(gprop ro.product.device)
+  soc=$(gprop ro.board.platform)
+  android=$(gprop ro.build.version.release)
+  kernel=$(uname -r 2>/dev/null)
+
+  # cpu policies
+  pols=""
+  for p in /sys/devices/system/cpu/cpufreq/policy*; do
+    [ -d "$p" ] || continue
+    pn=$(basename "$p" | sed 's/policy//')
+    aff=$(cat "$p/affected_cpus" 2>/dev/null)
+    affjson=$(expand_range "$aff")
+    gov=$(cat "$p/scaling_governor" 2>/dev/null | tr -d '\n')
+    cur=$(cat "$p/scaling_cur_freq" 2>/dev/null | tr -d '\n'); case "$cur" in ''|*[!0-9]*) cur=0;; esac
+    mn=$(cat "$p/scaling_min_freq" 2>/dev/null | tr -d '\n'); case "$mn" in ''|*[!0-9]*) mn=0;; esac
+    mx=$(cat "$p/scaling_max_freq" 2>/dev/null | tr -d '\n'); case "$mx" in ''|*[!0-9]*) mx=0;; esac
+    ag=$(cat "$p/scaling_available_governors" 2>/dev/null)
+    agjson=$(echo "$ag" | sed 's/^/"/;s/$/"/;s/ /","/g')
+    af=$(cat "$p/scaling_available_frequencies" 2>/dev/null)
+    afjson=$(echo "$af" | sed 's/^/"/;s/$/"/;s/ /","/g')
+    [ -z "$agjson" ] && agjson="[]"; agjson="[$agjson]"
+    [ -z "$afjson" ] && afjson="[]"; afjson="[$afjson]"
+    blk="{\"policy\":$pn,\"affectedCpus\":[$affjson],\"governor\":\"$gov\",\"curFreq\":$cur,\"minFreq\":$mn,\"maxFreq\":$mx,\"availableGovernors\":$agjson,\"availableFreqs\":$afjson}"
+    [ -z "$pols" ] && pols="$blk" || pols="$pols,$blk"
+  done
+
+  # cores
+  cores=""
+  c=0
+  while [ "$c" -lt "$num" ]; do
+    on=1; [ -f /sys/devices/system/cpu/cpu$c/online ] && on=$(cat /sys/devices/system/cpu/cpu$c/online 2>/dev/null | tr -d '\n'); case "$on" in ''|*[!0-9]*) on=1;; esac
+    pol=0
+    for p in /sys/devices/system/cpu/cpufreq/policy*; do
+      [ -d "$p" ] || continue
+      case "$(cat "$p/affected_cpus" 2>/dev/null)" in *"$c"*) pol=$(basename "$p" | sed 's/policy//'); break;; esac
+    done
+    cf=$(cat /sys/devices/system/cpu/cpufreq/policy$pol/scaling_cur_freq 2>/dev/null | tr -d '\n'); case "$cf" in ''|*[!0-9]*) cf=0;; esac
+    cmin=$(cat /sys/devices/system/cpu/cpufreq/policy$pol/cpuinfo_min_freq 2>/dev/null | tr -d '\n'); case "$cmin" in ''|*[!0-9]*) cmin=0;; esac
+    cmax=$(cat /sys/devices/system/cpu/cpufreq/policy$pol/cpuinfo_max_freq 2>/dev/null | tr -d '\n'); case "$cmax" in ''|*[!0-9]*) cmax=0;; esac
+    u=$(cpu_util_core "$c"); case "$u" in ''|*[!0-9.]*) u=-1;; esac
+    blk="{\"cpu\":$c,\"policy\":$pol,\"online\":$on,\"curFreq\":$cf,\"minFreq\":$cmin,\"maxFreq\":$cmax,\"util\":$u}"
+    [ -z "$cores" ] && cores="$blk" || cores="$cores,$blk"
+    c=$((c+1))
+  done
+
+  # memory (bytes)
+  mt=$(memfield MemTotal); [ -z "$mt" ] && mt=0
+  mf=$(memfield MemFree);  [ -z "$mf" ] && mf=0
+  ma=$(memfield MemAvailable); [ -z "$ma" ] && ma=0
+  st=$(memfield SwapTotal); [ -z "$st" ] && st=0
+  sf=$(memfield SwapFree);  [ -z "$sf" ] && sf=0
+  zt=$(cat /sys/block/zram0/disksize 2>/dev/null | tr -d '\n'); case "$zt" in ''|*[!0-9]*) zt=0;; esac
+  mtb=$((mt*1024)); mab=$((ma*1024)); stb=$((st*1024)); sfb=$((sf*1024))
+  if [ "$mt" -gt 0 ] 2>/dev/null; then
+    used=$((mt - ma)); rp=$(awk -v u="$used" -v t="$mt" 'BEGIN{printf "%.1f", (u/t)*100}')
+  else used=0; rp=0.0; fi
+
+  # gpu (no util node on this device -> -1.0)
+  gpupresent=false; gpuname=""
+  [ -d /proc/gpufreqv2 ] && gpupresent=true
+  gpuname=$(cat /sys/devices/platform/soc/*/mali/gpuinfo 2>/dev/null | head -n1)
+  [ -z "$gpuname" ] && gpuname=""
+
+  # thermal (all zones, deci-C -> C)
+  th=""
+  for z in /sys/class/thermal/thermal_zone[0-9]*; do
+    [ -d "$z" ] || continue
+    zn=$(basename "$z" | sed 's/thermal_zone//')
+    tt=$(cat "$z/type" 2>/dev/null | tr -d '\n'); [ -z "$tt" ] && tt=""
+    tv=$(cat "$z/temp" 2>/dev/null | tr -d '\n')
+    case "$tv" in ''|*[!0-9]*) tv=0;; esac
+    tvc=$(awk -v v="$tv" 'BEGIN{printf "%.1f", v/1000}')
+    blk="{\"type\":\"$tt\",\"name\":\"$tt\",\"tempC\":$tvc}"
+    [ -z "$th" ] && th="$blk" || th="$th,$blk"
+  done
+
+  # battery
+  bl=$(cat /sys/class/power_supply/battery/capacity 2>/dev/null | tr -d '\n'); case "$bl" in ''|*[!0-9]*) bl=-1;; esac
+  bt=$(cat /sys/class/power_supply/battery/temp 2>/dev/null | tr -d '\n'); case "$bt" in ''|*[!0-9]*) bt=-10000;; esac
+  btc=$(awk -v v="$bt" 'BEGIN{ if(v<0){printf "0.0"} else {printf "%.1f", v/10} }')
+  bc=$(cat /sys/class/power_supply/battery/current_now 2>/dev/null | tr -d '\n'); case "$bc" in ''|*[!0-9-]*) bc=0;; esac
+  bs=$(cat /sys/class/power_supply/battery/status 2>/dev/null | tr -d '\n'); [ -z "$bs" ] && bs="Unknown"
+
+  up=$(awk '{print int($1)}' /proc/uptime 2>/dev/null); [ -z "$up" ] && up=0
+
+  printf '{"version":"%s","versionCode":%d,"contract":%d,\n' "$VERSION" "$VERSIONCODE" "$CONTRACT"
+  printf ' "device":{"brand":"%s","model":"%s","device":"%s","soc":"%s","android":"%s","kernel":"%s"},\n' "$brand" "$model" "$device" "$soc" "$android" "$kernel"
+  printf ' "profile":"%s",\n' "$prof"
+  printf ' "adaptive":{"enabled":%s,"reason":"%s","load":%s,"tempC":%s},\n' "$adap" "$reason" "$load" "$tc"
+  printf ' "cpu":{"numCores":%d,"policies":[%s],"cores":[%s]},\n' "$num" "$pols" "$cores"
+  printf ' "memory":{"total":%d,"used":%d,"available":%d,"ramPercent":%s,"swapTotal":%d,"swapFree":%d,"zramTotal":%d},\n' "$mtb" "$((used*1024))" "$mab" "$rp" "$stb" "$sfb" "$zt"
+  printf ' "gpu":{"present":%s,"name":"%s","curFreq":0,"minFreq":0,"maxFreq":0,"util":-1.0},\n' "$gpupresent" "$gpuname"
+  printf ' "thermal":[%s],\n' "$th"
+  printf ' "battery":{"level":%d,"temperatureC":%s,"currentNowMa":%d,"status":"%s"},\n' "$bl" "$btc" "$bc" "$bs"
+  printf ' "uptimeSeconds":%d}\n' "$up"
+
+  rm -f "$T1" "$T2" 2>/dev/null
+}
+
+# ---------- commands ----------
+cmd_version() {
+  printf '{"version":"%s","versionCode":%d,"contract":%d}\n' "$VERSION" "$VERSIONCODE" "$CONTRACT"
+}
+
+cmd_status() {
+  case "$1" in --json) build_status ;; *) build_status ;; esac
+}
+
+cmd_profile_get() {
+  p=$(sg profile); [ -z "$p" ] && p=balanced
+  printf '{"profile":"%s"}\n' "$p"
+}
+
+cmd_profile_set() {
+  v=$1
+  case "$v" in
+    powersave|balanced|performance|game|adaptive) ;;
+    *) printf '{"error":"bad_profile","message":"unknown profile %s"}\n' "$v"; exit 1;;
+  esac
+  if [ "$v" = "adaptive" ]; then
+    # switching to adaptive turns the adaptive engine on; daemon takes over
+    ensure_runtime
+    # flip state to adaptive on; leave actual profile choice to perfd
+    # (write a temp and reuse save_state by mutating fields)
+    # emulate by reading then writing adaptive=true
+    _p=$(sg profile); [ -z "$_p" ] && _p=balanced
+    tmp="$STATE.tmp"
+    printf '{"profile":"%s","adaptive":true,"reason":"adaptive","load":0.0,"tempC":0.0}\n' "$_p" > "$tmp"
+    chmod 0600 "$tmp" 2>/dev/null; mv -f "$tmp" "$STATE" 2>/dev/null
+    printf '{"ok":true,"profile":"adaptive"}\n'
+  else
+    ensure_runtime
+    tmp="$STATE.tmp"
+    # preserve adaptive field; explicit manual profile disables auto
+    printf '{"profile":"%s","adaptive":false,"reason":"manual","load":0.0,"tempC":0.0}\n' "$v" > "$tmp"
+    chmod 0600 "$tmp" 2>/dev/null; mv -f "$tmp" "$STATE" 2>/dev/null
+    apply_profile "$v"
+    printf '{"ok":true,"profile":"%s"}\n' "$v"
+  fi
+}
+
+cmd_adaptive_status() {
+  a=$(sg adaptive); [ -z "$a" ] && a=true
+  printf '{"enabled":%s}\n' "$a"
+}
+
+cmd_adaptive_set() {
+  v=$1
+  ensure_runtime
+  _p=$(sg profile); [ -z "$_p" ] && _p=balanced
+  tmp="$STATE.tmp"
+  printf '{"profile":"%s","adaptive":%s,"reason":"manual","load":0.0,"tempC":0.0}\n' "$_p" "$v" > "$tmp"
+  chmod 0600 "$tmp" 2>/dev/null; mv -f "$tmp" "$STATE" 2>/dev/null
+  printf '{"ok":true,"enabled":%s}\n' "$v"
+}
+
+cmd_tuning_list() {
+  sw=$(cat /proc/sys/vm/swappiness 2>/dev/null | tr -d '\n'); [ -z "$sw" ] && sw=0
+  ra=$(cat /sys/block/sda/queue/read_ahead_kb 2>/dev/null | tr -d '\n'); [ -z "$ra" ] && ra=0
+  printf '{"items":[\n'
+  printf ' {"key":"vm.swappiness","value":%s,"min":0,"max":200,"unit":"","safe":true},\n' "$sw"
+  printf ' {"key":"block.read_ahead_kb","value":%s,"min":128,"max":4096,"unit":"KB","safe":true}\n' "$ra"
+  printf ']}\n'
+}
+
+cmd_tuning_set() {
+  k=$1; v=$2
+  case "$k" in
+    vm.swappiness)
+      node=/proc/sys/vm/swappiness
+      case "$v" in ''|*[!0-9]*) printf '{"error":"bad_value","message":"swappiness must be integer"}\n'; exit 1;; esac
+      [ "$v" -lt 0 ] || [ "$v" -gt 200 ] && { printf '{"error":"out_of_range","message":"swappiness 0..200"}\n'; exit 1; }
+      write_node "$node" "$v" >/dev/null
+      printf '{"ok":true,"key":"%s","value":%s}\n' "$k" "$v"
+      ;;
+    block.read_ahead_kb)
+      case "$v" in ''|*[!0-9]*) printf '{"error":"bad_value","message":"ra must be integer"}\n'; exit 1;; esac
+      [ "$v" -lt 128 ] || [ "$v" -gt 4096 ] && { printf '{"error":"out_of_range","message":"ra 128..4096"}\n'; exit 1; }
+      for d in /sys/block/sd*; do node="$d/queue/read_ahead_kb"; [ -e "$node" ] && write_node "$node" "$v" >/dev/null; done
+      printf '{"ok":true,"key":"%s","value":%s}\n' "$k" "$v"
+      ;;
+    *) printf '{"error":"unknown_key","message":"%s"}\n' "$k"; exit 1;;
+  esac
+}
+
+cmd_snapshot() {
+  n=$(snapshot_all)
+  printf '{"ok":true,"saved":%s}\n' "$n"
+}
+
+cmd_restore() {
+  n=$(do_restore)
+  printf '{"ok":true,"restored":%s}\n' "$n"
+}
+
+cmd_selftest() {
+  ok=true; chk=""
+  add() { chk="$chk,$1"; }
+  fail() { ok=false; }
+  if [ "$(id -u)" = "0" ]; then add '{"check":"root","ok":true}'; else add '{"check":"root","ok":false}'; fail; fi
+  if [ -d "$RUNDIR" ]; then add '{"check":"rundir","ok":true}'; else add '{"check":"rundir","ok":false}'; fail; fi
+  if [ -f "$STATE" ]; then add '{"check":"state","ok":true}'; else add '{"check":"state","ok":false}'; fail; fi
+  if [ -f "$CAP" ]; then add '{"check":"capabilities","ok":true}'; else add '{"check":"capabilities","ok":false}'; fail; fi
+  np=$(ls -d /sys/devices/system/cpu/cpufreq/policy* 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$np" -gt 0 ] 2>/dev/null; then add "{\"check\":\"cpufreq\",\"ok\":true,\"policies\":$np}"; else add '{"check":"cpufreq","ok":false}'; fail; fi
+  if [ -d "$LOGDIR" ]; then add '{"check":"log","ok":true}'; else add '{"check":"log","ok":false}'; fail; fi
+  printf '{"ok":%s,"checks":[%s]}\n' "$ok" "${chk#,}"
+}
+
+# ---------- dispatch ----------
+cmd=$1; shift
+case "$cmd" in
+  version)        cmd_version ;;
+  status)         cmd_status "$@" ;;
+  profile)        sub=$1; shift; case "$sub" in
+                    get) cmd_profile_get ;;
+                    set) cmd_profile_set "$1" ;;
+                    *) printf '{"error":"bad_arg"}\n'; exit 1;;
+                  esac ;;
+  adaptive)       sub=$1; shift; case "$sub" in
+                    status) cmd_adaptive_status ;;
+                    on) cmd_adaptive_set true ;;
+                    off) cmd_adaptive_set false ;;
+                    *) printf '{"error":"bad_arg"}\n'; exit 1;;
+                  esac ;;
+  tuning)         sub=$1; shift; case "$sub" in
+                    list) cmd_tuning_list ;;
+                    set) cmd_tuning_set "$1" "$2" ;;
+                    *) printf '{"error":"bad_arg"}\n'; exit 1;;
+                  esac ;;
+  snapshot)       cmd_snapshot ;;
+  restore)        cmd_restore ;;
+  selftest)       cmd_selftest ;;
+  *) printf '{"error":"unknown_command","message":"%s"}\n' "$cmd"; exit 1 ;;
+esac

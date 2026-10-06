@@ -1,0 +1,7 @@
+﻿sched_energy_aware:1
+sched_pelt_multiplier:1
+sched_schedstats:1
+sched_util_clamp_max:1024
+sched_util_clamp_min:1024
+sched_util_clamp_min_rt_default:0
+sched_child_runs_first:0

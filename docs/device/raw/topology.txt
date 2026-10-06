@@ -1,0 +1,40 @@
+﻿== cpu0 ==
+topology/physical_package_id:0
+topology/cluster_id:0
+topology/core_siblings_list:0-7
+topology/thread_siblings_list:0
+== cpu1 ==
+topology/physical_package_id:0
+topology/cluster_id:0
+topology/core_siblings_list:0-7
+topology/thread_siblings_list:1
+== cpu2 ==
+topology/physical_package_id:0
+topology/cluster_id:0
+topology/core_siblings_list:0-7
+topology/thread_siblings_list:2
+== cpu3 ==
+topology/physical_package_id:0
+topology/cluster_id:0
+topology/core_siblings_list:0-7
+topology/thread_siblings_list:3
+== cpu4 ==
+topology/physical_package_id:0
+topology/cluster_id:1
+topology/core_siblings_list:0-7
+topology/thread_siblings_list:4
+== cpu5 ==
+topology/physical_package_id:0
+topology/cluster_id:1
+topology/core_siblings_list:0-7
+topology/thread_siblings_list:5
+== cpu6 ==
+topology/physical_package_id:0
+topology/cluster_id:1
+topology/core_siblings_list:0-7
+topology/thread_siblings_list:6
+== cpu7 ==
+topology/physical_package_id:0
+topology/cluster_id:2
+topology/core_siblings_list:0-7
+topology/thread_siblings_list:7

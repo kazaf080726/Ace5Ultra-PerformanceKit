@@ -1,0 +1,44 @@
+﻿total 0
+drwxr-xr-x   8 root   root      0 2026-10-06 23:51 .
+drwxr-xr-x 373 root   root      0 2026-10-06 23:42 ..
+--w-------   1 root   root   4096 2026-10-06 23:51 add_prioritized_process
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 core_mask
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 csg_scheduling_period
+drwxr-xr-x   3 root   root      0 2026-10-06 23:51 devfreq
+lrwxrwxrwx   1 root   root      0 2026-10-06 23:51 driver -> ../../../../bus/platform/drivers/mali
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 driver_override
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 dvfs_hint_26m_perf_cnting
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 dvfs_period
+drwxr-xr-x   7 root   root      0 2026-10-06 23:51 firmware_config
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 force_reclaim
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 fw_timeout
+-r--r--r--   1 root   root   4096 2026-10-06 23:51 gpuinfo
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 idle_hysteresis_time
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 idle_hysteresis_time_ns
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 ipa_enable
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 lp_mem_pool_max_size
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 lp_mem_pool_size
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 mcu_shader_pwroff_timeout
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 mcu_shader_pwroff_timeout_ns
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 mem_pool_max_size
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 mem_pool_size
+drwxr-xr-x   2 root   root      0 2026-10-06 23:51 mempool
+drwxr-xr-x   3 root   root      0 2026-10-06 23:51 misc
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 mmu_dbg_config
+-r--r--r--   1 root   root   4096 2026-10-06 23:51 modalias
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 mtk_fwlog_enable_mask
+lrwxrwxrwx   1 root   root      0 2026-10-06 23:51 of_node -> ../../../../firmware/devicetree/base/soc/mali@48000000
+-rw-rw----   1 system system 4096 2026-10-06 23:42 pm_poweroff
+drwxr-xr-x   2 root   root      0 2026-10-06 23:51 power
+-rw-rw-r--   1 system system 4096 2026-10-06 23:42 power_policy
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 progress_timeout
+--w-------   1 root   root   4096 2026-10-06 23:51 remove_prioritized_process
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 reset_timeout
+drwxr-xr-x   2 root   root      0 2026-10-06 23:51 scheduling
+lrwxrwxrwx   1 root   root      0 2026-10-06 23:51 subsystem -> ../../../../bus/platform
+lrwxrwxrwx   1 root   root      0 2026-10-06 23:51 supplier:platform:ged -> ../../../virtual/devlink/platform:ged--platform:48000000.mali
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 uevent
+-rw-r--r--   1 root   root   4096 2026-10-06 23:51 upf_counter
+--- devfreq ---
+ls: /sys/class/devfreq/*gpu*: No such file or directory
+ls: /sys/class/devfreq/mali*: No such file or directory

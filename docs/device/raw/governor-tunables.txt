@@ -1,0 +1,18 @@
+﻿===== policy0/sugov_ext =====
+down_rate_limit_us
+up_rate_limit_us
+--- values ---
+down_rate_limit_us:1000
+up_rate_limit_us:0
+===== policy4/sugov_ext =====
+down_rate_limit_us
+up_rate_limit_us
+--- values ---
+down_rate_limit_us:1000
+up_rate_limit_us:0
+===== policy7/sugov_ext =====
+down_rate_limit_us
+up_rate_limit_us
+--- values ---
+down_rate_limit_us:1000
+up_rate_limit_us:0

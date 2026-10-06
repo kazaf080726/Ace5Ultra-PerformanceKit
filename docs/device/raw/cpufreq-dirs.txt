@@ -1,0 +1,10 @@
+﻿/sys/devices/system/cpu/cpufreq
+/sys/devices/system/cpu/cpufreq/policy4
+/sys/devices/system/cpu/cpufreq/policy4/sugov_ext
+/sys/devices/system/cpu/cpufreq/policy4/stats
+/sys/devices/system/cpu/cpufreq/policy0
+/sys/devices/system/cpu/cpufreq/policy0/sugov_ext
+/sys/devices/system/cpu/cpufreq/policy0/stats
+/sys/devices/system/cpu/cpufreq/policy7
+/sys/devices/system/cpu/cpufreq/policy7/sugov_ext
+/sys/devices/system/cpu/cpufreq/policy7/stats

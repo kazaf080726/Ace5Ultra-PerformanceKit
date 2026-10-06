@@ -1,0 +1,19 @@
+﻿total 0
+drwxr-xr-x 4 root   root      0 2026-10-06 23:42 .
+drwxr-xr-x 5 root   root      0 2026-10-06 23:42 ..
+-r--r--r-- 1 root   root   4096 2026-10-06 23:47 affected_cpus
+-r-------- 1 root   root   4096 2026-10-06 23:49 cpuinfo_cur_freq
+-r--r--r-- 1 root   root   4096 2026-10-06 23:47 cpuinfo_max_freq
+-r--r--r-- 1 root   root   4096 2026-10-06 23:47 cpuinfo_min_freq
+-r--r--r-- 1 root   root   4096 2026-10-06 23:49 cpuinfo_transition_latency
+-r--r--r-- 1 root   root   4096 2026-10-06 23:49 related_cpus
+-r--r--r-- 1 root   root   4096 2026-10-06 23:45 scaling_available_frequencies
+-r--r--r-- 1 root   root   4096 2026-10-06 23:49 scaling_available_governors
+-r--r--r-- 1 root   root   4096 2026-10-06 23:43 scaling_cur_freq
+-r--r--r-- 1 root   root   4096 2026-10-06 23:49 scaling_driver
+-r--r--r-- 1 system system 4096 2026-10-06 23:42 scaling_governor
+-r--r--r-- 1 system system 4096 2026-10-06 23:44 scaling_max_freq
+-r--r--r-- 1 system system 4096 2026-10-06 23:49 scaling_min_freq
+-rw-r--r-- 1 root   root   4096 2026-10-06 23:49 scaling_setspeed
+drwxr-xr-x 2 root   root      0 2026-10-06 23:45 stats
+drwxr-xr-x 2 root   root      0 2026-10-06 23:46 sugov_ext

@@ -1,0 +1,11 @@
+﻿== /proc/hps ==
+ls: /proc/hps: No such file or directory
+
+== /sys/kernel/hps ==
+ls: /sys/kernel/hps: No such file or directory
+
+== hps content ==
+cat: /proc/hps: No such file or directory
+
+== hps dir values ==
+/sys/kernel/hps/*:cat: /sys/kernel/hps/*: No such file or directory

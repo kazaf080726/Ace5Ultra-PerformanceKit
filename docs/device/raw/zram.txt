@@ -1,0 +1,7 @@
+﻿== zram0 ==
+disksize:17179869184
+comp_algorithm:lzo lzo-rle lz4 [zstd] lz4k zstdn zstdn_o 
+mm_stat:5600153600 1642365053 1685557248        0 1685557248    53738    16883    19237    20238
+orig_data_size:cat: /sys/block/zram0/orig_data_size: No such file or directory
+== zram block devs ==
+brw-------  1 root   root   252,   0 2026-10-06 23:44 zram0

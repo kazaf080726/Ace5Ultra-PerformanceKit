@@ -1,0 +1,3 @@
+# placeholder - this file keeps the system/ overlay tree well-formed.
+# The module ships an empty system overlay (no /system replacement). It is removed
+# by the installer after a successful flash.

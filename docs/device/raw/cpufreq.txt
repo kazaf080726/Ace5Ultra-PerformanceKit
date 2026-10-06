@@ -1,0 +1,36 @@
+﻿===== /sys/devices/system/cpu/cpufreq/policy0 =====
+affected_cpus:0 1 2 3
+related_cpus:0 1 2 3
+scaling_governor:sugov_ext
+scaling_available_governors:scx sugov_ext conservative powersave performance schedutil 
+scaling_cur_freq:2000000
+cpuinfo_min_freq:339000
+cpuinfo_max_freq:2400000
+cpuinfo_cur_freq:1000000
+scaling_min_freq:339000
+scaling_max_freq:2000000
+scaling_available_frequencies:2400000 2300000 2200000 2100000 2000000 1900000 1800000 1700000 1600000 1500000 1400000 1300000 1200000 1100000 1000000 900000 800000 700000 600000 500000 400000 339000 
+===== /sys/devices/system/cpu/cpufreq/policy4 =====
+affected_cpus:4 5 6
+related_cpus:4 5 6
+scaling_governor:sugov_ext
+scaling_available_governors:scx sugov_ext conservative powersave performance schedutil 
+scaling_cur_freq:2300000
+cpuinfo_min_freq:622000
+cpuinfo_max_freq:3300000
+cpuinfo_cur_freq:1200000
+scaling_min_freq:622000
+scaling_max_freq:2600000
+scaling_available_frequencies:3300000 3200000 3100000 3000000 2900000 2800000 2700000 2600000 2500000 2400000 2300000 2200000 2100000 2000000 1900000 1800000 1700000 1600000 1500000 1400000 1300000 1200000 1100000 1000000 900000 800000 700000 622000 
+===== /sys/devices/system/cpu/cpufreq/policy7 =====
+affected_cpus:7
+related_cpus:7
+scaling_governor:sugov_ext
+scaling_available_governors:scx sugov_ext conservative powersave performance schedutil 
+scaling_cur_freq:1600000
+cpuinfo_min_freq:798000
+cpuinfo_max_freq:3730000
+cpuinfo_cur_freq:900000
+scaling_min_freq:798000
+scaling_max_freq:3000000
+scaling_available_frequencies:3730000 3600000 3500000 3400000 3300000 3200000 3100000 3000000 2900000 2800000 2700000 2600000 2500000 2400000 2300000 2200000 2100000 2000000 1900000 1800000 1700000 1600000 1500000 1400000 1300000 1200000 1100000 1000000 900000 798000 

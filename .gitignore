@@ -1,0 +1,39 @@
+# ---- Gradle / Android ----
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+.cxx/
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# ---- signing (never commit keystores or credentials) ----
+*.jks
+*.keystore
+keystore.properties
+release.keystore
+
+# ---- module build intermediates ----
+out/
+*.zip.mtime
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+
+# ---- keep the release module zip and update.json tracked ----
+!release/*.zip
+!release/update.json
+!release/changelog.md
+
+# ---- app signing (never commit) ----
+app/signing.properties
+release-signing/
+

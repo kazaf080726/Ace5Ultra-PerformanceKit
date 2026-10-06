@@ -1,0 +1,9 @@
+﻿/sys/module/mtk_ioctl_touch_boost
+/sys/module/oplus_boost_pool_mtk
+/sys/module/oplus_connectivity_routerboost
+/sys/module/touch_boost
+/sys/module/usb_boost
+--- boost params ---
+/sys/module/usb_boost/parameters/enabled:1
+/sys/module/usb_boost/parameters/inited:1
+/sys/module/usb_boost/parameters/trigger_cnt_disabled:0

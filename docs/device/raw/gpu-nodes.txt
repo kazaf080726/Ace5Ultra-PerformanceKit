@@ -1,0 +1,30 @@
+﻿== /sys/kernel/gpu ==
+ls: /sys/kernel/gpu: No such file or directory
+== mali0 ==
+lrwxrwxrwx 1 root root 0 2026-10-06 23:51 /sys/class/misc/mali0 -> ../../devices/platform/soc/48000000.mali/misc/mali0
+== gpufreq procs ==
+ls: /proc/gpufreq: No such file or directory
+ls: /proc/gpufreq_power: No such file or directory
+total 0
+dr-xr-xr-x   14 root root 0 2026-10-06 23:51 .
+dr-xr-xr-x 1384 root root 0 1970-01-01 08:00 ..
+-rw-rw----    1 root root 0 2026-10-06 23:51 asensor_info
+-rw-rw----    1 root root 0 2026-10-06 23:51 fix_custom_freq_volt
+-rw-rw----    1 root root 0 2026-10-06 23:51 fix_target_opp_index
+-rw-rw----    1 root root 0 2026-10-06 23:51 gpu_signed_opp_table
+-rw-rw-r--    1 root root 0 2026-10-06 23:51 gpu_working_opp_table
+-rw-rw----    1 root root 0 2026-10-06 23:51 gpufreq_status
+-rw-rw----    1 root root 0 2026-10-06 23:51 limit_table
+-rw-rw----    1 root root 0 2026-10-06 23:51 mfgsys_config
+-rw-rw----    1 root root 0 2026-10-06 23:51 mfgsys_power_control
+-rw-rw----    1 root root 0 2026-10-06 23:51 stack_signed_opp_table
+-rw-rw-r--    1 root root 0 2026-10-06 23:51 stack_working_opp_table
+-rw-rw----    1 root root 0 2026-10-06 23:51 whitebox_test
+== platform gpu ==
+/sys/devices/platform/gpu-power-throttling
+/sys/devices/platform/gpu-smmu-lmu
+/sys/devices/platform/gpu-smmu-mpam-mon
+/sys/devices/platform/gpufreq-wrapper
+== mitk ==
+ls: /sys/class/mitk_gpu: No such file or directory
+ls: /sys/class/mitk*: No such file or directory

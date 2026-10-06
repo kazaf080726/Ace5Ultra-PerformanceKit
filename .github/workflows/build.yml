@@ -1,0 +1,96 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Optional tag to build (e.g. v1.0.1)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  # Quick CI: shell syntax + module zip + debug APK
+  ci:
+    if: github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+      - name: Shell syntax check
+        run: |
+          set -eu
+          for f in $(find module -name '*.sh'); do echo "sh -n $f"; sh -n "$f"; done
+      - name: Build module zip
+        run: python3 scripts/build_module.py
+      - name: Build debug APK
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+      - name: Validate zip structure
+        run: |
+          python3 - <<'PY'
+          import glob, zipfile
+          z = sorted(glob.glob('release/*.zip'))[-1]
+          with zipfile.ZipFile(z) as f:
+              names = f.namelist()
+          assert 'module.prop' in names, 'module.prop must be at zip root'
+          assert 'META-INF/com/google/android/update-binary' in names
+          print('zip OK:', z, len(names), 'entries')
+          PY
+
+  # Tagged release: render update.json, build APKs + zip, publish release
+  release:
+    if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.tag != '')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+      - name: Resolve tag
+        id: t
+        run: |
+          if [ -n "${{ github.event.inputs.tag }}" ]; then TAG="${{ github.event.inputs.tag }}"; else TAG="${GITHUB_REF_NAME}"; fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+      - name: Render update.json
+        run: python3 scripts/render_update_json.py --version "${{ steps.t.outputs.version }}" --owner "${{ github.repository_owner }}"
+      - name: Build APKs
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleRelease assembleDebug --no-daemon --stacktrace
+      - name: Build module zip
+        run: python3 scripts/build_module.py
+      - name: Stage release assets
+        run: |
+          mkdir -p out
+          cp release/ace5ultra_perfkit-v${{ steps.t.outputs.version }}.zip out/
+          cp release/update.json out/
+          cp release/changelog.md out/
+          find app/build/outputs/apk -name '*.apk' -exec cp {} out/ \;
+          ls -la out
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.t.outputs.tag }}
+          name: Ace5Ultra-PerformanceKit ${{ steps.t.outputs.tag }}
+          body_path: release/changelog.md
+          files: out/*
+          fail_on_unmatched_files: true

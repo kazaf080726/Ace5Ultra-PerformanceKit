@@ -1,0 +1,88 @@
+#!/system/bin/sh
+# perfd - root daemon for ace5ultra_perfkit, started by service.sh.
+# On boot: discover (first run) + restore the last profile from state.json.
+# If adaptive is ON: run the adaptive loop forever, choosing among
+# powersave/balanced/performance/game from load, temperature and the foreground
+# app, recording the reason. If adaptive is OFF: stay idle (boot restore only).
+
+CALLER="$0"
+. "$(cd "$(dirname "$0")" && pwd)/perflib.sh"
+
+need_root
+ensure_runtime
+discover
+
+# thresholds (Celsius / percent)
+THERMAL_HI=48000      # deci-Celsius: >=48.0C -> powersave (thermal safety; never disable thermal)
+LOAD_HI=75            # percent
+LOAD_LO=15            # percent
+
+# ---- boot restore: apply the persisted profile ----
+boot_restore() {
+  p=$(sg profile); [ -z "$p" ] && p=balanced
+  # "adaptive" stored as a profile name means: pick now, do not force a fixed one
+  if [ "$p" = "adaptive" ]; then
+    a=$(sg adaptive); [ -z "$a" ] && a=true
+    if [ "$a" = "true" ]; then
+      decide_and_apply "boot"
+    else
+      apply_profile balanced
+    fi
+  else
+    apply_profile "$p"
+  fi
+  log "boot_restore -> $(sg profile) adaptive=$(sg adaptive)"
+}
+
+# choose a profile from current load/temp/fg and apply if it differs
+decide_and_apply() {
+  hint=$1
+  load=$(cpu_util_pct)
+  tc=$(max_temp_c)
+  fg=$(fg_app)
+  want="balanced"; reason="balanced"
+
+  # thermal safety first: never disable thermal, just drop to powersave
+  if [ "${tc%.*}" -ge $((THERMAL_HI/1000)) ] 2>/dev/null; then
+    want="powersave"; reason="thermal_high"
+  elif [ -n "$fg" ] && [ "$(is_game_pkg "$fg")" = "1" ]; then
+    want="game"; reason="foreground_game"
+  else
+    case "$load" in
+      ''|*[!0-9.]*) load=0 ;;
+    esac
+    lh=${load%.*}
+    [ -z "$lh" ] && lh=0
+    if [ "$lh" -ge "$LOAD_HI" ] 2>/dev/null; then
+      want="performance"; reason="high_load"
+    elif [ "$lh" -le "$LOAD_LO" ] 2>/dev/null; then
+      want="powersave"; reason="idle"
+    else
+      want="balanced"; reason="balanced"
+    fi
+  fi
+
+  cur=$(sg profile)
+  # persist reason/load/temp regardless
+  tmp="$STATE.tmp"
+  printf '{"profile":"%s","adaptive":true,"reason":"%s","load":%s,"tempC":%s}\n' \
+    "$want" "$reason" "$load" "$tc" > "$tmp"
+  chmod 0600 "$tmp" 2>/dev/null; mv -f "$tmp" "$STATE" 2>/dev/null
+
+  if [ "$want" != "$cur" ]; then
+    log "adaptive $hint: load=$load temp=$tc fg=$fg -> $want ($reason)"
+    apply_profile "$want"
+  fi
+}
+
+# ---- main ----
+boot_restore
+
+# idle check: if adaptive is off, stay resident but do nothing (per contract)
+while true; do
+  a=$(sg adaptive)
+  if [ "$a" = "true" ]; then
+    decide_and_apply "loop"
+  fi
+  sleep 3
+done
