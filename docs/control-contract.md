@@ -62,6 +62,7 @@ deci-Celsius integers as exposed (e.g. 42500 = 42.5 C) AND a `tempC` float is pr
   "device": { "brand": "", "model": "", "device": "", "soc": "", "android": "", "kernel": "" },
   "profile": "balanced",
   "adaptive": { "enabled": true, "reason": "foreground_game", "load": 0.0, "tempC": 0.0 },
+  "cpufreqLocked": true,
   "cpu": {
     "numCores": 8,
     "policies": [
@@ -105,10 +106,31 @@ and only conservative, reversible thermal hints (never disable safety thermal).
 - `adaptive`     daemon picks among the four using load, temp, foreground app; records reason
 
 Boot: `service.sh` starts `perfd`, which restores the last profile from `state.json`.
+`perfd` is detached with `setsid` (new session, `</dev/null`, stdout/stderr to `/dev/null`)
+so it survives the service event being torn down; a pid file prevents double-start.
 Disable/uninstall: `uninstall.sh` (and the manager's remove) runs `perfctl restore` to
 write every snapshot value back, then removes the runtime dir. Nothing is written to
 boot/vendor/system partitions; all changes live only in writable sysfs/procfs and are
 lost at boot unless the module service re-applies them.
+
+### 5.1 cpufreq mode lock (vendor 0444)
+
+After boot the vendor framework sets `scaling_governor`, `scaling_min_freq` and
+`scaling_max_freq` on every policy to `system:system 0444` (read-only). Root can
+still `chmod 0644` them and write (verified on the device; the mode and value hold
+for at least 30 s with no reversion). The controller therefore:
+
+1. records the **original mode** alongside the original value when snapshotting;
+2. on write, if the owner-write bit is absent, `chmod 0644`, writes, then restores
+   the original mode (never leaves the node world-writable);
+3. on restore/uninstall, `chmod 0644`, writes the original value, then restores the
+   original mode.
+
+`status --json` exposes `"cpufreqLocked": true|false` (true when any policy's
+`scaling_max_freq` is still `0444`) so the UI can show that the governor/freq part
+is chmod-gated rather than a silent no-op. Nodes that stay writable after boot
+(`sugov_ext/*_rate_limit_us`, block read-ahead, `vm.swappiness`,
+`schedtune.boost`) are applied live without any chmod.
 
 ## 6. Versioning & OTA
 

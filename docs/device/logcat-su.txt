@@ -1,0 +1,1098 @@
+﻿--------- beginning of main
+10-07 01:42:32.049  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:32.049  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:32.049  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:32.051  1419  1524 I OriginChannel: now system_time:986636	pwm_rgb: system_time:986113, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2310, b:1117, c:5274, algo:2, end:1147, ts:986047403571	pwm_rgb: system_time:986113, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2447, g:2310, b:1099, c:5301, algo:2, end:1147, ts:986055736571	pwm_rgb: system_time:986113, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2382, g:2287, b:1087, c:5290, algo:2, end:1147, ts:986064069571	pwm_rgb: system_time:986113, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2441, g:2293, b:1093, c:5311, algo:2, end:1147, ts:986072402571	pwm_rgb: system_time:986113, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2298, b:1093, c:5269, algo:2, end:66683, ts:986080735571	
+10-07 01:42:32.102  1519  1519 I BufferQueueProducer: [StatusBar#100](this:0xb4000075566a82f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=58.70 dur=1005.14 max=32.91 min=16.01
+10-07 01:42:32.103  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:32.104  1405  9557 D CwbService: RGB value: 23, 74, 9, hist:1633, 1626, 1657,  rgb_state: 0
+10-07 01:42:32.104  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:32.105  1453  1453 D SensorFeature: write 32 bytes:986672514621,986689181288,1149,0
+10-07 01:42:32.127  9848 11272 I SystemUi--Statusbar: OplusNetworkSpeedControllExImpl-->getTotalByte: totalRxBytes:4135371,totalTxBytes:2280088,loopbackTxBytes:48867,loopbackRxBytes:48867 ,totalBytes:6317725
+--------- beginning of system
+10-07 01:42:32.175  2968 10598 D StartingSurfacePreviewController: checkSupportSurfacePreview app not support, package: com.ace5ultra.perfkit
+10-07 01:42:32.175  2968  9481 I [UAH_CLIENT]: UahEventAcquire, cmdid:2, pkg:none, identity:com.android.server.wm
+10-07 01:42:32.175  2968 10598 W ActivityTaskManager: callingPackage for (uid=0, pid=17017) has no WPC
+10-07 01:42:32.176  2968 10598 D WindowManager: NFW_setClientVisible:ActivityRecord{235035347 u0 com.ace5ultra.perfkit/.MainActivity clientVisible:true
+10-07 01:42:32.176  2968 10598 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@97181faa does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-07 01:42:32.176  1478 14946 I mtkpower@impl: [libpowerhal_setCpuIdle] set cpu idle from uah, idx = 0
+10-07 01:42:32.176  2968 10598 D ActivityTaskManager: The isLandscapeFullscreenEnabled is: com.ace5ultra.perfkit/.MainActivity
+10-07 01:42:32.176  2968 10598 D ActivityTaskManager: The isLandscapeFullscreenEnabled is: com.ace5ultra.perfkit/.MainActivity
+10-07 01:42:32.176  2968 10598 D ActivityTaskManager: The isLandscapeFullscreenEnabled is: com.ace5ultra.perfkit/.MainActivity
+10-07 01:42:32.176  2968 10598 D ActivityTaskManager: The isLandscapeFullscreenEnabled is: com.ace5ultra.perfkit/.MainActivity
+10-07 01:42:32.176  2968 10598 D ActivityTaskManager: The isLandscapeFullscreenEnabled is: com.ace5ultra.perfkit/.MainActivity
+10-07 01:42:32.176  2968 10598 D FlexibleTaskController: isSupportFlexibleWindow target = com.ace5ultra.perfkit/.MainActivity callPkg = FlexibleTaskController support = true ,caller = 2968
+10-07 01:42:32.176  2968 10598 I AppSnapshotController: init, sysSupport = true, mActivitySupport = false, activityRecord = ActivityRecord{235035347 u0 com.ace5ultra.perfkit/.MainActivity t-1}
+10-07 01:42:32.176  2968  3786 W QosScheduler: executeSceneQosStrategy failed! qos feature no enable
+10-07 01:42:32.177  2968 10598 D FlexibleWindowManagerService: isIgnoreAppearedAcrossTask:false
+10-07 01:42:32.177  2968 10598 D RemoteTaskHandlerManager: activateRemoteTaskIfNeeded
+10-07 01:42:32.177  2968 10598 D RemoteTaskHandlerManager: [handleReuseTaskIfNeeded] reusedTask = Task{2275bb7 #2077 type=standard A=10577:com.ace5ultra.perfkit}
+10-07 01:42:32.177  2968 10598 D ActivityStarterExtImpl: setForceUpdateWindow, targetTask = Task{2275bb7 #2077 type=standard A=10577:com.ace5ultra.perfkit} r = ActivityRecord{235035347 u0 com.ace5ultra.perfkit/.MainActivity t-1} notFinish =false
+10-07 01:42:32.177  2968 10598 D FlexibleWindowManagerService: isIgnoreAppearedAcrossTask:false
+10-07 01:42:32.177  2968 10598 D FlexibleTaskController: findSourceTaskForFreeForm: sourceRecord = null ,realCallingPid:17017 ,launchFromZoomMode:false ,prevTopTask:Task{2275bb7 #2077 type=standard A=10577:com.ace5ultra.perfkit}
+10-07 01:42:32.177  2968 10598 D FlexibleTaskController: findSourceTaskForFreeForm: the caller is not a flexible freeform window application and does not have a zoom windowMode startup parameter
+10-07 01:42:32.177  2968 10598 D FlexibleTaskController: adjustOptionsForFlexibleTask not allow options follow process task's options, reason:9 ,reusedOptions:null
+10-07 01:42:32.177  2968 10598 I TaskFragmentExtImpl: reset pause in recents anim for mTaskFragment: Task{2275bb7 #2077 type=standard A=10577:com.ace5ultra.perfkit}
+10-07 01:42:32.177  2968 10598 D FlexibleTaskController: isSupportFlexibleWindow target = com.ace5ultra.perfkit/.MainActivity callPkg = FlexibleTaskController support = true ,caller = 2968
+10-07 01:42:32.177  2968 10598 D FlexibleTaskController: shouldKeepFlexibleTask flexibleTask not active.
+10-07 01:42:32.177  2968 10598 D ActivityStarterExtImpl: isLaunchingRootActivity = true
+10-07 01:42:32.177  2968 10254 I OPM     : handleActivityStart : ActivityRecord{235035347 u0 com.ace5ultra.perfkit/.MainActivity t-1}
+10-07 01:42:32.178  2968 10598 E HoraeHelper: horae is not open
+10-07 01:42:32.178  2968 10598 D ActivityTaskManager: The isLandscapeFullscreenEnabled is: com.ace5ultra.perfkit/.MainActivity
+10-07 01:42:32.178  9848  9848 D CommandQueueLogger: appTransitionPending displayId=0 forced=false
+10-07 01:42:32.179  2968 10598 E HoraeHelper: horae is not open
+10-07 01:42:32.179  2968 10598 D ActivityTaskManager: The isLandscapeFullscreenEnabled is: com.ace5ultra.perfkit/.MainActivity
+10-07 01:42:32.180  2968 10598 E Transition: Aborting Transition mSyncId=14, caller=com.android.server.wm.OplusTransitionUtil.abortTransitionImmediately:109 com.android.server.wm.OplusTransitionController.abortTransitionImmediately:123 com.android.server.wm.ActivityStarterExtImpl.abortTransitionImmediately:1903 
+10-07 01:42:32.180  2968 10598 D OplusTransitionController: hookOnAbort, transition: TransitionRecord{3efaf97 id=14 track=0 type=OPEN flags=0x0 state=0 c=[
+10-07 01:42:32.180  2968 10598 D OplusTransitionController:    ChangeInfo{a57f584 container=ActivityRecord{235035347 u0 com.ace5ultra.perfkit/.MainActivity t-1} flags=0x0}
+10-07 01:42:32.180  2968 10598 D OplusTransitionController: ]
+10-07 01:42:32.180  2968 10598 D OplusTransitionController: }
+10-07 01:42:32.180  2968 10598 E OplusAppQuickStart_AppQuickStartController: not start from launcher transition:14
+10-07 01:42:32.180  2968 10598 D KEYLOG_PhoneWindowManager: setKeyguardOccludedLw occluded=false,false,false
+10-07 01:42:32.180  2968 10598 D KEYLOG_PhoneWindowManager: setKeyguardOccludedLw occluded=false,false,false
+10-07 01:42:32.180  9848 11287 D KeyguardService: setOccluded(false)
+10-07 01:42:32.180  9848 11287 D KeyguardService: setOccluded: false, animate= false
+10-07 01:42:32.180  2968 10598 E SchedAssist: binderSetThreadUxFlagByIoctl: ioctl failed, tid=-1 flag=1 ret=-1 errno=25 (Inappropriate ioctl for device)
+10-07 01:42:32.180  9848 11287 D KeyguardViewMediator: setOccluded(false)
+10-07 01:42:32.180  9848 11287 D KeyguardViewMediator: setOccluded false
+10-07 01:42:32.180  9848  9848 D KeyguardViewMediator: handleSetOccluded(false)
+10-07 01:42:32.180  9848 11287 D KeyguardService: setOccluded(false)
+10-07 01:42:32.180  9848 11287 D KeyguardService: setOccluded: false, animate= false
+10-07 01:42:32.180  9848 11287 D KeyguardViewMediator: setOccluded(false)
+10-07 01:42:32.180  9848 11287 D KeyguardViewMediator: setOccluded false
+10-07 01:42:32.180  9848  9848 D NotificationShadeWindowController: setIsAboutToOccluded:false, needApply:false
+10-07 01:42:32.180  2968 10598 E SchedAssist: binderSetThreadUxFlagByIoctl: ioctl failed, tid=-1 flag=0 ret=-1 errno=25 (Inappropriate ioctl for device)
+10-07 01:42:32.180  9848  9848 D KeyguardViewMediator: isOccluded=false,mPowerGestureIntercepted=false
+10-07 01:42:32.180  9848  9848 I SystemUi--Keyguard: ChargingAnimationImpl-->onKeyguardOccludeChange occluded= false
+10-07 01:42:32.180  9848  9848 I SystemUi--Keyguard: KeyguardSliderLayout-->onKeyguardOccludeChange occluded= false
+10-07 01:42:32.180  9848  9848 D KeyguardViewMediator: KeyguardViewMediator queue processing message: SET_OCCLUDED
+10-07 01:42:32.180  9848  9848 D KeyguardViewMediator: handleSetOccluded(false)
+10-07 01:42:32.180  9848  9848 D NotificationShadeWindowController: setIsAboutToOccluded:false, needApply:false
+10-07 01:42:32.180  9848  9848 D KeyguardViewMediator: isOccluded=false,mPowerGestureIntercepted=false
+10-07 01:42:32.180  9848  9848 I SystemUi--Keyguard: ChargingAnimationImpl-->onKeyguardOccludeChange occluded= false
+10-07 01:42:32.180  9848  9848 I SystemUi--Keyguard: KeyguardSliderLayout-->onKeyguardOccludeChange occluded= false
+10-07 01:42:32.180  9848  9848 D KeyguardViewMediator: KeyguardViewMediator queue processing message: SET_OCCLUDED
+10-07 01:42:32.180  9848  9848 D CommandQueueLogger: appTransitionCancelled displayId=0
+10-07 01:42:32.181  9848  9848 D CommandQueueLogger: appTransitionCancelled displayId=0
+10-07 01:42:32.181  2968 10598 I ActivityTaskManager: START u0 {flg=0x10000000 xflg=0x4 cmp=com.ace5ultra.perfkit/.MainActivity mCallingUid=0} with LAUNCH_SINGLE_TASK from uid 0 (BAL_ALLOW_ALLOWLISTED_UID (Important callingUid)) result code=3
+10-07 01:42:32.181   974   974 I PowerHalMgrImpl: perfLockAcq is supported. 
+10-07 01:42:32.181   974   974 D ActivityThread: ComponentInfo{com.ace5ultra.perfkit/com.ace5ultra.perfkit.MainActivity} checkFinished=false 4
+10-07 01:42:32.181   974   974 D ResourcesManagerExtImpl: applyConfigurationToAppResourcesLocked app.getDisplayId() return callback.displayId:0
+10-07 01:42:32.182   974   974 D OplusScrollManager: hookActivity: ActivityInfo{f026b3f com.ace5ultra.perfkit.MainActivity} mRTOptEnable false mStartScrollerSpringEnable false
+10-07 01:42:32.183  9848 11163 D WindowManagerShell: onActivityRestartAttempt: topActivity=ComponentInfo{com.ace5ultra.perfkit/com.ace5ultra.perfkit.MainActivity}, wasVisible=true
+10-07 01:42:32.184   974   974 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=363, isAutolayoutSwdpModified=false, residentWS=false, scenario=0, bounds=Rect(0, 0 - 1272, 2800), isFirstDraw=false, relayoutAsync=true, flags=0, newFlags=1468018016, title=com.ace5ultra.perfkit/com.ace5ultra.perfkit.MainActivity
+10-07 01:42:32.185   974   974 D VRI[MainActivity]: relayoutWindow result, sizeChanged:false, surfaceControlChanged:false, transformHintChanged:false, mSurfaceSize:Point(1272, 2800), mLastSurfaceSize:Point(1272, 2800), mWidth:1272, mHeight:2800, requestedWidth:1272, requestedHeight:2800, transformHint:0, installOrientation:0, displayRotation:0, isSurfaceValid:true, attr.flag:-2122252032, tmpFrames:ClientWindowFrames{frame=[0,0][1272,2800] display=[0,0][1272,2800] parentFrame=[0,0][1272,2800]}, relayoutResult:0, relayoutAsync:true, mSyncSeqId:0
+10-07 01:42:32.185   974   974 W VRI[MainActivity]: updateBlastSurfaceIfNeeded, surfaceSize:Point(1272, 2800), lastSurfaceSize:Point(1272, 2800), format:-1, blastBufferQueue:android.graphics.BLASTBufferQueue@4fd80c7
+10-07 01:42:32.185  2968 28310 V WindowManager: Relayout Window{99e3db4 u0 com.ace5ultra.perfkit/com.ace5ultra.perfkit.MainActivity}: viewVisibility=0, oldvis=0, req=1272x2800 , apr = 8, , x=0, y=0
+10-07 01:42:32.186  2968 28310 D ActivityTaskManager: The isLandscapeFullscreenEnabled is: com.ace5ultra.perfkit/.MainActivity
+10-07 01:42:32.186  2968  9944 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_ACTIVITY_IDLE, bundle: Bundle[{scene=SCENE_ACTIVITY_IDLE}]
+10-07 01:42:32.187  2968 10598 I PowerHalWrapper: amsBoostStop AMS_BOOST_PACK_SWITCH:false, AMS_BOOST_ACT_SWITCH:false, AMS_BOOST_PROCESS_CREATE:false, AMS_BOOST_PROCESS_CREATE_FOR_GAME:false, AMS_BOOST_HOT_LAUNCH:false 
+10-07 01:42:32.187  2968  9944 E HoraeHelper: horae is not open
+10-07 01:42:32.187  2968  9944 E HoraeHelper: horae is not open
+10-07 01:42:32.188  2968  3776 D OomAdjuster: Not killing cached processes
+10-07 01:42:32.218  2968 10598 I BLASTSyncEngine: onCommitted syncId: 14, timeout: false ran: false
+10-07 01:42:32.237 28032   869 I ConnectionPool: cleanup: 
+10-07 01:42:32.255  2968  3776 I AccessibilityWindowsPopulator: getInsensibleFlag flag = 0
+10-07 01:42:32.294  1433  1525 I libPerfCtl: xgfGetFPS pid:9848 fps:-1
+10-07 01:42:32.319  1419  1524 I OriginChannel: now system_time:986904	pwm_rgb: system_time:986636, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2377, g:2259, b:1069, c:5233, algo:2, end:131072, ts:986374843572	
+10-07 01:42:32.326  2968 28310 D NotificationService--OplusNotificationFixHelper: fixAppIcon: pkg=com.android.systemui
+10-07 01:42:32.326  2968 28310 D NotificationService--OplusNotificationFixHelper: fixAppIcon: appIcon = null, pkg = com.android.systemui
+10-07 01:42:32.327  2968 28310 D NotificationService--NotificationRecord: isSupportRearLight , isRearLight = false mLedRM = false isMultilLed = false
+10-07 01:42:32.327  2968 28310 I OplusStatusBarManagerServiceEnhance:  getTopIsFullscreen mTopIsFullscreen: false
+10-07 01:42:32.328  2968  2968 D NotificationService--OplusNotificationManagerServiceExtImpl: isForwardToAssistants: false, case : Is in mMcsNotInterceptPkgList or is isSystemApp
+10-07 01:42:32.328  2968  2968 D NotificationService: This application enqueue notifications is not need postDelayed
+10-07 01:42:32.346  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:32.346  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:32.347  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:32.400  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:32.400  1405  9557 D CwbService: RGB value: 20, 64, 7, hist:1814, 1807, 1826,  rgb_state: 0
+10-07 01:42:32.401  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:32.402  1453  1453 D SensorFeature: write 32 bytes:986969300698,986985967365,1150,0
+10-07 01:42:32.511 30196  4610 E HoraeHelper: horae is not open
+10-07 01:42:32.512  1434  1434 D android.hardware.thermal-service.mediatek: i=3 tz_data[i].tz_idx[0]=63
+10-07 01:42:32.513  1434  1434 D android.hardware.thermal-service.mediatek: i=3 tz_data[i].tz_idx[0]=63
+10-07 01:42:32.513 30196  4610 E HoraeHelper: horae is not open
+10-07 01:42:32.514  1434  1434 D android.hardware.thermal-service.mediatek: i=2 tz_data[i].tz_idx[0]=11
+10-07 01:42:32.537  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsRepository-->updateLiveAlert: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159 remindType=0 shouldReminderAgain=true
+10-07 01:42:32.537  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsInteractor-->notifyLiveAlerts: PostAction(sbnList=[StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))])
+10-07 01:42:32.537  9848  9848 I PluginSeedling--Base: SeedlingCardServerProvider-->seedling provider called com.oplus.card.server.systemui.provider w/ live_alert_notification_post 10159 9848 0
+10-07 01:42:32.537  9848  9848 I PluginSeedling--Base: NotificationLiveAlertProvider-->post sbn: [StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))]
+10-07 01:42:32.540  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:32.541  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_NOTIFICATION, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:32.541  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:32.541  9848  9848 I PluginSeedling--Notification: NotificationRepository-->onDataChanged, [LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:32.541  9848  9848 I PluginSeedling--Notification:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0]
+10-07 01:42:32.541  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:32.541  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_STATUS_BAR, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_STATUS_BAR, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: false, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:32.541  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_SM, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:32.542  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:32.542  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: left, style:CapsuleSectionTemplateData(style=IMAGE_TEXT_STYLE, moduleDic={pic=BitmapModel(src=android.graphics.Bitmap@4199e19, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)}, backgroundColor=null)
+10-07 01:42:32.542  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: right, style:CapsuleSectionTemplateData(style=TEXT_IMAGE_STYLE, moduleDic={title=TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=1, textWeight=null, textStyle=null, textSize=null, textColor=-1)}, backgroundColor=null)
+10-07 01:42:32.542  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.n@b689d48, BitmapModel(src=android.graphics.Bitmap@4199e19, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:32.542  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:32.543  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2c98c6a@CardNormalSection, [title, content]
+10-07 01:42:32.543  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@f9673af, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:32.543  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@42a1ac1, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@4199e19, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:32.544  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:32.544  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@7126077@CardNormalSection, [title, content, pic]
+10-07 01:42:32.544  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, BitmapModel(src=android.graphics.Bitmap@94af8bf, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=98, height=98, radius=21.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:32.544  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, TextModel(spanAttr=null, bgColor=0, repeat=1, maxLines=1, textWeight=REGULAR, textStyle=null, textSize=42.0, textColor=-1)
+10-07 01:42:32.545  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:32.545  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2115425@CardNormalSection, [title, content]
+10-07 01:42:32.545  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@625183, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:32.545  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@107e9f5, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@4199e19, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:32.552  9848  9848 I PluginSeedling--Template: CapsulePage-->page-frame 350 -> 350, true
+10-07 01:42:32.577  2968  9591 E HoraeHelper: horae is not open
+10-07 01:42:32.583  1419  1524 I OriginChannel: now system_time:987168	pwm_rgb: system_time:986904, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2447, g:2304, b:1105, c:5327, algo:2, end:1149, ts:986664010019	pwm_rgb: system_time:986904, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2287, b:1093, c:5285, algo:2, end:1149, ts:986672343019	pwm_rgb: system_time:986904, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2452, g:2315, b:1093, c:5316, algo:2, end:1149, ts:986680676019	pwm_rgb: system_time:986904, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2304, b:1099, c:5295, algo:2, end:1149, ts:986689009019	pwm_rgb: system_time:986905, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2447, g:2310, b:1111, c:5332, algo:2, end:66685, ts:986697342019	
+10-07 01:42:32.584  2968  5044 D FusionLightNextGen: process end reported = 1, mode: 1, cnt: 3330, lux 40.2, cct -1.0, r/g/b/c: 2420.0/2287.0/1099.0/5290.0, R/G/B: 20.0/64.0/7.0, bri 1244.0, match 1.00, ir 0.050507, conf 0.0, ts 986986012423
+10-07 01:42:32.642  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:32.642  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:32.642  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:32.676  1478 14947 I mtkpower@impl: [libpowerhal_setCpuIdle] set cpu idle from uah, idx = 1
+10-07 01:42:32.697  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:32.697  1405  9557 D CwbService: RGB value: 23, 74, 8, hist:1595, 1578, 1623,  rgb_state: 0
+10-07 01:42:32.698  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:32.698  1453  1453 D SensorFeature: write 32 bytes:987266006852,987282673519,1151,0
+10-07 01:42:32.713  1474 10282 W SlcHalService: currentC:0 , nextC:90
+10-07 01:42:32.713  1474 10282 W SlcHalService: set CG 1,90 error
+10-07 01:42:32.713  1474 10282 W SlcHalService: currentG:100 , nextG:10
+10-07 01:42:32.713  1474 10282 W SlcHalService: set CG 2,10 error
+10-07 01:42:32.762  1405  9557 I hwcomposer: [HWCDisplay] (0 updateFps():4519), (type:1, mode:2) fps:59.709499,dur:1004.87,max:32.80,min:15.85  
+10-07 01:42:32.815 17308 17308 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+10-07 01:42:32.818  2968 10598 D OplusResolverIntentUtil: The MIME data type of this intent is others
+10-07 01:42:32.818  2968 10598 D OplusResolveInfoHelper: getCloudBlackList = {excel=[www.imxiaoyu.com.musiceditor], txt=[www.imxiaoyu.com.musiceditor], pdf=[www.imxiaoyu.com.musiceditor], ppt=[www.imxiaoyu.com.musiceditor], browser=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader], word=[www.imxiaoyu.com.musiceditor], gallery=[www.imxiaoyu.com.musiceditor], others=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader]}
+10-07 01:42:32.818  2968 10598 D OplusResolverIntentUtil: The MIME data type of this intent is others
+10-07 01:42:32.819  2968 10598 D OplusResolveInfoHelper: getCloudBlackList = {excel=[www.imxiaoyu.com.musiceditor], txt=[www.imxiaoyu.com.musiceditor], pdf=[www.imxiaoyu.com.musiceditor], ppt=[www.imxiaoyu.com.musiceditor], browser=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader], word=[www.imxiaoyu.com.musiceditor], gallery=[www.imxiaoyu.com.musiceditor], others=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader]}
+10-07 01:42:32.819  2968 10598 D OplusResolverIntentUtil: The MIME data type of this intent is others
+10-07 01:42:32.819  2968 10598 D OplusResolveInfoHelper: getCloudBlackList = {excel=[www.imxiaoyu.com.musiceditor], txt=[www.imxiaoyu.com.musiceditor], pdf=[www.imxiaoyu.com.musiceditor], ppt=[www.imxiaoyu.com.musiceditor], browser=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader], word=[www.imxiaoyu.com.musiceditor], gallery=[www.imxiaoyu.com.musiceditor], others=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader]}
+10-07 01:42:32.820  2968 10598 D OplusResolverIntentUtil: The MIME data type of this intent is others
+10-07 01:42:32.820  2968 10598 D OplusResolveInfoHelper: getCloudBlackList = {excel=[www.imxiaoyu.com.musiceditor], txt=[www.imxiaoyu.com.musiceditor], pdf=[www.imxiaoyu.com.musiceditor], ppt=[www.imxiaoyu.com.musiceditor], browser=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader], word=[www.imxiaoyu.com.musiceditor], gallery=[www.imxiaoyu.com.musiceditor], others=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader]}
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: Write failure
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: java.io.IOException: write failed: EPIPE (Broken pipe)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at libcore.io.IoBridge.write(IoBridge.java:651)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at java.io.FileOutputStream.write(FileOutputStream.java:436)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flushBytesLocked(FastPrintWriter.java:355)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flushLocked(FastPrintWriter.java:378)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.appendLocked(FastPrintWriter.java:323)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.print(FastPrintWriter.java:500)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at java.io.PrintWriter.println(PrintWriter.java:822)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowState.dump(WindowState.java:4645)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.RootWindowContainer.lambda$dumpWindowsNoHeader$8(RootWindowContainer.java:1308)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.RootWindowContainer$$ExternalSyntheticLambda33.accept(D8$$SyntheticClass:0)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer$ForAllWindowsConsumerWrapper.apply(WindowContainer.java:3199)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer$ForAllWindowsConsumerWrapper.apply(WindowContainer.java:3189)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowState.applyInOrderWithImeWindows(WindowState.java:5243)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowState.forAllWindows(WindowState.java:5117)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:2037)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:2037)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:2037)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:2037)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:2037)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:2037)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:2061)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.RootWindowContainer.dumpWindowsNoHeader(RootWindowContainer.java:1305)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.dumpWindowsLocked(WindowManagerService.java:7542)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.doDump(WindowManagerService.java:8013)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.-$$Nest$mdoDump(Unknown Source:0)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService$3.dump(WindowManagerService.java:597)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.utils.PriorityDump.dump(PriorityDump.java:182)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.dump(WindowManagerService.java:7816)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.OplusWindowManagerService.dump(OplusWindowManagerService.java:311)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at android.os.Binder.doDump(Binder.java:1089)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at android.os.Binder.dump(Binder.java:1075)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at android.os.Binder.onTransact(Binder.java:945)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at android.view.IWindowManager$Stub.onTransact(IWindowManager.java:3510)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.onTransact(WindowManagerService.java:1655)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at com.android.server.wm.OplusWindowManagerService.onTransact(OplusWindowManagerService.java:277)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at android.os.Binder.execTransactInternal(Binder.java:1448)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at android.os.Binder.execTransact(Binder.java:1382)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: Caused by: android.system.ErrnoException: write failed: EPIPE (Broken pipe)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at libcore.io.Linux.writeBytes(Native Method)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at libcore.io.Linux.write(Linux.java:336)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at libcore.io.ForwardingOs.write(ForwardingOs.java:948)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at libcore.io.BlockGuardOs.write(BlockGuardOs.java:448)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	at libcore.io.IoBridge.write(IoBridge.java:646)
+10-07 01:42:32.825  2968 10598 W FastPrintWriter: 	... 36 more
+10-07 01:42:32.845  1419  1524 I OriginChannel: now system_time:987430	pwm_rgb: system_time:987168, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2388, g:2270, b:1099, c:5254, algo:2, end:1150, ts:986952680423	pwm_rgb: system_time:987168, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2276, b:1087, c:5280, algo:2, end:1150, ts:986961013423	pwm_rgb: system_time:987168, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2436, g:2298, b:1117, c:5280, algo:2, end:1150, ts:986969346423	pwm_rgb: system_time:987168, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2287, b:1099, c:5290, algo:2, end:1150, ts:986977679423	pwm_rgb: system_time:987168, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2393, g:2276, b:1087, c:5254, algo:2, end:66686, ts:986986012423	
+10-07 01:42:32.891 13294 13347 D DataCon-MdpImpl: timeout for entire mdp surroundings
+10-07 01:42:32.938  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:32.939  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:32.939  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:32.994  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:32.994  1405  9557 D CwbService: RGB value: 22, 69, 8, hist:1726, 1717, 1735,  rgb_state: 0
+10-07 01:42:32.994  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:32.994  1453  1453 D SensorFeature: write 32 bytes:987562867237,987579533904,1152,0
+10-07 01:42:32.995  2968 10250 I OplusHansManager : unfreeze uid: 10436 com.tencent.mobileqq pids: [31042, 28992] reason: Packet scene: LcdOn
+10-07 01:42:32.996  2968 10245 I OplusHansManager : uid=10436, pkg=com.tencent.mobileqq F exit(), F stay=36, reason=Packet, FrozenActionKeepProxy=false
+10-07 01:42:32.996  2968  9489 I OStatsManager_OplusBatteryStatsManager: updateStateTime: PkgName = com.tencent.mobileqq, uid = 10436, state to bg, mForegroundCnt = 0, isFg = false
+10-07 01:42:32.996  2968 10251 D BroadcastQueue: setDeferPolicy processName: {com.tencent.mobileqq, com.tencent.mobileqq:MSF} uid: 10436 policy: 1 defer: false
+10-07 01:42:32.996  2968 10251 I OplusHansManager : up_BC uid=10436 pkg=com.tencent.mobileqq
+10-07 01:42:32.996  2968 10251 I OplusBinderProxy: un_pb 10436->28992 rst:true , Desc:IPhoneStateListener/10
+10-07 01:42:32.997  2968 10251 I OplusBinderProxy: proxyBinder uid: 10436 pkg: com.tencent.mobileqq proxy: false calling: OFreezer
+10-07 01:42:32.997  2968 10251 I OplusHansManager : ua_alarm 10436
+10-07 01:42:32.997  2968 10251 D OplusAlarmAdjustment: unalignAlarmsByUid(), uid=10436, pkgName=com.tencent.mobileqq, actions=null, procs=null, requester=1
+10-07 01:42:32.997  2968 10251 I OplusHansManager : up_BtScan: uid 10436 isUnProxy true
+10-07 01:42:32.999  2968  8955 D OplusAlarmAdjustMap: removeAlignUid, uid=10436, requester=1
+10-07 01:42:33.002  2968  9301 D MediaFocusControlExtImpl: onUidFrozenChanged success + uid = 10436, frozen = false
+10-07 01:42:33.013  1463  1565 D BatteryChargeControl: bcc get no support from charging protocol
+10-07 01:42:33.027 10379 13302 D CommonApp-102-10577: transport layer data is invalid
+10-07 01:42:33.027 10379 13302 D CommonApp-102-10090: transport layer data is invalid
+10-07 01:42:33.107  1419  1524 I OriginChannel: now system_time:987692	pwm_rgb: system_time:987430, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2287, b:1099, c:5285, algo:2, end:1151, ts:987249684745	pwm_rgb: system_time:987430, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2436, g:2304, b:1099, c:5311, algo:2, end:1151, ts:987258017745	pwm_rgb: system_time:987430, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2287, b:1087, c:5280, algo:2, end:1151, ts:987266350745	pwm_rgb: system_time:987430, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2447, g:2315, b:1105, c:5301, algo:2, end:1151, ts:987274683745	pwm_rgb: system_time:987430, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2304, b:1093, c:5285, algo:2, end:66687, ts:987283016745	
+10-07 01:42:33.107  1519  1519 I BufferQueueProducer: [StatusBar#100](this:0xb4000075566a82f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=59.69 dur=1005.18 max=32.87 min=16.09
+10-07 01:42:33.128  9848 11272 I SystemUi--Statusbar: OplusNetworkSpeedControllExImpl-->getTotalByte: totalRxBytes:4135875,totalTxBytes:2281050,loopbackTxBytes:48867,loopbackRxBytes:48867 ,totalBytes:6319191
+10-07 01:42:33.135 28412  3636 I PTC.DISC.BleAdvertiser: timeoutBleAdvertisingTask client=DiscoveryClient(id=accept-senseless, pkg=com.heytap.accessory, pid=28412), taskIsSuspending=false
+10-07 01:42:33.135 28412  3636 I PTC.DISC.BleAdvertiserAdapter: ptcBleStopAdvertising client=DiscoveryClient(id=accept-senseless, pkg=com.heytap.accessory, pid=28412)
+10-07 01:42:33.138 28412  3636 I PTC.DISC.BleAdvertiser: notifyBleAdvStateChanged, state=BLE_ALL_ADV_STOPPED
+10-07 01:42:33.139 10164 12318 I bt_shim_advertiser: [le_advertising_manager.cc:81] Unregister: in shim layer
+10-07 01:42:33.139 10164 11900 D Bluetooth: [le_advertising_manager.cc:788] stop_advertising: advertiser_id: 0 is_periodic: false
+10-07 01:42:33.140  1401  1401 D [BT]    : mtk_bt_op: BT_VND_OP_LPM_WAKE_SET_STATE
+10-07 01:42:33.142 28412  3636 I PTC.CONN.SenselessScheduleImpl: --Senseless Event Changed-- handleStartEvent is BLE_ALL_ADV_STOPPED
+10-07 01:42:33.147  1401  1401 D android.hardware.bluetooth@aidl-impl: BtHostDebugInfo
+10-07 01:42:33.147  1401  1401 D [BT]    : mtk_bt_op: BT_VND_OP_SET_BTHOST
+10-07 01:42:33.235  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:33.235  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:33.236  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:33.245 10178 10178 D OplusTelephonyController: onSignalStrengthChanged: SignalStrength=SignalStrength:{mCdma=CellSignalStrengthCdma: cdmaDbm=2147483647 cdmaEcio=2147483647 evdoDbm=2147483647 evdoEcio=2147483647 evdoSnr=2147483647 level=0,mGsm=CellSignalStrengthGsm: rssi=2147483647 ber=2147483647 mTa=2147483647 mLevel=0,mWcdma=CellSignalStrengthWcdma: ss=2147483647 ber=2147483647 rscp=2147483647 ecno=2147483647 level=0,mTdscdma=CellSignalStrengthTdscdma: rssi=2147483647 ber=2147483647 rscp=2147483647 level=0,mLte=CellSignalStrengthLte: rssi=2147483647 rsrp=2147483647 rsrq=2147483647 rssnr=2147483647 cqiTableIndex=2147483647 cqi=2147483647 ta=2147483647 level=0 parametersUseForLevel=0,mNr=CellSignalStrengthNr:{ csiRsrp = 2147483647 csiRsrq = 2147483647 csiCqiTableIndex = 2147483647 csiCqiReport = [] ssRsrp = -76 ssRsrq = -11 ssSinr = 14 level = 4 parametersUseForLevel = 0 timingAdvance = 0 },primary=CellSignalStrengthNr}
+10-07 01:42:33.245 10379 10379 D SubsysEventListenerManager-SubsysTelephonyCallback[0]: onSignalStrengthsChanged
+10-07 01:42:33.247  9848  9848 D Tile.OplusCellularTile: refreshState: tile not listening, ignore
+10-07 01:42:33.252  9848 11340 I SystemUi--Statusbar: MobileConnectionRepositoryImpl-->subId:1 isSoftSimCard:false slotId:0
+10-07 01:42:33.290  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:33.290  1405  9557 D CwbService: RGB value: 21, 69, 8, hist:1578, 1552, 1938,  rgb_state: 0
+10-07 01:42:33.291  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:33.291  1453  1453 D SensorFeature: write 32 bytes:987859273391,987875940058,1153,0
+10-07 01:42:33.294  1433  1525 I libPerfCtl: xgfGetFPS pid:9848 fps:-1
+10-07 01:42:33.331  2968  4898 D NotificationService--OplusNotificationFixHelper: fixAppIcon: pkg=com.android.systemui
+10-07 01:42:33.332  2968  4898 D NotificationService--OplusNotificationFixHelper: fixAppIcon: appIcon = null, pkg = com.android.systemui
+10-07 01:42:33.332  2968  4898 D NotificationService--NotificationRecord: isSupportRearLight , isRearLight = false mLedRM = false isMultilLed = false
+10-07 01:42:33.333  2968  4898 I OplusStatusBarManagerServiceEnhance:  getTopIsFullscreen mTopIsFullscreen: false
+10-07 01:42:33.333  2968  2968 D NotificationService--OplusNotificationManagerServiceExtImpl: isForwardToAssistants: false, case : Is in mMcsNotInterceptPkgList or is isSystemApp
+10-07 01:42:33.333  2968  2968 D NotificationService: This application enqueue notifications is not need postDelayed
+10-07 01:42:33.374  1419  1524 I OriginChannel: now system_time:987959	pwm_rgb: system_time:987692, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2304, b:1093, c:5254, algo:2, end:1152, ts:987546657605	pwm_rgb: system_time:987692, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2441, g:2281, b:1093, c:5316, algo:2, end:1152, ts:987554990605	pwm_rgb: system_time:987692, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2315, b:1123, c:5295, algo:2, end:1152, ts:987563323605	pwm_rgb: system_time:987692, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2452, g:2315, b:1099, c:5306, algo:2, end:1152, ts:987571656605	pwm_rgb: system_time:987692, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2398, g:2293, b:1087, c:5280, algo:2, end:66688, ts:987579989605	
+10-07 01:42:33.459 31652 32480 I APS_ALOG: flushRoutine g_immediateFlush=0 g_pendingCount=0 g_oobCount=0
+10-07 01:42:33.472  1419  1522 W AString : ctor got NULL, using empty string instead
+10-07 01:42:33.472  1419  1522 I SensorSavedChannel: [-622,-101,1074]==>gyro_bias.json
+10-07 01:42:33.510 31274 31580 I UMS.UmsRunningStatus: setIsFinishedStartUp = true [base|2.0.49-17dd512]
+10-07 01:42:33.511 31274 31580 I UMS.ApplicationFactory: getCurrentProcessApplication empty
+10-07 01:42:33.531  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:33.532  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:33.533  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:33.542  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsRepository-->updateLiveAlert: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159 remindType=0 shouldReminderAgain=true
+10-07 01:42:33.543  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsInteractor-->notifyLiveAlerts: PostAction(sbnList=[StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))])
+10-07 01:42:33.544  9848  9848 I PluginSeedling--Base: SeedlingCardServerProvider-->seedling provider called com.oplus.card.server.systemui.provider w/ live_alert_notification_post 10159 9848 0
+10-07 01:42:33.544  9848  9848 I PluginSeedling--Base: NotificationLiveAlertProvider-->post sbn: [StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))]
+10-07 01:42:33.546  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:33.546  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_NOTIFICATION, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:33.546  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:33.547  9848  9848 I PluginSeedling--Notification: NotificationRepository-->onDataChanged, [LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:33.547  9848  9848 I PluginSeedling--Notification:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0]
+10-07 01:42:33.547  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:33.547  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_STATUS_BAR, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_STATUS_BAR, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: false, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:33.547  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_SM, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:33.547  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:33.548  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: left, style:CapsuleSectionTemplateData(style=IMAGE_TEXT_STYLE, moduleDic={pic=BitmapModel(src=android.graphics.Bitmap@76e429a, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)}, backgroundColor=null)
+10-07 01:42:33.548  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: right, style:CapsuleSectionTemplateData(style=TEXT_IMAGE_STYLE, moduleDic={title=TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=1, textWeight=null, textStyle=null, textSize=null, textColor=-1)}, backgroundColor=null)
+10-07 01:42:33.548  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.n@b689d48, BitmapModel(src=android.graphics.Bitmap@76e429a, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:33.548  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:33.548  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2c98c6a@CardNormalSection, [title, content]
+10-07 01:42:33.548  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@f9673af, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:33.548  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@42a1ac1, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@76e429a, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:33.549  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:33.549  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@7126077@CardNormalSection, [title, content, pic]
+10-07 01:42:33.549  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, BitmapModel(src=android.graphics.Bitmap@d9a0ba8, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=98, height=98, radius=21.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:33.549  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, TextModel(spanAttr=null, bgColor=0, repeat=1, maxLines=1, textWeight=REGULAR, textStyle=null, textSize=42.0, textColor=-1)
+10-07 01:42:33.549  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:33.550  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2115425@CardNormalSection, [title, content]
+10-07 01:42:33.550  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@625183, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:33.550  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@107e9f5, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@76e429a, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:33.556  3904  5200 W RuntimeEnvironment: process name:com.finshell.wallet start check, interval 300000, diff time 305008
+10-07 01:42:33.557  9848  9848 I PluginSeedling--Template: CapsulePage-->page-frame 350 -> 350, true
+10-07 01:42:33.558  3904  5200 W RuntimeEnvironment: process name:com.finshell.wallet releaseSession
+10-07 01:42:33.564  3904  5200 I broadcastReceiver14: ApduCommandEngine registerReceiver OmaServiceWatcherReceiver
+10-07 01:42:33.566  3904 17545 W ApduCommandEngine: try connect se service
+10-07 01:42:33.574  3904 17545 I OMAPI.SEService: bindService successful
+10-07 01:42:33.575  3904  3904 W Wallet  : andPCnnctd
+10-07 01:42:33.575  3904  3904 I OMAPI.SEService: Service onServiceConnected
+10-07 01:42:33.577  3904  5150 E FileStrategy: java.io.IOException: Read-only file system
+10-07 01:42:33.587  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:33.587  1405  9557 D CwbService: RGB value: 23, 73, 8, hist:1654, 1649, 1675,  rgb_state: 0
+10-07 01:42:33.587  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:33.588  1453  1453 D SensorFeature: write 32 bytes:988156028775,988172695442,1154,0
+10-07 01:42:33.620  9564  9568 D WifiHAL : WifiRequest::create vendor command to iface 40, vendor_id=0x1a11, subcmd=0x1200, res=0
+10-07 01:42:33.621  9564  9568 I WifiHAL : LLS RSP: data=0xb4000076fe01c020, len=4028
+10-07 01:42:33.621  9564  9568 I WifiHAL : LLS check_data_sanity: 1829: current_radio_stat->num_channels=13
+10-07 01:42:33.621  9564  9568 I WifiHAL : LLS check_data_sanity: 1829: current_radio_stat->num_channels=24
+10-07 01:42:33.621  9564  9568 I WifiHAL : LLS check_data_sanity: confirmed_size=4028, len=4028
+10-07 01:42:33.622  2968  9170 E WifiStaIfaceAidlImpl: getCachedScanData failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+10-07 01:42:33.630 10379 10379 D VendorWifiService: onEvent event:9,action:1
+10-07 01:42:33.633  2968  9502 D ScorerUtils: isLowTraffic: txTputKBps=0, rxTputKBps=0
+10-07 01:42:33.634  2968  9502 D OplusWifiPower_TriggerCenter: mComponentCallback: wifistat
+10-07 01:42:33.634  1419  1524 I OriginChannel: now system_time:988219	pwm_rgb: system_time:987959, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2281, b:1099, c:5274, algo:2, end:1153, ts:987843197067	pwm_rgb: system_time:987959, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2436, g:2315, b:1087, c:5311, algo:2, end:1153, ts:987851530067	pwm_rgb: system_time:987959, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2398, g:2276, b:1093, c:5269, algo:2, end:1153, ts:987859863067	pwm_rgb: system_time:987959, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2441, g:2310, b:1099, c:5301, algo:2, end:1153, ts:987868196067	pwm_rgb: system_time:987959, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2281, b:1099, c:5264, algo:2, end:66689, ts:987876529067	
+10-07 01:42:33.713  1474 10282 W SlcHalService: currentC:0 , nextC:90
+10-07 01:42:33.714  1474 10282 W SlcHalService: set CG 1,90 error
+10-07 01:42:33.714  1474 10282 W SlcHalService: currentG:100 , nextG:10
+10-07 01:42:33.714  1474 10282 W SlcHalService: set CG 2,10 error
+10-07 01:42:33.767  1405  9557 I hwcomposer: [HWCDisplay] (0 updateFps():4519), (type:1, mode:2) fps:60.645157,dur:1005.85,max:17.27,min:15.85  
+10-07 01:42:33.828  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:33.828  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:33.829  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:33.884  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:33.885  1405  9557 D CwbService: RGB value: 19, 60, 7, hist:1838, 1832, 1847,  rgb_state: 0
+10-07 01:42:33.885  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:33.886  1453  1453 D SensorFeature: write 32 bytes:988453877006,988470543673,1155,0
+10-07 01:42:33.898  1419  1524 I OriginChannel: now system_time:988483	pwm_rgb: system_time:988219, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2287, b:1075, c:5269, algo:2, end:1154, ts:988140752710	pwm_rgb: system_time:988219, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2321, b:1099, c:5322, algo:2, end:1154, ts:988149085710	pwm_rgb: system_time:988219, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2436, g:2327, b:1111, c:5290, algo:2, end:1154, ts:988157418710	pwm_rgb: system_time:988219, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2452, g:2315, b:1099, c:5332, algo:2, end:1154, ts:988165751710	pwm_rgb: system_time:988219, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2298, b:1093, c:5280, algo:2, end:66690, ts:988174084710	
+10-07 01:42:33.899  2968  5044 D FusionLightNextGen: process end reported = 1, mode: 1, cnt: 3335, lux 40.0, cct -1.0, r/g/b/c: 2398.0/2270.0/1093.0/5248.0, R/G/B: 19.0/60.0/7.0, bri 1244.0, match 0.75, ir 0.050425, conf 0.0, ts 988454453220
+10-07 01:42:34.013  1463  1565 D BatteryChargeControl: bcc get no support from charging protocol
+10-07 01:42:34.051 10379 13302 D CommonApp-102-10577: transport layer data is invalid
+10-07 01:42:34.051 10379 13302 D CommonApp-102-10090: transport layer data is invalid
+10-07 01:42:34.113  1519  1519 I BufferQueueProducer: [StatusBar#100](this:0xb4000075566a82f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=60.66 dur=1005.61 max=16.84 min=16.00
+10-07 01:42:34.123  3629  3930 I Finsky  : [595] AIM: AppInfoManager-Perf > Destroying AppInfoManager ...
+10-07 01:42:34.126  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:34.127  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:34.127  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:34.131  2968  9502 D OplusGtxController: no disable gtx lock hold, enable gtx
+10-07 01:42:34.131  2968  9502 D OplusGtxController: setGtxEnabled true fail.
+10-07 01:42:34.132  9848 11272 I SystemUi--Statusbar: OplusNetworkSpeedControllExImpl-->getTotalByte: totalRxBytes:4136071,totalTxBytes:2281422,loopbackTxBytes:48867,loopbackRxBytes:48867 ,totalBytes:6319759
+10-07 01:42:34.178  2968  3786 W QosScheduler: executeSceneQosStrategy failed! qos feature no enable
+10-07 01:42:34.180  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:34.181  1405  9557 D CwbService: RGB value: 23, 74, 9, hist:1602, 1592, 1629,  rgb_state: 0
+10-07 01:42:34.181  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:34.182  1453  1453 D SensorFeature: write 32 bytes:988749891545,988766558212,1156,0
+10-07 01:42:34.294  1433  1525 I libPerfCtl: xgfGetFPS pid:9848 fps:-1
+10-07 01:42:34.329 30102 17814 I DrsSdkCore: init: sNetRequestExplicitlySet=false, sEnableNetRequest(before)=false, config.isEnableNetRequest()=true
+10-07 01:42:34.329 30102 17814 I DrsSdkCore: init: updated sEnableNetRequest from config: true
+10-07 01:42:34.331 30102 17814 I IPCClientManager: target IPC pkg: com.oplus.framework.network.drs
+10-07 01:42:34.331 30102 17814 I IPCClientManager: setIpcIdleUnbindMinutes=10
+10-07 01:42:34.331 30102 17814 I DRS_SDK_COMMON_DrsTrackImpl: start init DrsSdk, appId=20239
+10-07 01:42:34.334 30102 17814 I DRS_SDK_COMMON_ClientDataBase: obus-sdk SQLite database created/opened successfully, name=com.oplus.cosa_drs_obus_sqlite
+10-07 01:42:34.335 30102 17820 I DRS_SDK_COMMON_ClientDataCacheManager: Starting to recover abnormal status data...
+10-07 01:42:34.335 30102 17818 I DRS_SDK_COMMON_ClientDataCacheManager: HandlerThread cleanup scheduler started, interval: 3600000 ms
+10-07 01:42:34.335 30102 17814 I DRS_SDK_COMMON_UploadStrategyManager: UploadThread started, IPC interval: 1000 ms (default=1000 ms), max size: 512000 bytes
+10-07 01:42:34.335 30102 17818 I DRS_SDK_COMMON_ClientDataCacheManager: DataCacheManager initialization completed
+10-07 01:42:34.337 30102 17820 I DRS_SDK_COMMON_ClientDataCacheManager: Abnormal status data recovery completed: 0 records
+10-07 01:42:34.337  2968 28310 D NotificationService--OplusNotificationFixHelper: fixAppIcon: pkg=com.android.systemui
+10-07 01:42:34.338  2968 28310 D NotificationService--OplusNotificationFixHelper: fixAppIcon: appIcon = null, pkg = com.android.systemui
+10-07 01:42:34.338 30102 17822 I StandaloneDrainGuard: markDrained: appId=20239
+10-07 01:42:34.338 30102 17822 I DRS_SDK_COMMON_ClientDataCacheManager: Standalone drain completed, totalCount=0, appId=20239
+10-07 01:42:34.338  2968 28310 D NotificationService--NotificationRecord: isSupportRearLight , isRearLight = false mLedRM = false isMultilLed = false
+10-07 01:42:34.345  2968 28310 I OplusStatusBarManagerServiceEnhance:  getTopIsFullscreen mTopIsFullscreen: false
+10-07 01:42:34.345 30102 17814 I DRS_SDK_COMMON_SdkRuleManager: init rule manager state, appId=20239, appStateCount=1
+10-07 01:42:34.345 30102 17814 I DRS_SDK_COMMON_DrsTrackImpl: DrsSdk init success.
+10-07 01:42:34.345 30102 17830 I DRS_SDK_COMMON_SdkRuleManager: initialSync requesting, appId=20239, duid=***9BD59414, duidSource=OpenIdUtils_fallback
+10-07 01:42:34.345 30102 17830 I DRS_SDK_COMMON_SdkRuleManager: requestRulesInternal, appId=20239, reason=init, duid=***9BD59414, forceFull=false, eventVersion=0, sampleVersion=0
+10-07 01:42:34.346  2968  2968 D NotificationService--OplusNotificationManagerServiceExtImpl: isForwardToAssistants: false, case : Is in mMcsNotInterceptPkgList or is isSystemApp
+10-07 01:42:34.346  2968  2968 D NotificationService: This application enqueue notifications is not need postDelayed
+10-07 01:42:34.346  9825 11798 I DRS_LOG_GrayConfigHandler[149]: receive call from client. pkg name: com.oplus.cosa
+10-07 01:42:34.346  9825 11798 I DRS_LOG_GrayConfigHandler[149]: from config, pkg use drs: true
+10-07 01:42:34.346  9825  4298 I DRS_LOG_EventRulesHandler[147]: handle getEventRules ipc request, appId=20239, eventVersion=0, sampleVersion=0, forceFull=false, hasDigest=false
+10-07 01:42:34.346 30102 17833 I DRS_SDK_COMMON_UploadStrategyManager: IPC schedule interval updated by ipcFreq=1s -> intervalMs=1000
+10-07 01:42:34.347 30102 17832 I DRS_SDK_COMMON_DrsChannelManager: channel_remote
+10-07 01:42:34.348  9825  4298 I DRS_LOG_EventRulesProviderDelegate[147]: buildResponse appId=20239, debugMode=false, prefilterEnabled=true, notModified=false, versionsMatch=false, digestMatched=false, hasClientDigest=false, currentEventVersion=1937361055, currentSampleVersion=0, totalDbRules=49, duidValid=true, forceFull=false
+10-07 01:42:34.348 10673 10713 I DCS>ContentProvider[133]: support
+10-07 01:42:34.348 30102 17833 I DRS_SDK_COMMON_SdkRuleManager: applySnapshot: appId=20239, totalFromServer=21, loadedRules=21, skippedAllAllow=0, requestDuid=***9BD59414, duidUpdated=true, lastSyncedDuid=***9BD59414
+10-07 01:42:34.349 30102 17833 I DRS_SDK_COMMON_SdkRuleManager: sync rules success, appId=20239, reason=init, eventVersion=1937361055, sampleVersion=0, prefilterEnabled=true, debugMode=false, ruleCount=21, appStateCount=1, totalRuleCount=21, lastSyncedDuid=***9BD59414, requestDuid=***9BD59414
+10-07 01:42:34.353 30102 17814 I DRS_SDK_COMMON_ClientDataCacheManager: Data write successful: id=980, eventGroup=gamespace, eventId=gamespace_thermal_report, eventTimeLocal=1791308554349, calibratedEventTime=1791308554349, timeType=2, size=1165
+10-07 01:42:34.422  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:34.422  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:34.422  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:34.427  1419  1524 I OriginChannel: now system_time:989012	pwm_rgb: system_time:988483, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2310, b:1105, c:5274, algo:2, end:1155, ts:988421121220	pwm_rgb: system_time:988483, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2293, b:1099, c:5280, algo:2, end:1155, ts:988429454220	pwm_rgb: system_time:988483, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2393, g:2247, b:1087, c:5254, algo:2, end:1155, ts:988437787220	pwm_rgb: system_time:988483, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2270, b:1093, c:5269, algo:2, end:1155, ts:988446120220	pwm_rgb: system_time:988483, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2398, g:2270, b:1093, c:5248, algo:2, end:66691, ts:988454453220	
+10-07 01:42:34.429  1821  1938 D AALLightSensor: oldLux=41 [SA:-1 LA:-1] newLux=41 (oriLux: 40)
+10-07 01:42:34.470  2968  9591 E HoraeHelper: horae is not open
+10-07 01:42:34.477  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:34.478  1405  9557 D CwbService: RGB value: 21, 67, 8, hist:1763, 1759, 1775,  rgb_state: 0
+10-07 01:42:34.478  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:34.479  1453  1453 D SensorFeature: write 32 bytes:989046443237,989063109904,1157,0
+10-07 01:42:34.517  2968  9658 I LinkPower: [MonitorLeafPushSock] startMonitor app:[uid:99910435 pid:-1 name:com.tencent.mm]
+10-07 01:42:34.517  2968  9660 E LinkPower: [NetlinkLinkPower] failed to handle netlink msg, recevice netlink NLMSG_ERROR msg!
+10-07 01:42:34.518 15695 18785 I BinderSender: UID idle：uid=99910435，disabled=false
+10-07 01:42:34.518 15695 18785 V BinderSender: UID 99910435 已经启动
+10-07 01:42:34.563  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsRepository-->updateLiveAlert: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159 remindType=0 shouldReminderAgain=true
+10-07 01:42:34.563  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsInteractor-->notifyLiveAlerts: PostAction(sbnList=[StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))])
+10-07 01:42:34.563  9848  9848 I PluginSeedling--Base: SeedlingCardServerProvider-->seedling provider called com.oplus.card.server.systemui.provider w/ live_alert_notification_post 10159 9848 0
+10-07 01:42:34.563  9848  9848 I PluginSeedling--Base: NotificationLiveAlertProvider-->post sbn: [StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))]
+10-07 01:42:34.571  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:34.571  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_NOTIFICATION, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:34.571  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:34.571  9848  9848 I PluginSeedling--Notification: NotificationRepository-->onDataChanged, [LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:34.571  9848  9848 I PluginSeedling--Notification:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0]
+10-07 01:42:34.571  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:34.571  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_STATUS_BAR, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_STATUS_BAR, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: false, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:34.571  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_SM, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:34.573  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:34.573  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: left, style:CapsuleSectionTemplateData(style=IMAGE_TEXT_STYLE, moduleDic={pic=BitmapModel(src=android.graphics.Bitmap@4156697, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)}, backgroundColor=null)
+10-07 01:42:34.573  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: right, style:CapsuleSectionTemplateData(style=TEXT_IMAGE_STYLE, moduleDic={title=TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=1, textWeight=null, textStyle=null, textSize=null, textColor=-1)}, backgroundColor=null)
+10-07 01:42:34.573  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.n@b689d48, BitmapModel(src=android.graphics.Bitmap@4156697, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:34.574  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:34.574  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2c98c6a@CardNormalSection, [title, content]
+10-07 01:42:34.574  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@f9673af, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:34.575  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@42a1ac1, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@4156697, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:34.575  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:34.575  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@7126077@CardNormalSection, [title, content, pic]
+10-07 01:42:34.576  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, BitmapModel(src=android.graphics.Bitmap@9e8006d, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=98, height=98, radius=21.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:34.576  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, TextModel(spanAttr=null, bgColor=0, repeat=1, maxLines=1, textWeight=REGULAR, textStyle=null, textSize=42.0, textColor=-1)
+10-07 01:42:34.576  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:34.576  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2115425@CardNormalSection, [title, content]
+10-07 01:42:34.577  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@625183, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:34.577  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@107e9f5, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@4156697, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:34.582  9848  9848 I PluginSeedling--Template: CapsulePage-->page-frame 350 -> 350, true
+10-07 01:42:34.688  1419  1524 I OriginChannel: now system_time:989273	pwm_rgb: system_time:989012, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2371, g:2253, b:1069, c:5227, algo:2, end:131072, ts:988748021452	
+10-07 01:42:34.714  1474 10282 W SlcHalService: currentC:0 , nextC:90
+10-07 01:42:34.714  1474 10282 W SlcHalService: set CG 1,90 error
+10-07 01:42:34.714  1474 10282 W SlcHalService: currentG:100 , nextG:10
+10-07 01:42:34.714  1474 10282 W SlcHalService: set CG 2,10 error
+10-07 01:42:34.720  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:34.720  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:34.721  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:34.739 10140 10619 D ApfFilter: (wlan0): Ignoring RA RA fe80::46f7:70ff:fe37:fa61 -> ff02::1 1800s 2001:f90:40e0:8fc::/64 196567s/110167s DNS 200s fe80::46f7:70ff:fe37:fa61  which matches RA fe80::46f7:70ff:fe37:fa61 -> ff02::1 1800s 2001:f90:40e0:8fc::/64 196587s/110187s DNS 200s fe80::46f7:70ff:fe37:fa61 
+10-07 01:42:34.772  1405  1428 I hwcomposer: [HWCDisplay] (0 updateFps():4519), (type:1, mode:2) fps:59.701492,dur:1005.00,max:33.16,min:15.89  
+10-07 01:42:34.775  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:34.775  1405  9557 D CwbService: RGB value: 22, 71, 8, hist:1578, 1561, 1990,  rgb_state: 0
+10-07 01:42:34.775  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:34.775  1453  1453 D SensorFeature: write 32 bytes:989343928468,989360595135,1158,0
+10-07 01:42:34.817  1463  1563 D vendor.oplus.hardware.charger-V11-service: ret_value:127, read content:,328,330,4242,4242,201,80,82,1,1,0,457,4751,82,1,4500,500,500,0,0,1410065408,0,0,1,0,2,0,0,0,3,6388,98,0,4592,5760,0,0,0,0,0,0
+10-07 01:42:34.817  1463  1563 D vendor.oplus.hardware.charger-V11-service: gmtime: 2026-10-07-01-42-34
+10-07 01:42:34.817  1463  1563 D vendor.oplus.hardware.charger-V11-service: usb_online:1, ac_online:-2147483648, wireless_online:-2147483648
+10-07 01:42:34.844 12691  4947 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (89): 1 [CONTEXT service_id=168 ]
+10-07 01:42:34.853 12279 17980 E Oms-SDK.: [WearableApiManager]Service---->true
+10-07 01:42:34.853  2968 10575 W ActivityManager: Unable to start service Intent { act=com.heytap.wearable.oms.SERVICE xflg=0x4 pkg=com.heytap.health mCallingUid=10104 } U=0: not found
+10-07 01:42:34.855  9848 14054 W OPLUS_LOG_LOAD: ==LOGS PROG INFO, prog(com.android.systemui) ==
+10-07 01:42:34.855  9848 14054 E HoraeHelper: horae is not open
+10-07 01:42:34.855  9848 14054 D DynamicFramerate [DynamicFrameRateManagerImpl]: register ThermalListener failed
+10-07 01:42:34.953  1419  1524 I OriginChannel: now system_time:989538	pwm_rgb: system_time:989273, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2264, b:1081, c:5285, algo:2, end:1157, ts:989036748543	pwm_rgb: system_time:989274, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2382, g:2281, b:1081, c:5233, algo:2, end:1157, ts:989045081543	pwm_rgb: system_time:989274, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2293, b:1093, c:5259, algo:2, end:1157, ts:989053414543	pwm_rgb: system_time:989274, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2382, g:2259, b:1087, c:5238, algo:2, end:1157, ts:989061747543	pwm_rgb: system_time:989274, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2281, b:1087, c:5269, algo:2, end:66693, ts:989070080543	
+10-07 01:42:35.014  1463  1565 D BatteryChargeControl: bcc get no support from charging protocol
+10-07 01:42:35.016  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:35.016  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:35.016  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:35.028 10379 12631 D RadioProxyJ[0]: [194]> getAllCellularCellInfo
+10-07 01:42:35.031  1723  1827 D MipcProxy: handleMessage msg is 4001, instance 0
+10-07 01:42:35.031  1723  1827 D RadioProxy: getAllCellularCellInfo : response cb for instance 0
+10-07 01:42:35.032 10379 10434 D SubsysRadioResponse: getAllCellularCellInfoResponse
+10-07 01:42:35.032 10379 10434 D SubsysRadioResponse: responseAllCellularCellInfo len:5
+10-07 01:42:35.032 10379 10434 D RadioProxyJ[0]: [194]< getAllCellularCellInfoResponse ******
+10-07 01:42:35.032 10379 10379 D NetworkService[0]: getAllCellularCellInfo resp success
+10-07 01:42:35.034  1463  1513 D vendor.oplus.hardware.charger-V11-service: s_chg_user_mode: 3
+10-07 01:42:35.034  1463  1513 D vendor.oplus.hardware.charger-V11-service: scale_chg Start!!!
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 0, 3]
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 2, 9]
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 1, 3]
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 3, 3]
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 4, 3]
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 5, 3]
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 6, 9]
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: scale_chg Start!!!
+10-07 01:42:35.035  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 0, 3]
+10-07 01:42:35.036  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 2, 9]
+10-07 01:42:35.036  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 1, 3]
+10-07 01:42:35.036  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 3, 3]
+10-07 01:42:35.036  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 4, 3]
+10-07 01:42:35.036  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 5, 3]
+10-07 01:42:35.036  1463  1513 D vendor.oplus.hardware.charger-V11-service: [0, 6, 9]
+10-07 01:42:35.071  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:35.071  1405  9557 D CwbService: RGB value: 22, 72, 8, hist:1677, 1675, 1698,  rgb_state: 0
+10-07 01:42:35.072  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:35.072  1453  1453 D SensorFeature: write 32 bytes:989640220391,989656887058,1159,0
+10-07 01:42:35.075 10379 13302 D CommonApp-102-10577: transport layer data is invalid
+10-07 01:42:35.076 10379 13302 D CommonApp-102-10090: transport layer data is invalid
+10-07 01:42:35.118  1519  1519 I BufferQueueProducer: [StatusBar#100](this:0xb4000075566a82f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=59.70 dur=1005.07 max=33.05 min=16.00
+10-07 01:42:35.134  9848 11272 I SystemUi--Statusbar: OplusNetworkSpeedControllExImpl-->getTotalByte: totalRxBytes:4136348,totalTxBytes:2281662,loopbackTxBytes:48867,loopbackRxBytes:48867 ,totalBytes:6320276
+10-07 01:42:35.220  1419  1524 I OriginChannel: now system_time:989805	pwm_rgb: system_time:989538, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2293, b:1093, c:5274, algo:2, end:1158, ts:989334212471	pwm_rgb: system_time:989538, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2304, b:1111, c:5269, algo:2, end:1158, ts:989342545471	pwm_rgb: system_time:989538, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2298, b:1087, c:5269, algo:2, end:1158, ts:989350878471	pwm_rgb: system_time:989538, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2293, b:1087, c:5259, algo:2, end:1158, ts:989359211471	pwm_rgb: system_time:989538, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2281, b:1093, c:5269, algo:2, end:66694, ts:989367544471	
+10-07 01:42:35.253  1519  2220 D VRR [OTI]: handleIdle from 1 to 0
+10-07 01:42:35.253  1519  2220 I VRR [MVT]: request is same as current request, ignore it.
+10-07 01:42:35.253   974   974 I DynamicFramerate [AnimationSpeedAware]: onEventHandled: info: InputEventInfo: mX = 0, mY = 0, mAction = 0, mVsyncTime = 989838, mIsMoving = true, mUpdated = true
+10-07 01:42:35.253  2968  9953 I [UAH_CLIENT]: UahEventAcquire, cmdid:37, pkg:none, identity:OplusUAwareInputHelper
+10-07 01:42:35.253  2968 11486 D PowerManagerService: userActivityNoUpdateLocked: groupId=0, eventTime=989836, event=touch, flags=0x0, uid=1000
+10-07 01:42:35.254  2968  9575 D GestureLog_OplusMultiPointerDetector: onTouchEvent------>start, mCurNumPointers=1, mCurrStatus=0 mIsDownIntervalTimeout=true, action=0 downTime=989836 deviceId=-1
+10-07 01:42:35.255  1519  2226 D SurfaceFlinger: calculateTimeoutTime, triggerInterval = 3 sec + 0 nsec
+10-07 01:42:35.255   974   974 I DynamicFramerate [AnimationSpeedAware]: onEventHandled: info: InputEventInfo: mX = 0, mY = 0, mAction = 1, mVsyncTime = 989840, mIsMoving = false, mUpdated = true
+10-07 01:42:35.255  2968  9953 D UAH-UahAdaptHelper: adaptSetNotification identity = OplusUAwareInputHelpersrc = 1000 , type 1 ,p1 = -1 ,p2 = -1 ,p3 = -1 ,p4 =
+10-07 01:42:35.255  2968  9953 I [UAH_CLIENT]: uahRuleCtl, ruleId:1000, status:1
+10-07 01:42:35.255  2968 11486 D PowerManagerService: userActivityNoUpdateLocked: groupId=0, eventTime=989836, event=touch, flags=0x0, uid=1000
+10-07 01:42:35.256  2968 11486 D PowerManagerService: userActivityNoUpdateLocked: groupId=0, eventTime=989836, event=touch, flags=0x0, uid=1000
+10-07 01:42:35.256  2968 11486 D PowerManagerService: userActivityNoUpdateLocked: groupId=0, eventTime=989836, event=touch, flags=0x0, uid=1000
+10-07 01:42:35.257   974   974 D ViewRootImplExtImpl: the up motion event handled by client, just return
+10-07 01:42:35.269   974   974 I SurfaceControl:  setExtendedRangeBrightness sc=Surface(name=com.ace5ultra.perfkit/com.ace5ultra.perfkit.MainActivity)/@0x855333c,currentBufferRatio=1.0,desiredRatio=1.0
+10-07 01:42:35.283  1519  1519 I BufferQueueProducer: [com.ace5ultra.perfkit/com.ace5ultra.perfkit.MainActivity#236](this:0xb400007555cfa2f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=0.15 dur=72292.49 max=72183.11 min=10.80
+10-07 01:42:35.294  1433  1525 I libPerfCtl: xgfGetFPS pid:974 fps:-1
+10-07 01:42:35.294  1433  1525 I libPerfCtl: xgfGetFPS pid:9848 fps:-1
+10-07 01:42:35.312  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:35.313  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:35.313  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:35.350  2968 10575 D NotificationService--OplusNotificationFixHelper: fixAppIcon: pkg=com.android.systemui
+10-07 01:42:35.350  2968 10575 D NotificationService--OplusNotificationFixHelper: fixAppIcon: appIcon = null, pkg = com.android.systemui
+10-07 01:42:35.350 12691  4947 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (90): 1 [CONTEXT service_id=168 ]
+10-07 01:42:35.350  2968 10575 D NotificationService--NotificationRecord: isSupportRearLight , isRearLight = false mLedRM = false isMultilLed = false
+10-07 01:42:35.350 12691  4947 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (91): 1 [CONTEXT service_id=168 ]
+10-07 01:42:35.351  2968 10575 I OplusStatusBarManagerServiceEnhance:  getTopIsFullscreen mTopIsFullscreen: false
+10-07 01:42:35.351  2968  2968 D NotificationService--OplusNotificationManagerServiceExtImpl: isForwardToAssistants: false, case : Is in mMcsNotInterceptPkgList or is isSystemApp
+10-07 01:42:35.351  2968  2968 D NotificationService: This application enqueue notifications is not need postDelayed
+10-07 01:42:35.355 30102 17824 I DRS_SDK_COMMON_UploadStrategyManager: Sending 1 records, ipcBodyBytes=1167 (limit=921600), pendingBefore=1, remaining(approx)=0, targetAppId=20239
+10-07 01:42:35.355 30102 17824 I DRS_SDK_COMMON_ClientDataDao: mark as uploading size: 1
+10-07 01:42:35.362 30102 17832 I DRS_SDK_COMMON_UploadStrategyManager: on ipc success, {"success":[{"id":"2c11024e-07e8-46e3-a427-736844b51983"}],"fails":[]}
+10-07 01:42:35.362 30102 17832 I DRS_SDK_COMMON_UploadStrategyManager: map: {2c11024e-07e8-46e3-a427-736844b51983=980}
+10-07 01:42:35.362 30102 17832 I DRS_SDK_COMMON_UploadStrategyManager: successArr: [{"id":"2c11024e-07e8-46e3-a427-736844b51983"}]
+10-07 01:42:35.362 30102 17832 I DRS_SDK_COMMON_UploadStrategyManager: successIds: [980]
+10-07 01:42:35.362 30102 17832 I DRS_SDK_COMMON_UploadStrategyManager: fail groups: {}
+10-07 01:42:35.362 30102 17832 I DRS_SDK_COMMON_UploadStrategyManager: totals: []
+10-07 01:42:35.362 30102 17832 I DRS_SDK_COMMON_UploadStrategyManager: remainingIds: []
+10-07 01:42:35.362 30102 17832 I DRS_SDK_COMMON_ClientDataCacheManager: delete size: 1
+10-07 01:42:35.362  9825 13349 I DRS_LOG_PrepareStep[151]: buildDcsEventInfo: appId=20239, eventGroup=gamespace, source=dcs_apk_ipc, parsedKeys=[SYNC_ERROR, REPORT_TIME]
+10-07 01:42:35.366  9825 13349 I DRS_LOG_DbIngestStep[151]: ingest_success line=nr appId=20239 size=1 inserted=1
+10-07 01:42:35.367  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:35.367  1405  9557 D CwbService: RGB value: 20, 64, 7, hist:1878, 1561, 1887,  rgb_state: 0
+10-07 01:42:35.367 30102 17832 I DRS_SDK_COMMON_UploadStrategyManager: IPC upload successful, deleted 1 records
+10-07 01:42:35.368  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:35.368  1453  1453 D SensorFeature: write 32 bytes:989935751160,989952417827,1160,0
+10-07 01:42:35.472  1419  1522 W AString : ctor got NULL, using empty string instead
+10-07 01:42:35.473  1419  1522 I SensorSavedChannel: [-606,79,1116]==>gyro_bias.json
+10-07 01:42:35.479  1419  1524 I OriginChannel: now system_time:990064	pwm_rgb: system_time:989805, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2293, b:1093, c:5269, algo:2, end:1159, ts:989631186087	pwm_rgb: system_time:989805, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2377, g:2281, b:1093, c:5243, algo:2, end:1159, ts:989639519087	pwm_rgb: system_time:989805, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2298, b:1093, c:5295, algo:2, end:1159, ts:989647852087	pwm_rgb: system_time:989805, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2388, g:2281, b:1087, c:5238, algo:2, end:1159, ts:989656185087	pwm_rgb: system_time:989805, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2293, b:1087, c:5280, algo:2, end:66695, ts:989664518087	
+10-07 01:42:35.479  2968  5044 D FusionLightNextGen: process end reported = 1, mode: 1, cnt: 3340, lux 40.2, cct -1.0, r/g/b/c: 2420.0/2281.0/1081.0/5248.0, R/G/B: 20.0/64.0/7.0, bri 1244.0, match 1.00, ir 0.052749, conf 0.0, ts 989952661307
+10-07 01:42:35.571  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsRepository-->updateLiveAlert: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159 remindType=0 shouldReminderAgain=true
+10-07 01:42:35.572  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsInteractor-->notifyLiveAlerts: PostAction(sbnList=[StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))])
+10-07 01:42:35.572  9848  9848 I PluginSeedling--Base: SeedlingCardServerProvider-->seedling provider called com.oplus.card.server.systemui.provider w/ live_alert_notification_post 10159 9848 0
+10-07 01:42:35.572  9848  9848 I PluginSeedling--Base: NotificationLiveAlertProvider-->post sbn: [StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))]
+10-07 01:42:35.575  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:35.575  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_NOTIFICATION, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:35.575  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:35.575  9848  9848 I PluginSeedling--Notification: NotificationRepository-->onDataChanged, [LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:35.575  9848  9848 I PluginSeedling--Notification:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0]
+10-07 01:42:35.575  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:35.575  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_STATUS_BAR, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_STATUS_BAR, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: false, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:35.575  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_SM, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:35.576  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:35.576  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: left, style:CapsuleSectionTemplateData(style=IMAGE_TEXT_STYLE, moduleDic={pic=BitmapModel(src=android.graphics.Bitmap@430620, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)}, backgroundColor=null)
+10-07 01:42:35.576  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: right, style:CapsuleSectionTemplateData(style=TEXT_IMAGE_STYLE, moduleDic={title=TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=1, textWeight=null, textStyle=null, textSize=null, textColor=-1)}, backgroundColor=null)
+10-07 01:42:35.576  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.n@b689d48, BitmapModel(src=android.graphics.Bitmap@430620, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:35.576  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:35.576  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2c98c6a@CardNormalSection, [title, content]
+10-07 01:42:35.576  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@f9673af, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@42a1ac1, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@430620, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@7126077@CardNormalSection, [title, content, pic]
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, BitmapModel(src=android.graphics.Bitmap@148d99e, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=98, height=98, radius=21.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, TextModel(spanAttr=null, bgColor=0, repeat=1, maxLines=1, textWeight=REGULAR, textStyle=null, textSize=42.0, textColor=-1)
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2115425@CardNormalSection, [title, content]
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@625183, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:35.577  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@107e9f5, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@430620, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:35.583  9848  9848 I PluginSeedling--Template: CapsulePage-->page-frame 350 -> 350, true
+10-07 01:42:35.608  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:35.609  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:35.609  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:35.664  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:35.664  1405  9557 D CwbService: RGB value: 23, 75, 8, hist:1620, 1611, 1649,  rgb_state: 0
+10-07 01:42:35.664  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:35.664  1453  1453 D SensorFeature: write 32 bytes:990232708468,990249375135,1161,0
+10-07 01:42:35.714  1474 10282 W SlcHalService: currentC:0 , nextC:70
+10-07 01:42:35.714  1474 10282 W SlcHalService: set CG 1,70 error
+10-07 01:42:35.714  1474 10282 W SlcHalService: currentG:100 , nextG:30
+10-07 01:42:35.714  1474 10282 W SlcHalService: set CG 2,30 error
+10-07 01:42:35.743  1419  1524 I OriginChannel: now system_time:990328	pwm_rgb: system_time:990064, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2398, g:2270, b:1093, c:5227, algo:2, end:1160, ts:989919329307	pwm_rgb: system_time:990064, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2276, b:1087, c:5259, algo:2, end:1160, ts:989927662307	pwm_rgb: system_time:990064, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2298, b:1111, c:5233, algo:2, end:1160, ts:989935995307	pwm_rgb: system_time:990064, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2281, b:1081, c:5248, algo:2, end:1160, ts:989944328307	pwm_rgb: system_time:990064, lux:72, time_delta:16, pwm_turbo:1, bri:1244, r:2377, g:2247, b:1087, c:5217, algo:2, end:66696, ts:989952661307	
+10-07 01:42:35.761 12691  4947 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (92): 1 [CONTEXT service_id=168 ]
+10-07 01:42:35.777  1405  9557 I hwcomposer: [HWCDisplay] (0 updateFps():4519), (type:1, mode:2) fps:59.695644,dur:1005.10,max:33.09,min:15.41  
+10-07 01:42:35.905  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:35.905  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:35.906  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:35.960  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:35.960  1405  9557 D CwbService: RGB value: 20, 66, 7, hist:1781, 1781, 1799,  rgb_state: 0
+10-07 01:42:35.961  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:35.961  1453  1453 D SensorFeature: write 32 bytes:990529383237,990546049904,1162,0
+10-07 01:42:36.007  1419  1524 I OriginChannel: now system_time:990592	pwm_rgb: system_time:990328, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2398, g:2287, b:1099, c:5264, algo:2, end:1161, ts:990216831149	pwm_rgb: system_time:990328, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2304, b:1093, c:5274, algo:2, end:1161, ts:990225164149	pwm_rgb: system_time:990328, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2281, b:1081, c:5254, algo:2, end:1161, ts:990233497149	pwm_rgb: system_time:990328, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2436, g:2287, b:1093, c:5280, algo:2, end:1161, ts:990241830149	pwm_rgb: system_time:990328, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2388, g:2293, b:1093, c:5264, algo:2, end:66697, ts:990250163149	
+10-07 01:42:36.015  1463  1565 D BatteryChargeControl: bcc get no support from charging protocol
+10-07 01:42:36.107 10379 13302 D CommonApp-102-10577: transport layer data is invalid
+10-07 01:42:36.107 10379 13302 D CommonApp-102-10090: transport layer data is invalid
+10-07 01:42:36.123  1519  1519 I BufferQueueProducer: [StatusBar#100](this:0xb4000075566a82f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=58.69 dur=1005.28 max=32.91 min=16.18
+10-07 01:42:36.136  9848 11272 I SystemUi--Statusbar: OplusNetworkSpeedControllExImpl-->getTotalByte: totalRxBytes:4137233,totalTxBytes:2282250,loopbackTxBytes:48867,loopbackRxBytes:48867 ,totalBytes:6321749
+10-07 01:42:36.203  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:36.204  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:36.204  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:36.257  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:36.257  1405  9557 D CwbService: RGB value: 23, 73, 8, hist:1592, 1573, 1623,  rgb_state: 0
+10-07 01:42:36.263  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:36.263  1453  1453 D SensorFeature: write 32 bytes:990825908468,990842575135,1163,0
+10-07 01:42:36.275  1419  1524 I OriginChannel: now system_time:990860	pwm_rgb: system_time:990592, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2377, g:2259, b:1099, c:5212, algo:2, end:1162, ts:990513281683	pwm_rgb: system_time:990592, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2270, b:1069, c:5259, algo:2, end:1162, ts:990521614683	pwm_rgb: system_time:990592, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2287, b:1117, c:5243, algo:2, end:1162, ts:990529947683	pwm_rgb: system_time:990592, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2264, b:1081, c:5248, algo:2, end:1162, ts:990538280683	pwm_rgb: system_time:990592, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2388, g:2270, b:1099, c:5227, algo:2, end:66698, ts:990546613683	
+10-07 01:42:36.294  1433  1525 I libPerfCtl: xgfGetFPS pid:974 fps:-1
+10-07 01:42:36.294  1433  1525 I libPerfCtl: xgfGetFPS pid:9848 fps:-1
+10-07 01:42:36.356  2968 10575 D NotificationService--OplusNotificationFixHelper: fixAppIcon: pkg=com.android.systemui
+10-07 01:42:36.356  2968 10575 D NotificationService--OplusNotificationFixHelper: fixAppIcon: appIcon = null, pkg = com.android.systemui
+10-07 01:42:36.357  2968 10575 D NotificationService--NotificationRecord: isSupportRearLight , isRearLight = false mLedRM = false isMultilLed = false
+10-07 01:42:36.358  2968 10575 I OplusStatusBarManagerServiceEnhance:  getTopIsFullscreen mTopIsFullscreen: false
+10-07 01:42:36.358  2968  2968 D NotificationService--OplusNotificationManagerServiceExtImpl: isForwardToAssistants: false, case : Is in mMcsNotInterceptPkgList or is isSystemApp
+10-07 01:42:36.358  2968  2968 D NotificationService: This application enqueue notifications is not need postDelayed
+10-07 01:42:36.394  1723  1827 D MipcProxy: handleMessage msg is 2441, instance 0
+10-07 01:42:36.394  1723  1827 D MipcProxy: handleAllCellInfoInd for instance 0
+10-07 01:42:36.395 10379 10434 D SubsysRadioIndication[0]: radioAllCellInfoInd
+10-07 01:42:36.396 10379 10379 D NetworkService[0]: handleMessage what:1004
+10-07 01:42:36.396 10379 10379 D NetworkService[0]: handledIndReportHandler map not containsKey id 1
+10-07 01:42:36.396 10379 10379 D NetworkService[0]: handledIndReportMessenger map not containsKey id 1
+10-07 01:42:36.396 10379 10379 D NetworkService[0]: handledIndReportCallback map not containsKey id 1
+10-07 01:42:36.504  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:36.504  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:36.504  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:36.570  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:36.570  1405  9557 D CwbService: RGB value: 22, 71, 8, hist:1690, 1685, 1708,  rgb_state: 0
+10-07 01:42:36.570  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:36.570  1453  1453 D SensorFeature: write 32 bytes:991138836699,991155503366,1164,0
+10-07 01:42:36.576  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsRepository-->updateLiveAlert: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159 remindType=0 shouldReminderAgain=true
+10-07 01:42:36.577  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsInteractor-->notifyLiveAlerts: PostAction(sbnList=[StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))])
+10-07 01:42:36.577  9848  9848 I PluginSeedling--Base: SeedlingCardServerProvider-->seedling provider called com.oplus.card.server.systemui.provider w/ live_alert_notification_post 10159 9848 0
+10-07 01:42:36.579  9848  9848 I PluginSeedling--Base: NotificationLiveAlertProvider-->post sbn: [StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))]
+10-07 01:42:36.582  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:36.582  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_NOTIFICATION, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:36.582  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:36.582  9848  9848 I PluginSeedling--Notification: NotificationRepository-->onDataChanged, [LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:36.582  9848  9848 I PluginSeedling--Notification:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0]
+10-07 01:42:36.582  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:36.582  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_STATUS_BAR, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_STATUS_BAR, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: false, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:36.582  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_SM, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:36.583  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:36.583  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: left, style:CapsuleSectionTemplateData(style=IMAGE_TEXT_STYLE, moduleDic={pic=BitmapModel(src=android.graphics.Bitmap@27a4505, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)}, backgroundColor=null)
+10-07 01:42:36.583  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: right, style:CapsuleSectionTemplateData(style=TEXT_IMAGE_STYLE, moduleDic={title=TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=1, textWeight=null, textStyle=null, textSize=null, textColor=-1)}, backgroundColor=null)
+10-07 01:42:36.583  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.n@b689d48, BitmapModel(src=android.graphics.Bitmap@27a4505, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:36.584  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:36.584  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2c98c6a@CardNormalSection, [title, content]
+10-07 01:42:36.584  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@f9673af, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:36.584  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@42a1ac1, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@27a4505, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:36.585  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:36.585  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@7126077@CardNormalSection, [title, content, pic]
+10-07 01:42:36.585  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, BitmapModel(src=android.graphics.Bitmap@cb1678b, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=98, height=98, radius=21.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:36.585  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, TextModel(spanAttr=null, bgColor=0, repeat=1, maxLines=1, textWeight=REGULAR, textStyle=null, textSize=42.0, textColor=-1)
+10-07 01:42:36.586  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:36.586  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2115425@CardNormalSection, [title, content]
+10-07 01:42:36.586  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@625183, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:36.587  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@107e9f5, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@27a4505, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:36.591  9848  9848 I PluginSeedling--Template: CapsulePage-->page-frame 350 -> 350, true
+10-07 01:42:36.629  9564  9564 D WifiHAL : WifiRequest::create vendor command to iface 40, vendor_id=0x1a11, subcmd=0x1200, res=0
+10-07 01:42:36.630  9564  9564 I WifiHAL : LLS RSP: data=0xb4000076ff81a020, len=4028
+10-07 01:42:36.630  9564  9564 I WifiHAL : LLS check_data_sanity: 1829: current_radio_stat->num_channels=13
+10-07 01:42:36.630  9564  9564 I WifiHAL : LLS check_data_sanity: 1829: current_radio_stat->num_channels=24
+10-07 01:42:36.630  9564  9564 I WifiHAL : LLS check_data_sanity: confirmed_size=4028, len=4028
+10-07 01:42:36.631  2968  9170 E WifiStaIfaceAidlImpl: getCachedScanData failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+10-07 01:42:36.638 10379 10379 D VendorWifiService: onEvent event:9,action:1
+10-07 01:42:36.639  2968  9502 D ScorerUtils: isLowTraffic: txTputKBps=0, rxTputKBps=0
+10-07 01:42:36.639  2968  9502 D OplusWifiPower_TriggerCenter: mComponentCallback: wifistat
+10-07 01:42:36.714  1474 10282 W SlcHalService: currentC:0 , nextC:70
+10-07 01:42:36.715  1474 10282 W SlcHalService: set CG 1,70 error
+10-07 01:42:36.715  1474 10282 W SlcHalService: currentG:100 , nextG:30
+10-07 01:42:36.715  1474 10282 W SlcHalService: set CG 2,30 error
+10-07 01:42:36.783  1405  9557 I hwcomposer: [HWCDisplay] (0 updateFps():4519), (type:1, mode:2) fps:58.685696,dur:1005.36,max:49.90,min:15.75  
+10-07 01:42:36.797  1419  1524 I OriginChannel: now system_time:991382	pwm_rgb: system_time:990860, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2310, b:1111, c:5274, algo:2, end:1163, ts:990794081221	pwm_rgb: system_time:990860, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2304, b:1093, c:5280, algo:2, end:1163, ts:990802414221	pwm_rgb: system_time:990860, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2281, b:1081, c:5259, algo:2, end:1163, ts:990810747221	pwm_rgb: system_time:990860, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2293, b:1093, c:5285, algo:2, end:1163, ts:990819080221	pwm_rgb: system_time:990860, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2293, b:1087, c:5238, algo:2, end:66699, ts:990827413221	
+10-07 01:42:36.812  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:36.812  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:36.813  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:36.866  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:36.867  1405  9557 D CwbService: RGB value: 20, 65, 7, hist:1887, 1552, 1896,  rgb_state: 0
+10-07 01:42:36.867  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:36.867  1453  1453 D SensorFeature: write 32 bytes:991435582852,991452249519,1165,0
+10-07 01:42:36.907 18743 18743 W dumpsys : Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: window
+10-07 01:42:36.909  2968  4898 D OplusResolverIntentUtil: The MIME data type of this intent is others
+10-07 01:42:36.909  2968  4898 D OplusResolveInfoHelper: getCloudBlackList = {excel=[www.imxiaoyu.com.musiceditor], txt=[www.imxiaoyu.com.musiceditor], pdf=[www.imxiaoyu.com.musiceditor], ppt=[www.imxiaoyu.com.musiceditor], browser=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader], word=[www.imxiaoyu.com.musiceditor], gallery=[www.imxiaoyu.com.musiceditor], others=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader]}
+10-07 01:42:36.910  2968  4898 D OplusResolverIntentUtil: The MIME data type of this intent is others
+10-07 01:42:36.911  2968  4898 D OplusResolveInfoHelper: getCloudBlackList = {excel=[www.imxiaoyu.com.musiceditor], txt=[www.imxiaoyu.com.musiceditor], pdf=[www.imxiaoyu.com.musiceditor], ppt=[www.imxiaoyu.com.musiceditor], browser=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader], word=[www.imxiaoyu.com.musiceditor], gallery=[www.imxiaoyu.com.musiceditor], others=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader]}
+10-07 01:42:36.911  2968  4898 D OplusResolverIntentUtil: The MIME data type of this intent is others
+10-07 01:42:36.912  2968  4898 D OplusResolveInfoHelper: getCloudBlackList = {excel=[www.imxiaoyu.com.musiceditor], txt=[www.imxiaoyu.com.musiceditor], pdf=[www.imxiaoyu.com.musiceditor], ppt=[www.imxiaoyu.com.musiceditor], browser=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader], word=[www.imxiaoyu.com.musiceditor], gallery=[www.imxiaoyu.com.musiceditor], others=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader]}
+10-07 01:42:36.912  2968  4898 D OplusResolverIntentUtil: The MIME data type of this intent is others
+10-07 01:42:36.912  2968  4898 D OplusResolveInfoHelper: getCloudBlackList = {excel=[www.imxiaoyu.com.musiceditor], txt=[www.imxiaoyu.com.musiceditor], pdf=[www.imxiaoyu.com.musiceditor], ppt=[www.imxiaoyu.com.musiceditor], browser=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader], word=[www.imxiaoyu.com.musiceditor], gallery=[www.imxiaoyu.com.musiceditor], others=[www.imxiaoyu.com.musiceditor, com.esbook.reader, com.qidian.QDReader]}
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: Write failure
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: java.io.IOException: write failed: EPIPE (Broken pipe)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at libcore.io.IoBridge.write(IoBridge.java:651)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at java.io.FileOutputStream.write(FileOutputStream.java:436)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flushBytesLocked(FastPrintWriter.java:355)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flushLocked(FastPrintWriter.java:378)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.appendLocked(FastPrintWriter.java:323)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.print(FastPrintWriter.java:500)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at java.io.PrintWriter.println(PrintWriter.java:822)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.InsetsPolicy.dump(InsetsPolicy.java:885)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.DisplayContent.dump(DisplayContent.java:4635)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.RootWindowContainer.dumpDisplayContents(RootWindowContainer.java:1272)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.doDump(WindowManagerService.java:8003)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.-$$Nest$mdoDump(Unknown Source:0)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService$3.dump(WindowManagerService.java:597)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.utils.PriorityDump.dump(PriorityDump.java:182)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.dump(WindowManagerService.java:7816)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.OplusWindowManagerService.dump(OplusWindowManagerService.java:311)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at android.os.Binder.doDump(Binder.java:1089)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at android.os.Binder.dump(Binder.java:1075)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at android.os.Binder.onTransact(Binder.java:945)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at android.view.IWindowManager$Stub.onTransact(IWindowManager.java:3510)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.WindowManagerService.onTransact(WindowManagerService.java:1655)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at com.android.server.wm.OplusWindowManagerService.onTransact(OplusWindowManagerService.java:277)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at android.os.Binder.execTransactInternal(Binder.java:1448)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at android.os.Binder.execTransact(Binder.java:1382)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: Caused by: android.system.ErrnoException: write failed: EPIPE (Broken pipe)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at libcore.io.Linux.writeBytes(Native Method)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at libcore.io.Linux.write(Linux.java:336)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at libcore.io.ForwardingOs.write(ForwardingOs.java:948)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at libcore.io.BlockGuardOs.write(BlockGuardOs.java:448)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	at libcore.io.IoBridge.write(IoBridge.java:646)
+10-07 01:42:36.915  2968  4898 W FastPrintWriter: 	... 23 more
+10-07 01:42:37.016  1463  1565 D BatteryChargeControl: bcc get no support from charging protocol
+10-07 01:42:37.066  1419  1524 I OriginChannel: now system_time:991651	pwm_rgb: system_time:991382, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2287, b:1093, c:5274, algo:2, end:131072, ts:991129295078	
+10-07 01:42:37.066  2968  5044 D FusionLightNextGen: process end reported = 1, mode: 1, cnt: 3345, lux 39.4, cct -1.0, r/g/b/c: 2420.0/2281.0/1081.0/5254.0, R/G/B: 20.0/65.0/7.0, bri 1244.0, match 1.00, ir 0.052143, conf 0.0, ts 991460188909
+10-07 01:42:37.109  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:37.109  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:37.110  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:37.124 10379 13302 D CommonApp-102-10577: transport layer data is invalid
+10-07 01:42:37.124 10379 13302 D CommonApp-102-10090: transport layer data is invalid
+10-07 01:42:37.128  1519  1519 I BufferQueueProducer: [StatusBar#100](this:0xb4000075566a82f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=58.70 dur=1005.15 max=49.61 min=15.96
+10-07 01:42:37.137  2968  9502 D OplusGtxController: no disable gtx lock hold, enable gtx
+10-07 01:42:37.137  9848 11272 I SystemUi--Statusbar: OplusNetworkSpeedControllExImpl-->getTotalByte: totalRxBytes:4137293,totalTxBytes:2282458,loopbackTxBytes:48867,loopbackRxBytes:48867 ,totalBytes:6322017
+10-07 01:42:37.137  2968  9502 D OplusGtxController: setGtxEnabled true fail.
+10-07 01:42:37.163  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:37.163  1405  9557 D CwbService: RGB value: 23, 74, 8, hist:1626, 1614, 1654,  rgb_state: 0
+10-07 01:42:37.164  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:37.164  1453  1453 D SensorFeature: write 32 bytes:991732154852,991748821519,1166,0
+10-07 01:42:37.294  1433  1525 I libPerfCtl: xgfGetFPS pid:974 fps:-1
+10-07 01:42:37.295  1433  1525 I libPerfCtl: xgfGetFPS pid:9848 fps:-1
+10-07 01:42:37.327  1419  1524 I OriginChannel: now system_time:991912	pwm_rgb: system_time:991651, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2293, b:1087, c:5259, algo:2, end:1165, ts:991426856909	pwm_rgb: system_time:991651, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2382, g:2253, b:1087, c:5207, algo:2, end:1165, ts:991435189909	pwm_rgb: system_time:991651, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2281, b:1081, c:5254, algo:2, end:1165, ts:991443522909	pwm_rgb: system_time:991651, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2276, b:1105, c:5243, algo:2, end:1165, ts:991451855909	pwm_rgb: system_time:991651, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2270, b:1087, c:5248, algo:2, end:66701, ts:991460188909	
+10-07 01:42:37.367  2968  4898 D NotificationService--OplusNotificationFixHelper: fixAppIcon: pkg=com.android.systemui
+10-07 01:42:37.368  2968  4898 D NotificationService--OplusNotificationFixHelper: fixAppIcon: appIcon = null, pkg = com.android.systemui
+10-07 01:42:37.369  2968  4898 D NotificationService--NotificationRecord: isSupportRearLight , isRearLight = false mLedRM = false isMultilLed = false
+10-07 01:42:37.371  2968  4898 I OplusStatusBarManagerServiceEnhance:  getTopIsFullscreen mTopIsFullscreen: false
+10-07 01:42:37.372  2968  2968 D NotificationService--OplusNotificationManagerServiceExtImpl: isForwardToAssistants: false, case : Is in mMcsNotInterceptPkgList or is isSystemApp
+10-07 01:42:37.372  2968  2968 D NotificationService: This application enqueue notifications is not need postDelayed
+10-07 01:42:37.379  1859  1859 I OplusTouchDaemon: ts_run_service: shellback temperature updated 29 (29500)
+10-07 01:42:37.398  2968 10575 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@683b84d
+10-07 01:42:37.405  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:37.406  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:37.406  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:37.416 14870  4552 E midasd  : MidasNativeBinder::registBinder horae failed!
+10-07 01:42:37.416 14870  4552 I midasd  : Thermal: connect Horae service failed
+10-07 01:42:37.461  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:37.461  1405  9557 D CwbService: RGB value: 20, 65, 7, hist:1796, 1790, 1807,  rgb_state: 0
+10-07 01:42:37.462  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:37.462  1453  1453 D SensorFeature: write 32 bytes:992030082929,992046749596,1167,0
+10-07 01:42:37.473  1419  1522 W AString : ctor got NULL, using empty string instead
+10-07 01:42:37.473  1419  1522 I SensorSavedChannel: [-675,37,1207]==>gyro_bias.json
+10-07 01:42:37.578  2968  9591 W OPLUS_LOG_LOAD: ==LOGS PROG INFO, prog(system_server) ==
+10-07 01:42:37.578  2968  9591 E HoraeHelper: horae is not open
+10-07 01:42:37.589  1419  1524 I OriginChannel: now system_time:992174	pwm_rgb: system_time:991912, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2436, g:2298, b:1087, c:5285, algo:2, end:1166, ts:991723344285	pwm_rgb: system_time:991912, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2393, g:2287, b:1087, c:5274, algo:2, end:1166, ts:991731677285	pwm_rgb: system_time:991912, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2298, b:1087, c:5280, algo:2, end:1166, ts:991740010285	pwm_rgb: system_time:991912, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2293, b:1099, c:5238, algo:2, end:1166, ts:991748343285	pwm_rgb: system_time:991912, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2298, b:1087, c:5274, algo:2, end:66702, ts:991756676285	
+10-07 01:42:37.589  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsRepository-->updateLiveAlert: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159 remindType=0 shouldReminderAgain=true
+10-07 01:42:37.592  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsInteractor-->notifyLiveAlerts: PostAction(sbnList=[StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))])
+10-07 01:42:37.593  9848  9848 I PluginSeedling--Base: SeedlingCardServerProvider-->seedling provider called com.oplus.card.server.systemui.provider w/ live_alert_notification_post 10159 9848 0
+10-07 01:42:37.593  9848  9848 I PluginSeedling--Base: NotificationLiveAlertProvider-->post sbn: [StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))]
+10-07 01:42:37.609  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:37.610  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_NOTIFICATION, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:37.610  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:37.610  9848  9848 I PluginSeedling--Notification: NotificationRepository-->onDataChanged, [LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:37.610  9848  9848 I PluginSeedling--Notification:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0]
+10-07 01:42:37.612  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:37.613  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_STATUS_BAR, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_STATUS_BAR, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: false, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:37.613  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_SM, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:37.616  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:37.618  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: left, style:CapsuleSectionTemplateData(style=IMAGE_TEXT_STYLE, moduleDic={pic=BitmapModel(src=android.graphics.Bitmap@e5f0257, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)}, backgroundColor=null)
+10-07 01:42:37.618  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: right, style:CapsuleSectionTemplateData(style=TEXT_IMAGE_STYLE, moduleDic={title=TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=1, textWeight=null, textStyle=null, textSize=null, textColor=-1)}, backgroundColor=null)
+10-07 01:42:37.618  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.n@b689d48, BitmapModel(src=android.graphics.Bitmap@e5f0257, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:37.620  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:37.621  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2c98c6a@CardNormalSection, [title, content]
+10-07 01:42:37.622  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@f9673af, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:37.622  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@42a1ac1, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@e5f0257, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:37.623  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:37.624  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@7126077@CardNormalSection, [title, content, pic]
+10-07 01:42:37.624  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, BitmapModel(src=android.graphics.Bitmap@94a622d, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=98, height=98, radius=21.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:37.625  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, TextModel(spanAttr=null, bgColor=0, repeat=1, maxLines=1, textWeight=REGULAR, textStyle=null, textSize=42.0, textColor=-1)
+10-07 01:42:37.626  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:37.627  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2115425@CardNormalSection, [title, content]
+10-07 01:42:37.627  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@625183, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:37.628  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@107e9f5, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@e5f0257, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:37.631  9848  9848 I PluginSeedling--Template: CapsulePage-->page-frame 350 -> 350, true
+10-07 01:42:37.704  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:37.705  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:37.705  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:37.715  1474 10282 W SlcHalService: currentC:0 , nextC:80
+10-07 01:42:37.715  1474 10282 W SlcHalService: set CG 1,80 error
+10-07 01:42:37.715  1474 10282 W SlcHalService: currentG:100 , nextG:20
+10-07 01:42:37.715  1474 10282 W SlcHalService: set CG 2,20 error
+10-07 01:42:37.756  1519  2220 D VRR [OTI]: handleIdle from 0 to 1
+10-07 01:42:37.756  1519  2220 I VRR [MVT]: request is same as current request, ignore it.
+10-07 01:42:37.759  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:37.761  1405  9557 D CwbService: RGB value: 23, 74, 8, hist:1595, 1578, 1623,  rgb_state: 0
+10-07 01:42:37.762  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:37.763  1453  1453 D SensorFeature: write 32 bytes:992329693083,992346359750,1168,0
+10-07 01:42:37.768 30003 31436 D IDHelper: 2019
+10-07 01:42:37.772  2968 10575 D OomAdjuster: Not killing cached processes
+10-07 01:42:37.790  1405  9557 I hwcomposer: [HWCDisplay] (0 updateFps():4519), (type:1, mode:2) fps:57.592457,dur:1007.08,max:32.64,min:15.29  
+10-07 01:42:37.795  2968  3779 D AES     : AEEIOCTL_GET/SET_SF_STATE IOCTL,cmd= 1074294797, lParam=0. 
+10-07 01:42:37.796  2968  3779 D AES     : AEEIOCTL_RT_MON_Kick IOCTL,cmd= 2147774474, lParam=300. 
+10-07 01:42:37.853  1419  1524 I OriginChannel: now system_time:992438	pwm_rgb: system_time:992174, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2270, b:1087, c:5254, algo:2, end:1167, ts:992020808259	pwm_rgb: system_time:992175, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2393, g:2259, b:1099, c:5238, algo:2, end:1167, ts:992029141259	pwm_rgb: system_time:992175, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2270, b:1075, c:5238, algo:2, end:1167, ts:992037474259	pwm_rgb: system_time:992175, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2281, b:1111, c:5227, algo:2, end:1167, ts:992045807259	pwm_rgb: system_time:992175, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2276, b:1087, c:5254, algo:2, end:66703, ts:992054140259	
+10-07 01:42:38.002  2968 10245 I OplusHansManager : uid=10436, pkg=com.tencent.mobileqq F enter(), M stay=5
+10-07 01:42:38.005  1405  1428 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:38.005  1405  1428 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:38.006  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:38.007 28690 28690 D IHansComunication: HANS sendMessageToKernel: threadId = 485838785600, netLinkSetup = 1, type = PKG, targetUid = 10436, pkgCmd = ADD_ONE_UID
+10-07 01:42:38.012  2968 10245 I OplusHansManager : freeze uid: 10436 com.tencent.mobileqq pids: [31042, 28992] scene: LcdOn
+10-07 01:42:38.013  2968 31170 D MediaFocusControlExtImpl: onUidFrozenChanged success + uid = 10436, frozen = true
+10-07 01:42:38.013  2968 10251 D BroadcastQueue: setDeferPolicy processName: {com.tencent.mobileqq, com.tencent.mobileqq:MSF} uid: 10436 policy: 1 defer: true
+10-07 01:42:38.013  2968 10251 I OplusHansManager : p_BC uid=10436 pkg=com.tencent.mobileqq
+10-07 01:42:38.013  2968 10251 I OplusBinderProxy: proxyBinder uid: 10436 pkg: com.tencent.mobileqq proxy: true calling: OFreezer
+10-07 01:42:38.013  2968  9092 D OplusProxyWakeLock: add uid: 10436 wakelock: lock:202381787 PARTIAL_WAKE_LOCK                 'MSF:W... ' (uid=10436 pid=28992)to FroceReleaseWakeLock list
+10-07 01:42:38.013  2968 10251 I OplusHansManager : a_alarm 10436
+10-07 01:42:38.013  2968 10251 D OplusAlarmAdjustment: alignAlarmsByUid(), uid=10436, pkgName=com.tencent.mobileqq, actions=null, procs=null, requester=1
+10-07 01:42:38.013  2968  8955 D OplusAlarmAdjustMap: addAlignUid, uid=10436, pkgName=com.tencent.mobileqq, requester=1, mode=1
+10-07 01:42:38.014 28690 28690 D IHansComunication: HANS sendMessageToKernel: threadId = 485838785600, netLinkSetup = 1, type = PKG, targetUid = 10436, pkgCmd = ADD_ONE_UID
+10-07 01:42:38.014  2968 10251 I LocationFreezeProc: will freezeLocationProcess for com.tencent.mobileqq, 10436, true, false
+10-07 01:42:38.014  2968 10251 I LocationFreezeProc: Executing freeze operation for com.tencent.mobileqq, 10436, true, false
+10-07 01:42:38.014  2968 10251 W LocationFreezeProc: Do nothing for the app is not record!
+10-07 01:42:38.014  2968 10251 I OplusHansManager : p_gps: uid 10436 result false
+10-07 01:42:38.015  2968 11481 I OStatsManager_OplusBatteryStatsManager: updateStateTime: PkgName = com.tencent.mobileqq, uid = 10436, state to em, mForegroundCnt = 0, isFg = false
+10-07 01:42:38.015  2968  9658 E OAppNetControlService: failed to destroy socket for uid:10436 pid:31042, mismatch proc config!
+10-07 01:42:38.015  2968 10251 I OplusHansManager : p_BtScan: uid 10436 isProxy true
+10-07 01:42:38.016  2968 10251 D OplusHansManager : onUidHansStateChanged: uid = 10436, isFreeze = true, frozenStatus = 1
+10-07 01:42:38.016  1463  1565 D BatteryChargeControl: bcc get no support from charging protocol
+10-07 01:42:38.070  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:38.071  1405  1428 D CwbService: RGB value: 22, 71, 8, hist:1708, 1703, 1726,  rgb_state: 0
+10-07 01:42:38.072  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:38.072  1453  1453 D SensorFeature: write 32 bytes:992639896391,992656563058,1169,0
+10-07 01:42:38.120  1419  1524 I OriginChannel: now system_time:992705	pwm_rgb: system_time:992438, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2298, b:1087, c:5280, algo:2, end:1168, ts:992317837778	pwm_rgb: system_time:992439, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2287, b:1081, c:5259, algo:2, end:1168, ts:992326170778	pwm_rgb: system_time:992439, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2293, b:1093, c:5290, algo:2, end:1168, ts:992334503778	pwm_rgb: system_time:992439, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2393, g:2270, b:1087, c:5254, algo:2, end:1168, ts:992342836778	pwm_rgb: system_time:992439, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2304, b:1099, c:5274, algo:2, end:66704, ts:992351169778	
+10-07 01:42:38.134  1519  1519 I BufferQueueProducer: [StatusBar#100](this:0xb4000075566a82f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=57.66 dur=1005.83 max=32.80 min=15.66
+10-07 01:42:38.142  9848 11272 I SystemUi--Statusbar: OplusNetworkSpeedControllExImpl-->getTotalByte: totalRxBytes:4137768,totalTxBytes:2282857,loopbackTxBytes:49266,loopbackRxBytes:49266 ,totalBytes:6322093
+10-07 01:42:38.149 10379 13302 D CommonApp-102-10577: transport layer data is invalid
+10-07 01:42:38.150 10379 13302 D CommonApp-102-10090: transport layer data is invalid
+10-07 01:42:38.213 28690 28690 D IHansComunication: HANS sendMessageToKernel: threadId = 485838785600, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10436, pkgCmd = PKG_CMD_MAX
+10-07 01:42:38.295  1433  1525 I libPerfCtl: xgfGetFPS pid:9848 fps:-1
+10-07 01:42:38.313  1405  1428 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:38.314  1405  1428 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:38.315  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:38.368  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:38.370  1405  1428 D CwbService: RGB value: 20, 65, 7, hist:1893, 1552, 1901,  rgb_state: 0
+10-07 01:42:38.372  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:38.372  1453  1453 D SensorFeature: write 32 bytes:992938900699,992955567366,1170,0
+10-07 01:42:38.380  1419  1524 I OriginChannel: now system_time:992965	pwm_rgb: system_time:992705, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2276, b:1093, c:5264, algo:2, end:1169, ts:992631037610	pwm_rgb: system_time:992705, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2304, b:1111, c:5259, algo:2, end:1169, ts:992639370610	pwm_rgb: system_time:992705, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2293, b:1087, c:5274, algo:2, end:1169, ts:992647703610	pwm_rgb: system_time:992705, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2388, g:2276, b:1093, c:5238, algo:2, end:1169, ts:992656036610	pwm_rgb: system_time:992705, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2425, g:2293, b:1093, c:5285, algo:2, end:66705, ts:992664369610	
+10-07 01:42:38.382  2968  5044 D FusionLightNextGen: process end reported = 1, mode: 1, cnt: 3350, lux 40.0, cct -1.0, r/g/b/c: 2425.0/2293.0/1087.0/5274.0, R/G/B: 22.0/71.0/8.0, bri 1244.0, match 1.00, ir 0.052595, conf 0.0, ts 992903546620
+10-07 01:42:38.387  2968 10575 D NotificationService--OplusNotificationFixHelper: fixAppIcon: pkg=com.android.systemui
+10-07 01:42:38.388  2968 10575 D NotificationService--OplusNotificationFixHelper: fixAppIcon: appIcon = null, pkg = com.android.systemui
+10-07 01:42:38.390  2968 10575 D NotificationService--NotificationRecord: isSupportRearLight , isRearLight = false mLedRM = false isMultilLed = false
+10-07 01:42:38.394  2968 10575 I OplusStatusBarManagerServiceEnhance:  getTopIsFullscreen mTopIsFullscreen: false
+10-07 01:42:38.396  2968  2968 D NotificationService--OplusNotificationManagerServiceExtImpl: isForwardToAssistants: false, case : Is in mMcsNotInterceptPkgList or is isSystemApp
+10-07 01:42:38.396  2968  2968 D NotificationService: This application enqueue notifications is not need postDelayed
+10-07 01:42:38.459 31652 32480 W OPLUS_LOG_LOAD: ==LOGS PROG INFO, prog(com.oplus.camera) ==
+10-07 01:42:38.459 31652 32480 I APS_ALOG: flushRoutine g_immediateFlush=0 g_pendingCount=0 g_oobCount=0
+10-07 01:42:38.614  1405  1428 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:38.614  1405  1428 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:38.615  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:38.625  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsRepository-->updateLiveAlert: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159 remindType=0 shouldReminderAgain=true
+10-07 01:42:38.628  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsInteractor-->notifyLiveAlerts: PostAction(sbnList=[StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))])
+10-07 01:42:38.628  9848  9848 I PluginSeedling--Base: SeedlingCardServerProvider-->seedling provider called com.oplus.card.server.systemui.provider w/ live_alert_notification_post 10159 9848 0
+10-07 01:42:38.629  9848  9848 I PluginSeedling--Base: NotificationLiveAlertProvider-->post sbn: [StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))]
+10-07 01:42:38.641  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:38.642  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_NOTIFICATION, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:38.642  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:38.643  9848  9848 I PluginSeedling--Notification: NotificationRepository-->onDataChanged, [LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:38.643  9848  9848 I PluginSeedling--Notification:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0]
+10-07 01:42:38.643  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:38.644  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_STATUS_BAR, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_STATUS_BAR, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: false, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:38.644  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_SM, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:38.646  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:38.647  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: left, style:CapsuleSectionTemplateData(style=IMAGE_TEXT_STYLE, moduleDic={pic=BitmapModel(src=android.graphics.Bitmap@bfb3d0c, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)}, backgroundColor=null)
+10-07 01:42:38.648  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: right, style:CapsuleSectionTemplateData(style=TEXT_IMAGE_STYLE, moduleDic={title=TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=1, textWeight=null, textStyle=null, textSize=null, textColor=-1)}, backgroundColor=null)
+10-07 01:42:38.648  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.n@b689d48, BitmapModel(src=android.graphics.Bitmap@bfb3d0c, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:38.649  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:38.650  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2c98c6a@CardNormalSection, [title, content]
+10-07 01:42:38.650  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@f9673af, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:38.651  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@42a1ac1, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@bfb3d0c, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:38.653  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:38.653  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@7126077@CardNormalSection, [title, content, pic]
+10-07 01:42:38.653  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, BitmapModel(src=android.graphics.Bitmap@a39586a, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=98, height=98, radius=21.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:38.654  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, TextModel(spanAttr=null, bgColor=0, repeat=1, maxLines=1, textWeight=REGULAR, textStyle=null, textSize=42.0, textColor=-1)
+10-07 01:42:38.656  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:38.657  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2115425@CardNormalSection, [title, content]
+10-07 01:42:38.657  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@625183, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:38.658  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@107e9f5, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@bfb3d0c, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:38.664  9848  9848 I PluginSeedling--Template: CapsulePage-->page-frame 350 -> 350, true
+10-07 01:42:38.684  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:38.685  1405  1428 D CwbService: RGB value: 23, 74, 8, hist:1644, 1629, 1660,  rgb_state: 0
+10-07 01:42:38.686  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:38.686  1453  1453 D SensorFeature: write 32 bytes:993253821622,993270488289,1171,0
+10-07 01:42:38.716  1474 10282 W SlcHalService: currentC:0 , nextC:80
+10-07 01:42:38.717  1474 10282 W SlcHalService: set CG 1,80 error
+10-07 01:42:38.717  1474 10282 W SlcHalService: currentG:100 , nextG:20
+10-07 01:42:38.717  1474 10282 W SlcHalService: set CG 2,20 error
+10-07 01:42:38.795  1405  1428 I hwcomposer: [HWCDisplay] (0 updateFps():4519), (type:1, mode:2) fps:53.738041,dur:1004.87,max:63.82,min:14.88  
+10-07 01:42:38.908  1419  1524 I OriginChannel: now system_time:993493	pwm_rgb: system_time:992965, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2293, b:1111, c:5254, algo:2, end:131072, ts:992903546620	
+10-07 01:42:38.910  1821 19452 D AALLightSensor: oldLux=41 [SA:-1 LA:-1] newLux=41 (oriLux: 39)
+10-07 01:42:38.928  1405  9557 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:38.928  1405  9557 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:38.929  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:38.995  1405  9557 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:38.995  1405  9557 D CwbService: RGB value: 20, 65, 7, hist:1802, 1796, 1814,  rgb_state: 0
+10-07 01:42:38.997  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:38.998  1453  1453 D SensorFeature: write 32 bytes:993564433699,993581100366,1172,0
+10-07 01:42:39.017  1463  1565 D BatteryChargeControl: bcc get no support from charging protocol
+10-07 01:42:39.139  1519  1519 I BufferQueueProducer: [StatusBar#100](this:0xb4000075566a82f8,id:-1,api:0,p:-1,c:1519) queueBuffer: fps=53.73 dur=1005.06 max=64.70 min=15.35
+10-07 01:42:39.144  9848 11272 I SystemUi--Statusbar: OplusNetworkSpeedControllExImpl-->getTotalByte: totalRxBytes:4138064,totalTxBytes:2283357,loopbackTxBytes:49266,loopbackRxBytes:49266 ,totalBytes:6322889
+10-07 01:42:39.172 10379 13302 D CommonApp-102-10577: transport layer data is invalid
+10-07 01:42:39.172 10379 13302 D CommonApp-102-10090: transport layer data is invalid
+10-07 01:42:39.177  1419  1524 I OriginChannel: now system_time:993762	pwm_rgb: system_time:993493, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2436, g:2281, b:1099, c:5280, algo:2, end:131072, ts:993239232524	
+10-07 01:42:39.238  1405  1428 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:39.239  1405  1428 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:39.239  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:39.295  1433  1525 I libPerfCtl: xgfGetFPS pid:9848 fps:-1
+10-07 01:42:39.305  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:39.305  1405  1428 D CwbService: RGB value: 23, 73, 8, hist:1592, 1573, 1623,  rgb_state: 0
+10-07 01:42:39.306  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:39.307  1453  1453 D SensorFeature: write 32 bytes:993874189006,993890855673,1173,0
+10-07 01:42:39.349 18966 18966 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+10-07 01:42:39.349 18966 18966 D ExtensionsLoader: Opened libguiextimpl.so
+10-07 01:42:39.357 18966 18966 D AVStageFactory: Opened liboplusavenhancements.so
+10-07 01:42:39.357 18966 18966 D AVStageFactory: createInstance(64bit): createVendorAVFactory success!
+10-07 01:42:39.357 18966 18966 D AVStageUtils: Opened liboplusavenhancements.so
+10-07 01:42:39.357 18966 18966 D AVStageUtils: createInstance(64bit): createVendorAVUtils success!
+10-07 01:42:39.357 18966 18966 D OplusUtils: OplusUtils [84]: 
+10-07 01:42:39.357 18966 18966 D AVStageUtils: createInstance(64bit): createVendorAVUtils success!
+10-07 01:42:39.357 18966 18966 D OplusUtils: OplusUtils [84]: 
+10-07 01:42:39.358 18966 18966 D AVMediaServiceFactory: Opened liboplusavenhancements.so
+10-07 01:42:39.358 18966 18966 D AVMediaServiceFactory: createInstance(64bit): createExtendedMediaServiceFactory success!
+10-07 01:42:39.358 18966 18966 D AVNuFactory: Opened liboplusavenhancements.so
+10-07 01:42:39.358 18966 18966 D AVNuFactory: createInstance(64bit): createExtendedNuFactory success!
+10-07 01:42:39.358 18966 18966 D AVStageFactory: createInstance(64bit): createVendorAVFactory success!
+10-07 01:42:39.358 18966 18966 D AVStageUtils: createInstance(64bit): createVendorAVUtils success!
+10-07 01:42:39.358 18966 18966 D OplusUtils: OplusUtils [84]: 
+10-07 01:42:39.358 18966 18966 D AVMediaServiceFactory: createInstance(64bit): createExtendedMediaServiceFactory success!
+10-07 01:42:39.358 18966 18966 D AVNuFactory: createInstance(64bit): createExtendedNuFactory success!
+10-07 01:42:39.358 18966 18966 D AVStageFactory: Opened liboplusavenhancements.so
+10-07 01:42:39.358 18966 18966 D AVStageFactory: createInstance(64bit): createVendorAVFactory success!
+10-07 01:42:39.358 18966 18966 D AVStageUtils: Opened liboplusavenhancements.so
+10-07 01:42:39.358 18966 18966 D AVStageUtils: createInstance(64bit): createVendorAVUtils success!
+10-07 01:42:39.358 18966 18966 D OplusUtils: OplusUtils [84]: 
+10-07 01:42:39.359 18966 18966 E screencap: createInstance(64bit) : createExtendedFactory
+10-07 01:42:39.359 18966 18966 E screencap: createInstance(64bit) : createExtendedFactory
+10-07 01:42:39.359 18966 18966 E screencap: Opened libinputextensionsimpl.so
+10-07 01:42:39.359 18966 18966 E screencap: Opened libinputextensionsimpl.so
+10-07 01:42:39.360 18966 18966 W screencap: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented. serviceName: SurfaceFlingerAIDL
+10-07 01:42:39.361 18966 18966 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-07 01:42:39.361 18966 18966 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-07 01:42:39.361  1519  1637 D SurfaceFlinger: captureDisplayById from pid 0 display 4627039422300187648
+10-07 01:42:39.375 18966 18985 I GrallocExtra: gralloc_extra_query:is_SW3D 0
+10-07 01:42:39.375 18966 18966 I DMABUFHEAPS: Using DMA-BUF heap named: mtk_mm
+10-07 01:42:39.376 18966 18966 I DMABUFHEAPS: Using DMA-BUF heap named: mtk_mm-uncached
+10-07 01:42:39.376 18966 18966 I DMABUFHEAPS: Using DMA-BUF heap named: mtk_svp_page-uncached
+10-07 01:42:39.376 18966 18966 I DMABUFHEAPS: Using DMA-BUF heap named: mtk_prot_region
+10-07 01:42:39.376 18966 18966 I DMABUFHEAPS: Using DMA-BUF heap named: mtk_prot_page-uncached
+10-07 01:42:39.376 18966 18966 I DMABUFHEAPS: Using DMA-BUF heap named: mtk_wfd_page-uncached
+10-07 01:42:39.376 10437 29522 D OplusFileObserveService: onEvent() file = /storage/emulated/0/c.png, event = 256
+10-07 01:42:39.401  2968  4898 D NotificationService--OplusNotificationFixHelper: fixAppIcon: pkg=com.android.systemui
+10-07 01:42:39.402  2968  4898 D NotificationService--OplusNotificationFixHelper: fixAppIcon: appIcon = null, pkg = com.android.systemui
+10-07 01:42:39.403  2968  4898 D NotificationService--NotificationRecord: isSupportRearLight , isRearLight = false mLedRM = false isMultilLed = false
+10-07 01:42:39.404  2968  4898 I OplusStatusBarManagerServiceEnhance:  getTopIsFullscreen mTopIsFullscreen: false
+10-07 01:42:39.405  2968  2968 D NotificationService--OplusNotificationManagerServiceExtImpl: isForwardToAssistants: false, case : Is in mMcsNotInterceptPkgList or is isSystemApp
+10-07 01:42:39.405  2968  2968 D NotificationService: This application enqueue notifications is not need postDelayed
+10-07 01:42:39.435  1419  1524 I OriginChannel: now system_time:994020	pwm_rgb: system_time:993762, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2264, b:1075, c:5238, algo:2, end:1172, ts:993552901909	pwm_rgb: system_time:993763, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2404, g:2298, b:1111, c:5248, algo:2, end:1172, ts:993561234909	pwm_rgb: system_time:993763, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2409, g:2264, b:1081, c:5254, algo:2, end:1172, ts:993569567909	pwm_rgb: system_time:993763, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2382, g:2259, b:1075, c:5212, algo:2, end:1172, ts:993577900909	pwm_rgb: system_time:993763, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2276, b:1087, c:5264, algo:2, end:66708, ts:993586233909	
+10-07 01:42:39.471  2968  9591 E HoraeHelper: horae is not open
+10-07 01:42:39.473  1419  1522 W AString : ctor got NULL, using empty string instead
+10-07 01:42:39.474  1419  1522 I SensorSavedChannel: [-696,37,1138]==>gyro_bias.json
+10-07 01:42:39.544  7419  8694 I DRS_LOG_ChinaTimeWindowPolicy[DRS-Scheduler-1]: [DEFAULT] time=01:42, window=BASELINE, base=5m, scale=1.00, result=5m
+10-07 01:42:39.545  7419  8694 I DRS_LOG_ThreadTimer[DRS-Scheduler-1]: PSEUDO triggered, next=5m, base=5m, config:5min, policy=ChinaTimeWindow(baseline 1.0x)
+10-07 01:42:39.547  7419  8694 I DRS_LOG_UploadPipelineV2[DRS-Scheduler-1]: triggerPseudo() called, gate=UploadGateFacade{
+10-07 01:42:39.547  7419  8694 I DRS_LOG_UploadPipelineV2[DRS-Scheduler-1]:   BusinessRuleGate{mode=STANDALONE, enableNetRequest=true}
+10-07 01:42:39.547  7419  8694 I DRS_LOG_UploadPipelineV2[DRS-Scheduler-1]:   NetworkGate{networkReady=true, isWifi=true}
+10-07 01:42:39.547  7419  8694 I DRS_LOG_UploadPipelineV2[DRS-Scheduler-1]:   PerformanceGate{skipped(STANDALONE)}
+10-07 01:42:39.547  7419  8694 I DRS_LOG_UploadPipelineV2[DRS-Scheduler-1]:   EnvRecoveryDetector: EnvRecoveryDetector{standalone=true, state=IDLE, snapshot=EnvSnapshot{net=true, normalOk=true, rtOk=true}, lastNormalOk=true, lastRtOk=true}
+10-07 01:42:39.547  7419  8694 I DRS_LOG_UploadPipelineV2[DRS-Scheduler-1]:   envRecoveryListeners: 2
+10-07 01:42:39.547  7419  8694 I DRS_LOG_UploadPipelineV2[DRS-Scheduler-1]: }
+10-07 01:42:39.547  7419  8694 I DRS_LOG_GateStateManager[DRS-Scheduler-1]: resetCompensationBudget[Pseudo]: budget=2
+10-07 01:42:39.548  7419  8694 I DRS_LOG_ChannelTaskRunner[DRS-Scheduler-1]: [PSEUDO] upload_trigger request=ChannelTaskRequest{channelType=Pseudo, triggerReason=PSEUDO_PERIODIC, requestTimeMs=1791308559548, skipGateCheck=false, scheduledRun=false}
+10-07 01:42:39.548  1405  1428 D CwbService: normal mode or switch to doze from power off/doze suspend mode, mPowerMode = 2
+10-07 01:42:39.549  7419  8694 I DRS_LOG_ThreadTimer[DRS-Scheduler-1]: PSEUDO thread scheduled, reason=loop, delay=5m
+10-07 01:42:39.549  1405  1428 I CwbService: Configure changed, reconfig histogram mode: 0.
+10-07 01:42:39.549  7419  9200 I DRS_LOG_ChannelTaskRunner[DRS-Upload-Nr-1]: [PSEUDO] task_start submitMode=NEW_TASK request=ChannelTaskRequest{channelType=Pseudo, triggerReason=PSEUDO_PERIODIC, requestTimeMs=1791308559548, skipGateCheck=false, scheduledRun=false}
+10-07 01:42:39.549  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:39.553  7419  9200 I DRS_LOG_UploadBatchAssembler[DRS-Upload-Nr-1]: [PSEUDO] initial_snapshot round=1 appIdCount=0 appIds=[] wifi=true allowDcs=true
+10-07 01:42:39.554  7419  9200 I DRS_LOG_UploadBatchAssembler[DRS-Upload-Nr-1]: [PSEUDO] final_supplement previousRound=1 knownAppIds=0 supplementedAppIds=[]
+10-07 01:42:39.554  7419  9200 I DRS_LOG_ChannelTaskRunner[DRS-Upload-Nr-1]: [PSEUDO] prepare_empty hadSuccess=false loop=1
+10-07 01:42:39.554  7419  9200 I DRS_LOG_ChannelTaskRunner[DRS-Upload-Nr-1]: [PSEUDO] task_finish completed=true stopReason=TASK_COMPLETED successApps=0 skippedBatches=0 appErrors=0 envScenario=null allUploaded=false newDataDuringTask=false
+10-07 01:42:39.592  2968 10575 I ActivityManager: Broadcasting: Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }
+10-07 01:42:39.593  2968 10575 I ActivityManager: Enqueued broadcast Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }: 0
+10-07 01:42:39.595  2968 10575 W JobInfo : Job 'com.android.providers.media.module/com.android.providers.media.MediaService#-300' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+10-07 01:42:39.597 10437 29522 D OplusFileObserveService: onEvent() file = /storage/emulated/0/c.png, event = 8
+10-07 01:42:39.599 10437 29522 W OplusFileObserveService: onEvent() CLOSE_WRITE file is not in root dirs, skip.
+10-07 01:42:39.602  2968  9094 I ActivityManager: Broadcast completed: result=0
+10-07 01:42:39.602  1405  1428 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseRequestPartialUpdateEnable()
+10-07 01:42:39.602 18966 18966 W RefBase : RefBase: Explicit destruction, weak count = 0 (in 0x7f039fdac8). Use sp<> to manage this object. Note - if weak count is 0, this leaks mRefs (weakref_impl).
+10-07 01:42:39.603  1405  1428 D CwbService: RGB value: 22, 71, 8, hist:1708, 1698, 1720,  rgb_state: 0
+10-07 01:42:39.604  1453  1453 D SensorFeature: name=ssc_screenshot_info ,index = 22
+10-07 01:42:39.605  1453  1453 D SensorFeature: write 32 bytes:994171923468,994188590135,1174,0
+10-07 01:42:39.605 18966 18966 D RefBase :   #00 pc 000000000008c0e0  /apex/com.android.runtime/lib64/bionic/libc.so (__cxa_finalize+224) (BuildId: 606e619450c7c2bf3db238997d2b897d)
+10-07 01:42:39.605 18966 18966 D RefBase :   #01 pc 0000000000090e84  /apex/com.android.runtime/lib64/bionic/libc.so (exit+36) (BuildId: 606e619450c7c2bf3db238997d2b897d)
+10-07 01:42:39.605 18966 18966 D RefBase :   #02 pc 00000000000846cc  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+124) (BuildId: 606e619450c7c2bf3db238997d2b897d)
+10-07 01:42:39.605  2968  4898 I OplusExSystemServiceHelper: connected :com.android.providers.media.MediaService
+10-07 01:42:39.608 27589 29026 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-07 01:42:39.614 27589 29026 D MediaProvider: insertInternal start, caller = com.android.providers.media.module
+10-07 01:42:39.615 27589 29026 W MediaProvider: isAppCloneUserPair for user 0: false
+10-07 01:42:39.617 27589 29026 D MediaProvider: insertAllowingUpsert finish, rowId = 6767
+10-07 01:42:39.617 27589 29026 D MediaProvider: insertInternal end
+10-07 01:42:39.619 27589 29026 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-07 01:42:39.620 27589 29026 D OplusThumbnailUtils: cacheThumbnail() cacheThumbnailByUri uri=content://media/external_primary/images/media/6767,priority=300,path=/storage/emulated/0/c.png
+10-07 01:42:39.620 27589 29026 D OplusCacheThumbnail: cacheThumbnailByUri() filePath = /storage/emulated/0/c.png ,uri = content://media/external_primary/images/media/6767
+10-07 01:42:39.621 30003  1254 I ContextAware_DailyStatisticsRecorder: Increase context change count: dmp_change_count, value: 1
+10-07 01:42:39.622 30003 31406 D HLog-UpMgr: [metis]CheckWhetherUploadBody Mgr:com.oplus.sdp.kf.c@f246f9
+10-07 01:42:39.622 30003 31406 D HLog-MultiConfigManage: [metis]checkAllPushTask
+10-07 01:42:39.622 30003 31406 D HLog-MultiConfigManage: [metis]checkAllPushTask existPushInfo : 
+10-07 01:42:39.625 30003 31407 E FileStrategy: java.io.IOException: Read-only file system
+10-07 01:42:39.625 27589 28066 D WM-SystemJobScheduler: Scheduling work ID 00ffe0ee-e59b-4fe9-8791-a8fc42e2d538Job ID 2067
+10-07 01:42:39.628  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsRepository-->updateLiveAlert: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159 remindType=0 shouldReminderAgain=true
+10-07 01:42:39.630  9848  9848 I SystemUi--Notification: OplusLiveAlertNotificationsInteractor-->notifyLiveAlerts: PostAction(sbnList=[StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))])
+10-07 01:42:39.631  9848  9848 I PluginSeedling--Base: SeedlingCardServerProvider-->seedling provider called com.oplus.card.server.systemui.provider w/ live_alert_notification_post 10159 9848 0
+10-07 01:42:39.631  9848  9848 I PluginSeedling--Base: NotificationLiveAlertProvider-->post sbn: [StatusBarNotification(pkg=com.android.systemui user=UserHandle{0} id=16723 tag=astraflow_resident_fluid_cloud key=0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159: Notification(channel=astraflow_resident_fluid_cloud shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|LOCAL_ONLY color=0x00000000 category=status vis=PRIVATE))]
+10-07 01:42:39.636  9564  9568 D WifiHAL : WifiRequest::create vendor command to iface 40, vendor_id=0x1a11, subcmd=0x1200, res=0
+10-07 01:42:39.637  9564  9568 I WifiHAL : LLS RSP: data=0xb4000076fe01c020, len=4028
+10-07 01:42:39.637  9564  9568 I WifiHAL : LLS check_data_sanity: 1829: current_radio_stat->num_channels=13
+10-07 01:42:39.637  9564  9568 I WifiHAL : LLS check_data_sanity: 1829: current_radio_stat->num_channels=24
+10-07 01:42:39.637  9564  9568 I WifiHAL : LLS check_data_sanity: confirmed_size=4028, len=4028
+10-07 01:42:39.638  2968  9170 E WifiStaIfaceAidlImpl: getCachedScanData failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+10-07 01:42:39.638  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:39.639  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_NOTIFICATION, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:39.639  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:39.640  9848  9848 I PluginSeedling--Notification: NotificationRepository-->onDataChanged, [LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_NOTIFICATION, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: true, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:39.640  9848  9848 I PluginSeedling--Notification:  rusBaseData: null, showSize: VIEW_SIZE_NONE, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0]
+10-07 01:42:39.640  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->EntryDataListener,onDataPosted originData:[w3.b@6b8dc495] data:[w3.b@6b8dc495]
+10-07 01:42:39.640  9848  9848 I PluginSeedling--Origin: LiveAlertInteractorImpl-->notifyEntryDataChanged ENTRY_STATUS_BAR, result:LiveAlertModel: [key: 0|com.android.systemui|16723|astraflow_resident_fluid_cloud|10159, entranceType: ENTRY_STATUS_BAR, score: 8.0, groupPriority: 2 type: LIVE, isSystemService: false, shouldShow: true, lockscreenShouldShow: false, sourceType: SOURCE_NOTIFICATION, remindLevel: 0, pkg: com.android.systemui, hostPkgName=com.android.systemui front: false, forceRebuild: false, isForcedReminder: false, InstantDuration: 5000, requestPanel: null, capsuleTimeOut: 300000, serviceTitleName: , overrideTransition: false level: 2,
+10-07 01:42:39.640  9848  9848 I PluginSeedling--Origin:  rusBaseData: null, showSize: VIEW_SIZE_SM, isPinFiltered: false serviceFrom: 0, liveAlertState: SeedlingState(0), wrapperSize: 2, duplicateChips: false, quitHideOrBubble:0, liveAlertService:, immersiveCardType:-1, requestLockScreenImmersive:-1, ignoreEntry:0, noe: false
+10-07 01:42:39.642  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:39.643  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: left, style:CapsuleSectionTemplateData(style=IMAGE_TEXT_STYLE, moduleDic={pic=BitmapModel(src=android.graphics.Bitmap@555c241, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)}, backgroundColor=null)
+10-07 01:42:39.643  9848  9848 I PluginSeedling--Template: CapsulePageViewModel-->sectionsTemplateData: right, style:CapsuleSectionTemplateData(style=TEXT_IMAGE_STYLE, moduleDic={title=TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=1, textWeight=null, textStyle=null, textSize=null, textColor=-1)}, backgroundColor=null)
+10-07 01:42:39.643  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.n@b689d48, BitmapModel(src=android.graphics.Bitmap@555c241, iconColor=null, icon=null, anim=null, bgColor=-1, shape=1, width=70, height=70, radius=35.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:39.644  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:39.644  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2c98c6a@CardNormalSection, [title, content]
+10-07 01:42:39.644  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@f9673af, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:39.644  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@42a1ac1, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@555c241, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:39.645  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: NORMAL_STYLE, currentPage:NORMAL_STYLE
+10-07 01:42:39.645  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@7126077@CardNormalSection, [title, content, pic]
+10-07 01:42:39.645  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, BitmapModel(src=android.graphics.Bitmap@a05dd27, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=98, height=98, radius=21.0, actionIntent=null, pi=null, desc=)
+10-07 01:42:39.646  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@2edf9cd, TextModel(spanAttr=null, bgColor=0, repeat=1, maxLines=1, textWeight=REGULAR, textStyle=null, textSize=42.0, textColor=-1)
+10-07 01:42:39.646  9848  9848 I PluginSeedling--Template: TransitionViewWrapper-->update, newPageState: STANDARD_STYLE, currentPage:STANDARD_STYLE
+10-07 01:42:39.647  9848  9848 I PluginSeedling--Template: CardNormalSection-->moduleNames, x1{Active}@2115425@CardNormalSection, [title, content]
+10-07 01:42:39.647  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.e0@625183, TextModel(spanAttr=null, bgColor=0, repeat=0, maxLines=2, textWeight=null, textStyle=null, textSize=null, textColor=-419430401)
+10-07 01:42:39.647  9848  9848 I PluginSeedling--Template: AbstractSection-->section-bind, d7.f0@107e9f5, LabelModel(text=null, pic=BitmapModel(src=android.graphics.Bitmap@555c241, iconColor=null, icon=null, anim=null, bgColor=-1, shape=2, width=84, height=84, radius=21.0, actionIntent=null, pi=null, desc=), bgColor=null, strokeColor=0, type=ICON_LABEL, isButton=false, cornerRadius=0.0, iconPosition=LEFT, shape=NONE, size=null, dataType=(REGULAR, INFO), actionIntent=null, activityIntent=null, desc=)
+10-07 01:42:39.648  2968 28310 I OplusBinderProxy: pb 10436->28992 desc:IPhoneStateListener/10
+10-07 01:42:39.648 10178 10178 D OplusTelephonyController: onSignalStrengthChanged: SignalStrength=SignalStrength:{mCdma=CellSignalStrengthCdma: cdmaDbm=2147483647 cdmaEcio=2147483647 evdoDbm=2147483647 evdoEcio=2147483647 evdoSnr=2147483647 level=0,mGsm=CellSignalStrengthGsm: rssi=2147483647 ber=2147483647 mTa=2147483647 mLevel=0,mWcdma=CellSignalStrengthWcdma: ss=2147483647 ber=2147483647 rscp=2147483647 ecno=2147483647 level=0,mTdscdma=CellSignalStrengthTdscdma: rssi=2147483647 ber=2147483647 rscp=2147483647 level=0,mLte=CellSignalStrengthLte: rssi=2147483647 rsrp=2147483647 rsrq=2147483647 rssnr=2147483647 cqiTableIndex=2147483647 cqi=2147483647 ta=2147483647 level=0 parametersUseForLevel=0,mNr=CellSignalStrengthNr:{ csiRsrp = 2147483647 csiRsrq = 2147483647 csiCqiTableIndex = 2147483647 csiCqiReport = [] ssRsrp = -75 ssRsrq = -11 ssSinr = 30 level = 4 parametersUseForLevel = 0 timingAdvance = 0 },primary=CellSignalStrengthNr}
+10-07 01:42:39.650 10379 10379 D SubsysEventListenerManager-SubsysTelephonyCallback[0]: onSignalStrengthsChanged
+10-07 01:42:39.651 10379 10379 D VendorWifiService: onEvent event:9,action:1
+10-07 01:42:39.651  9848  9848 I PluginSeedling--Template: CapsulePage-->page-frame 350 -> 350, true
+10-07 01:42:39.654  2968  9502 D ScorerUtils: isLowTraffic: txTputKBps=0, rxTputKBps=0
+10-07 01:42:39.654  2968  9502 D OplusWifiPower_TriggerCenter: mComponentCallback: wifistat
+10-07 01:42:39.655  9848 11340 I SystemUi--Statusbar: MobileConnectionRepositoryImpl-->subId:1 isSoftSimCard:false slotId:0
+10-07 01:42:39.659  9848  9848 D Tile.OplusCellularTile: refreshState: tile not listening, ignore
+10-07 01:42:39.698  1419  1524 I OriginChannel: now system_time:994283	pwm_rgb: system_time:994020, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2388, g:2287, b:1093, c:5254, algo:2, end:1173, ts:993858204755	pwm_rgb: system_time:994020, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2431, g:2310, b:1099, c:5280, algo:2, end:1173, ts:993866537755	pwm_rgb: system_time:994020, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2388, g:2281, b:1081, c:5243, algo:2, end:1173, ts:993874870755	pwm_rgb: system_time:994020, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2420, g:2281, b:1087, c:5280, algo:2, end:1173, ts:993883203755	pwm_rgb: system_time:994020, lux:71, time_delta:16, pwm_turbo:1, bri:1244, r:2415, g:2304, b:1105, c:5269, algo:2, end:66709, ts:993891536755	
+10-07 01:42:39.717  1474 10282 W SlcHalService: currentC:0 , nextC:80
+10-07 01:42:39.717  1474 10282 W SlcHalService: set CG 1,80 error
+10-07 01:42:39.717  1474 10282 W SlcHalService: currentG:100 , nextG:20
+10-07 01:42:39.717  1474 10282 W SlcHalService: set CG 2,20 error
+10-07 01:42:39.721 27589 18994 E HoraeProxyUtil: horae is not open
+10-07 01:42:39.722 10437 29522 D OplusFileObserveService: onEvent() file = /storage/emulated/0/c.png, event = 512
+10-07 01:42:39.722 10437 29522 D OplusFileObserveService: onEvent() DELETE/MOVED_FROM event = 512 file = /storage/emulated/0/c.png
+10-07 01:42:39.723 27589 18994 E MediaProvider: getThumbnailBitmap() exception file:/storage/emulated/0/c.png ,uri:content://media/external_primary/images/media/6767
+10-07 01:42:39.725 27589 18994 W MediaProvider: java.io.IOException: /storage/emulated/0/c.png: open failed: ENOENT (No such file or directory)
+10-07 01:42:39.725 27589 18994 W MediaProvider: 	at com.android.providers.media.MediaProvider$12.getThumbnailBitmap(MediaProvider.java:9239)
+10-07 01:42:39.725 27589 18994 W MediaProvider: 	at com.android.providers.media.MediaProvider$Thumbnailer.ensureThumbnail(MediaProvider.java:9150)
+10-07 01:42:39.725 27589 18994 W MediaProvider: 	at com.android.providers.media.MediaProvider.ensureThumbnail(MediaProvider.java:10707)
+10-07 01:42:39.725 27589 18994 W MediaProvider: 	at com.android.providers.media.MediaProvider.ensureThumbnail(MediaProvider.java:10636)
+10-07 01:42:39.725 27589 18994 W MediaProvider: 	at com.android.providers.media.oplus.thumbnail.OplusCacheThumbnail$CacheThumbnailTask.run(OplusCacheThumbnail.java:288)
+10-07 01:42:39.725 27589 18994 W MediaProvider: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-07 01:42:39.725 27589 18994 W MediaProvider: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-07 01:42:39.725 27589 18994 W MediaProvider: 	at java.lang.Thread.run(Thread.java:1119)
+10-07 01:42:39.725 27589 18994 E OplusCacheThumbnail: CacheThumbnailTask run E:
+10-07 01:42:39.725 27589 18994 E OplusCacheThumbnail: java.io.FileNotFoundException: /storage/emulated/0/c.png: open failed: ENOENT (No such file or directory)
+10-07 01:42:39.725 27589 18994 E OplusCacheThumbnail: 	at com.android.providers.media.MediaProvider.ensureThumbnail(MediaProvider.java:10748)
+10-07 01:42:39.725 27589 18994 E OplusCacheThumbnail: 	at com.android.providers.media.MediaProvider.ensureThumbnail(MediaProvider.java:10636)
+10-07 01:42:39.725 27589 18994 E OplusCacheThumbnail: 	at com.android.providers.media.oplus.thumbnail.OplusCacheThumbnail$CacheThumbnailTask.run(OplusCacheThumbnail.java:288)
+10-07 01:42:39.725 27589 18994 E OplusCacheThumbnail: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-07 01:42:39.725 27589 18994 E OplusCacheThumbnail: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-07 01:42:39.725 27589 18994 E OplusCacheThumbnail: 	at java.lang.Thread.run(Thread.java:1119)

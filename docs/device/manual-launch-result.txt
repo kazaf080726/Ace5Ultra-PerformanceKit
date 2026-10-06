@@ -1,0 +1,19 @@
+﻿== self cgroup (launcher) ==
+5:freezer:/
+4:memory:/
+3:cpuset:/
+2:cpu:/
+1:blkio:/
+0::/
+launched setsid pid=30916
+== perfd cgroup ==
+5:freezer:/
+4:memory:/
+3:cpuset:/
+2:cpu:/
+1:blkio:/
+0::/
+alive at 2s
+alive at 20s
+== ps match ==
+DONE

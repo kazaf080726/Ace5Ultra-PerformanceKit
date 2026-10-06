@@ -1,0 +1,4 @@
+﻿=== adaptive state samples (5s apart) ===
+sample 1 : {"profile":"performance","adaptive":true,"reason":"high_load","load":78.8,"tempC":84.8}
+sample 2 : {"profile":"powersave","adaptive":true,"reason":"thermal_high","load":29.2,"tempC":92.2}
+sample 3 : {"profile":"powersave","adaptive":true,"reason":"thermal_high","load":29.2,"tempC":92.2}

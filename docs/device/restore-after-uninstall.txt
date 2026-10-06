@@ -1,0 +1,6 @@
+﻿=== sysfs state after uninstall (compare to baseline) ===
+policy0: gov=sugov_ext min=339000 max=2000000
+policy4: gov=sugov_ext min=622000 max=2600000
+policy7: gov=sugov_ext min=798000 max=3000000
+swappiness=125
+read_ahead sda/sdb/sdc = 1024 / 1024 / 512

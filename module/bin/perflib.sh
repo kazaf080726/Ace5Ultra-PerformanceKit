@@ -65,10 +65,12 @@ ensure_runtime() {
 sg() { sed -n "s/.*\"$1\"[[:space:]]*:[[:space:]]*\"\([^\"]*\)\".*/\1/p" "$STATE" 2>/dev/null | head -n1; }
 # number field reader from $STATE
 ng() { sed -n "s/.*\"$1\"[[:space:]]*:[[:space:]]*\([0-9.][0-9.]*\).*/\1/p" "$STATE" 2>/dev/null | head -n1; }
+# boolean reader from $STATE (JSON booleans are unquoted true/false)
+read_bool() { if grep -q "\"$1\"[[:space:]]*:[[:space:]]*true" "$STATE" 2>/dev/null; then echo true; else echo false; fi; }
 
 save_state() {
   _prof=$(sg profile);   [ -z "$_prof" ]   && _prof=balanced
-  _adap=$(sg adaptive);  [ -z "$_adap" ]   && _adap=true
+  _adap=$(read_bool adaptive)
   _reason=$(sg reason);  [ -z "$_reason" ] && _reason=""
   _load=$(ng load);      [ -z "$_load" ]   && _load=0.0
   _tc=$(ng tempC);       [ -z "$_tc" ]      && _tc=0.0
@@ -83,55 +85,81 @@ save_state() {
 # ---------- snapshot ----------
 _snap_file_for() { echo "$1" | sed 's#^/##; s#/#_#g'; }
 
+# node_mode PATH -> octal permission bits (e.g. 644), empty on failure
+node_mode() { stat -c '%a' "$1" 2>/dev/null; }
+
+# snap_path NODE OLDVAL MODE
+# Records the original value (and original mode, for nodes the vendor locks to
+# 0444) so restore can put both back. Manifest line: node<TAB>fn<TAB>mode
 snap_path() {
-  local node="$1"; local old="$2"
+  local node="$1"; local old="$2"; local mode="$3"
   local fn
   fn=$(_snap_file_for "$node")
   if [ ! -f "$SNAP/$fn" ]; then
     printf '%s' "$old" > "$SNAP/$fn" 2>/dev/null
     chmod 0600 "$SNAP/$fn" 2>/dev/null
-    printf '%s\t%s\n' "$node" "$fn" >> "$SNAP/manifest.tsv" 2>/dev/null
+    printf '%s\t%s\t%s\n' "$node" "$fn" "$mode" >> "$SNAP/manifest.tsv" 2>/dev/null
   fi
 }
 
-# write a sysfs/procfs node, guarded + logged + snapshotted
+# write a sysfs/procfs node, guarded + logged + snapshotted.
+# If the node is read-only (vendor locks cpufreq governor/min/max to 0444 after
+# boot), root chmods it to 0644, writes, then restores the original mode.
 # usage: write_node PATH VALUE
 write_node() {
   local node="$1"; local new="$2"
-  local old
+  local old omode need_chmod
   ensure_runtime
   if [ ! -e "$node" ]; then
     printf 'node=%s old= new=%s ok=0 reason=absent\n' "$node" "$new"
     return 1
   fi
-  if [ ! -w "$node" ]; then
+  omode=$(node_mode "$node")
+  need_chmod=0
+  # root bypasses [ -w ], so inspect the owner-write bit directly. The vendor
+  # locks cpufreq governor/min/max to 0444 after boot; unlock with chmod 0644.
+  case "$omode" in
+    [2367]??) : ;;            # owner already has write (x2x/x3x/x6x/x7x)
+    *)
+      chmod 0644 "$node" 2>/dev/null && need_chmod=1
+      ;;
+  esac
+  # if we could not unlock and the node truly is not writable, skip
+  if [ "$need_chmod" -eq 0 ] && [ ! -w "$node" ]; then
     printf 'node=%s old= new=%s ok=0 reason=readonly\n' "$node" "$new"
     return 1
   fi
   old=$(tr -d '\n\r' < "$node" 2>/dev/null)
-  snap_path "$node" "$old"
+  snap_path "$node" "$old" "$omode"
   if printf '%s' "$new" > "$node" 2>/dev/null; then
     printf 'node=%s old=%s new=%s ok=1\n' "$node" "$old" "$new"
-    log "write node=$node old=$old new=$new ok=1"
+    log "write node=$node old=$old new=$new ok=1 mode=$omode unlocked=$need_chmod"
   else
     printf 'node=%s old=%s new=%s ok=0\n' "$node" "$old" "$new"
     log "write FAIL node=$node old=$old new=$new"
   fi
+  # restore the vendor's original mode so we never leave it writable
+  if [ "$need_chmod" -eq 1 ] && [ -n "$omode" ]; then
+    chmod "$omode" "$node" 2>/dev/null
+  fi
 }
 
-# restore every snapshot value; prints count restored
+# restore every snapshot value (and mode); prints count restored
 do_restore() {
   ensure_runtime
-  local n=0 node fn orig
+  local n=0 node fn mode orig
   if [ -f "$SNAP/manifest.tsv" ]; then
-    while IFS=$(printf '\t') read -r node fn; do
+    while IFS=$(printf '\t') read -r node fn mode; do
       [ -z "$node" ] && continue
       orig=$(cat "$SNAP/$fn" 2>/dev/null)
-      if [ -e "$node" ] && [ -w "$node" ]; then
+      if [ -e "$node" ]; then
+        # unlock if it was locked, restore the value, then restore its mode
+        [ -n "$mode" ] && chmod 0644 "$node" 2>/dev/null
         if printf '%s' "$orig" > "$node" 2>/dev/null; then
           n=$((n+1))
-          log "restore node=$node -> $orig"
+          log "restore node=$node -> $orig mode=$mode"
         fi
+        [ -n "$mode" ] && chmod "$mode" "$node" 2>/dev/null
       fi
     done < "$SNAP/manifest.tsv"
   fi
@@ -427,30 +455,31 @@ apply_profile() {
 # snapshot current values of every tracked candidate node (no change applied)
 snapshot_all() {
   ensure_runtime
-  local n=0 p f node v
+  local n=0 p f node v m
   for p in /sys/devices/system/cpu/cpufreq/policy*; do
     [ -d "$p" ] || continue
     for f in scaling_governor scaling_min_freq scaling_max_freq; do
       node="$p/$f"
       [ -e "$node" ] || continue
       v=$(tr -d '\n\r' < "$node" 2>/dev/null)
-      snap_path "$node" "$v"; n=$((n+1))
+      m=$(node_mode "$node")
+      snap_path "$node" "$v" "$m"; n=$((n+1))
     done
     for f in sugov_ext/up_rate_limit_us sugov_ext/down_rate_limit_us; do
       node="$p/$f"; [ -e "$node" ] || continue
-      snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)"; n=$((n+1))
+      snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)" "$(node_mode "$node")"; n=$((n+1))
     done
   done
   for d in /sys/block/sd*; do
     [ -d "$d" ] || continue
     node="$d/queue/read_ahead_kb"; [ -e "$node" ] || continue
-    snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)"; n=$((n+1))
+    snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)" "$(node_mode "$node")"; n=$((n+1))
   done
   if [ -e /proc/sys/vm/swappiness ]; then
-    snap_path /proc/sys/vm/swappiness "$(tr -d '\n\r' < /proc/sys/vm/swappiness 2>/dev/null)" && n=$((n+1))
+    snap_path /proc/sys/vm/swappiness "$(tr -d '\n\r' < /proc/sys/vm/swappiness 2>/dev/null)" "$(node_mode /proc/sys/vm/swappiness)" && n=$((n+1))
   fi
   for node in /dev/cpuctl/cpu.schedtune.boost /dev/cpuctl/foreground/cpu.schedtune.boost; do
-    [ -e "$node" ] && snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)" && n=$((n+1))
+    [ -e "$node" ] && snap_path "$node" "$(tr -d '\n\r' < "$node" 2>/dev/null)" "$(node_mode "$node")" && n=$((n+1))
   done
   echo "$n"
 }
@@ -466,6 +495,9 @@ max_temp_c() {
     [ -f "$z" ] || continue
     t=$(tr -d '\n' < "$z" 2>/dev/null)
     case "$t" in ''|*[!0-9]*) continue ;; esac
+    # Ignore implausible "max" sensor reports (e.g. oled_temp=125000) -- real
+    # board temps never exceed ~120C on this part. Keep the sane maximum.
+    [ "$t" -gt 120000 ] 2>/dev/null && continue
     [ "$t" -gt "$best" ] 2>/dev/null && best=$t
   done
   if [ "$best" -gt 0 ] 2>/dev/null; then
@@ -496,8 +528,8 @@ cpu_util_pct() {
 
 fg_app() {
   local a
-  a=$(dumpsys window 2>/dev/null | grep -m1 -E 'mCurrentFocus|mFocusedApp' | sed -E 's/.*[ \/]([A-Za-z0-9_.]+)\/.*/\1/')
-  [ -z "$a" ] && a=$(dumpsys activity activities 2>/dev/null | grep -m1 -E 'topResumedActivity|ResumedActivity' | sed -E 's/.*[ \/]([A-Za-z0-9_.]+)\/.*/\1/')
+  a=$(timeout 5 dumpsys window 2>/dev/null | grep -m1 -E 'mCurrentFocus|mFocusedApp' | sed -E 's/.*[ \/]([A-Za-z0-9_.]+)\/.*/\1/')
+  [ -z "$a" ] && a=$(timeout 5 dumpsys activity activities 2>/dev/null | grep -m1 -E 'topResumedActivity|ResumedActivity' | sed -E 's/.*[ \/]([A-Za-z0-9_.]+)\/.*/\1/')
   echo "$a"
 }
 

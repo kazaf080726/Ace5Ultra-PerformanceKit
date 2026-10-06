@@ -1,0 +1,9 @@
+﻿Install module <ZIP>
+
+Usage: ksud module install <ZIP>
+
+Arguments:
+  <ZIP>  module zip file path
+
+Options:
+  -h, --help  Print help

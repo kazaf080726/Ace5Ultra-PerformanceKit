@@ -1,0 +1,14 @@
+﻿10-07 01:26:16 write node=/sys/devices/system/cpu/cpufreq/policy4/sugov_ext/up_rate_limit_us old=0 new=0 ok=1 mode=660 unlocked=0
+10-07 01:26:16 write node=/sys/devices/system/cpu/cpufreq/policy4/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1 mode=660 unlocked=0
+10-07 01:26:16 write node=/sys/devices/system/cpu/cpufreq/policy7/scaling_governor old=sugov_ext new=sugov_ext ok=1 mode=660 unlocked=0
+10-07 01:26:16 write node=/sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq old=798000 new=798000 ok=1 mode=660 unlocked=0
+10-07 01:26:16 write node=/sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq old=3100000 new=3730000 ok=1 mode=660 unlocked=0
+10-07 01:26:16 write node=/sys/devices/system/cpu/cpufreq/policy7/sugov_ext/up_rate_limit_us old=0 new=0 ok=1 mode=660 unlocked=0
+10-07 01:26:17 write node=/sys/devices/system/cpu/cpufreq/policy7/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1 mode=660 unlocked=0
+10-07 01:26:17 write node=/sys/block/sda/queue/read_ahead_kb old=1024 new=1024 ok=1 mode=644 unlocked=0
+10-07 01:26:17 write node=/sys/block/sdb/queue/read_ahead_kb old=1024 new=1024 ok=1 mode=644 unlocked=0
+10-07 01:26:17 write node=/sys/block/sdc/queue/read_ahead_kb old=2048 new=1024 ok=1 mode=664 unlocked=0
+10-07 01:26:17 write node=/proc/sys/vm/swappiness old=100 new=125 ok=1 mode=644 unlocked=0
+10-07 01:26:17 write node=/dev/cpuctl/cpu.schedtune.boost old=0 new=0 ok=1 mode=644 unlocked=0
+10-07 01:26:17 write node=/dev/cpuctl/foreground/cpu.schedtune.boost old=0 new=0 ok=1 mode=664 unlocked=0
+10-07 01:26:17 boot_restore -> balanced adaptive=

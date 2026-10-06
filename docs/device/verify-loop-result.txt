@@ -1,0 +1,15 @@
+﻿killed manual 30916
+== boot daemon alive? ==
+2140 ALIVE
+/system/bin/sh /data/adb/modules/ace5ultra_perfkit/bin/perfd 
+== state sample 1 ==
+{"profile":"balanced","adaptive":true,"reason":"","load":0.0,"tempC":0.0}
+
+== state sample 2 (8s later; load/tempC should move) ==
+{"profile":"balanced","adaptive":true,"reason":"","load":0.0,"tempC":0.0}
+
+== state sample 3 ==
+{"profile":"balanced","adaptive":true,"reason":"","load":0.0,"tempC":0.0}
+
+== recent adaptive loop log ==
+DONE

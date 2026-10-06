@@ -43,7 +43,7 @@ cpu_util_core() { # cpuN  -> util 0..100 or -1
 build_status() {
   num=$(num_cores)
   prof=$(sg profile); [ -z "$prof" ] && prof=balanced
-  adap=$(sg adaptive); [ -z "$adap" ] && adap=true
+  adap=$(read_bool adaptive)
   reason=$(sg reason); [ -z "$reason" ] && reason=""
   load=$(ng load); [ -z "$load" ] && load=0.0
   tc=$(ng tempC); [ -z "$tc" ] && tc=0.0
@@ -142,10 +142,20 @@ build_status() {
 
   up=$(awk '{print int($1)}' /proc/uptime 2>/dev/null); [ -z "$up" ] && up=0
 
+  # cpufreq governor/min/max are vendor-locked to 0444 after boot; write_node
+  # unlocks them via root chmod. Report so the UI knows they are chmod-gated.
+  locked="false"
+  for p in /sys/devices/system/cpu/cpufreq/policy*; do
+    [ -e "$p/scaling_max_freq" ] || continue
+    mm=$(node_mode "$p/scaling_max_freq")
+    case "$mm" in 444|400) locked="true"; break;; esac
+  done
+
   printf '{"version":"%s","versionCode":%d,"contract":%d,\n' "$VERSION" "$VERSIONCODE" "$CONTRACT"
   printf ' "device":{"brand":"%s","model":"%s","device":"%s","soc":"%s","android":"%s","kernel":"%s"},\n' "$brand" "$model" "$device" "$soc" "$android" "$kernel"
   printf ' "profile":"%s",\n' "$prof"
   printf ' "adaptive":{"enabled":%s,"reason":"%s","load":%s,"tempC":%s},\n' "$adap" "$reason" "$load" "$tc"
+  printf ' "cpufreqLocked":%s,\n' "$locked"
   printf ' "cpu":{"numCores":%d,"policies":[%s],"cores":[%s]},\n' "$num" "$pols" "$cores"
   printf ' "memory":{"total":%d,"used":%d,"available":%d,"ramPercent":%s,"swapTotal":%d,"swapFree":%d,"zramTotal":%d},\n' "$mtb" "$((used*1024))" "$mab" "$rp" "$stb" "$sfb" "$zt"
   printf ' "gpu":{"present":%s,"name":"%s","curFreq":0,"minFreq":0,"maxFreq":0,"util":-1.0},\n' "$gpupresent" "$gpuname"
@@ -199,7 +209,7 @@ cmd_profile_set() {
 }
 
 cmd_adaptive_status() {
-  a=$(sg adaptive); [ -z "$a" ] && a=true
+  a=$(read_bool adaptive)
   printf '{"enabled":%s}\n' "$a"
 }
 

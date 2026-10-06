@@ -15,6 +15,12 @@ Legend:
 
 ## CPU / cpufreq (VERIFIED)
 
+> **Vendor mode lock (VERIFIED on device):** after boot the vendor sets
+> `scaling_governor`, `scaling_min_freq`, `scaling_max_freq` to `system:system 0444`.
+> Root `chmod 0644` then write **works and sticks for 30+ s** (no reversion). The
+> controller snapshots the original mode, chmods to write, and restores the mode.
+> `sugov_ext/up_rate_limit_us` / `down_rate_limit_us` stay writable after boot.
+
 | Node | Value / range | Profile use |
 |---|---|---|
 | `/sys/devices/system/cpu/cpufreq/policy0/{scaling_governor,scaling_min_freq,scaling_max_freq,scaling_cur_freq}` | governor `sugov_ext`; 339000–2400000 kHz | governor + min/max per profile |

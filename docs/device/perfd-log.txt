@@ -1,0 +1,24 @@
+﻿10-07 01:03:03 discover wrote capabilities.json
+10-07 01:03:03 apply_profile balanced
+10-07 01:03:03 write node=/sys/devices/system/cpu/cpufreq/policy0/scaling_governor old=sugov_ext new=sugov_ext ok=1
+10-07 01:03:03 write node=/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq old=1000000 new=339000 ok=1
+10-07 01:03:04 write node=/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq old=2400000 new=2400000 ok=1
+10-07 01:03:04 write node=/sys/devices/system/cpu/cpufreq/policy0/sugov_ext/up_rate_limit_us old=0 new=0 ok=1
+10-07 01:03:04 write node=/sys/devices/system/cpu/cpufreq/policy0/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+10-07 01:03:04 write node=/sys/devices/system/cpu/cpufreq/policy4/scaling_governor old=sugov_ext new=sugov_ext ok=1
+10-07 01:03:04 write node=/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq old=1100000 new=622000 ok=1
+10-07 01:03:05 write node=/sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq old=3300000 new=3300000 ok=1
+10-07 01:03:05 write node=/sys/devices/system/cpu/cpufreq/policy4/sugov_ext/up_rate_limit_us old=0 new=0 ok=1
+10-07 01:03:05 write node=/sys/devices/system/cpu/cpufreq/policy4/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+10-07 01:03:05 write node=/sys/devices/system/cpu/cpufreq/policy7/scaling_governor old=sugov_ext new=sugov_ext ok=1
+10-07 01:03:06 write node=/sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq old=798000 new=798000 ok=1
+10-07 01:03:06 write node=/sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq old=3100000 new=3730000 ok=1
+10-07 01:03:06 write node=/sys/devices/system/cpu/cpufreq/policy7/sugov_ext/up_rate_limit_us old=0 new=0 ok=1
+10-07 01:03:06 write node=/sys/devices/system/cpu/cpufreq/policy7/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+10-07 01:03:06 write node=/sys/block/sda/queue/read_ahead_kb old=1024 new=1024 ok=1
+10-07 01:03:07 write node=/sys/block/sdb/queue/read_ahead_kb old=1024 new=1024 ok=1
+10-07 01:03:07 write node=/sys/block/sdc/queue/read_ahead_kb old=2048 new=1024 ok=1
+10-07 01:03:07 write node=/proc/sys/vm/swappiness old=100 new=125 ok=1
+10-07 01:03:07 write node=/dev/cpuctl/cpu.schedtune.boost old=0 new=0 ok=1
+10-07 01:03:08 write node=/dev/cpuctl/foreground/cpu.schedtune.boost old=0 new=0 ok=1
+10-07 01:03:08 boot_restore -> balanced adaptive=

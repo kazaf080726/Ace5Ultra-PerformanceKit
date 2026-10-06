@@ -1,0 +1,97 @@
+﻿### adaptive off for deterministic manual test
+{"ok":true,"enabled":false}
+=== state: before explicit set ===
+policy0 gov=sugov_ext min=339000 max=2400000
+policy4 gov=sugov_ext min=622000 max=3300000
+policy7 gov=sugov_ext min=798000 max=3600000
+### profile set performance
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_governor old=sugov_ext new=performance ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq old=339000 new=2400000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq old=2400000 new=2400000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_governor old=sugov_ext new=performance ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq old=622000 new=3300000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq old=3300000 new=3300000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_governor old=sugov_ext new=performance ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq old=798000 new=3730000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq old=3600000 new=3730000 ok=1
+node=/sys/block/sda/queue/read_ahead_kb old=1024 new=2048 ok=1
+node=/sys/block/sdb/queue/read_ahead_kb old=1024 new=2048 ok=1
+node=/sys/block/sdc/queue/read_ahead_kb old=1024 new=2048 ok=1
+node=/proc/sys/vm/swappiness old=125 new=100 ok=1
+node=/dev/cpuctl/cpu.schedtune.boost old=0 new=1 ok=1
+node=/dev/cpuctl/foreground/cpu.schedtune.boost old=0 new=1 ok=1
+{"ok":true,"profile":"performance"}
+=== performance ===
+policy0 gov=performance min=2400000 max=2400000
+policy4 gov=performance min=3300000 max=3300000
+policy7 gov=performance min=3600000 max=3600000
+### profile set powersave
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_governor old=performance new=powersave ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq old=2400000 new=339000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq old=2400000 new=339000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_governor old=performance new=powersave ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq old=3300000 new=622000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq old=3300000 new=622000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_governor old=performance new=powersave ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq old=3600000 new=798000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq old=3600000 new=798000 ok=1
+node=/sys/block/sda/queue/read_ahead_kb old=2048 new=128 ok=1
+node=/sys/block/sdb/queue/read_ahead_kb old=2048 new=128 ok=1
+node=/sys/block/sdc/queue/read_ahead_kb old=2048 new=128 ok=1
+node=/proc/sys/vm/swappiness old=100 new=160 ok=1
+node=/dev/cpuctl/cpu.schedtune.boost old=1 new=0 ok=1
+node=/dev/cpuctl/foreground/cpu.schedtune.boost old=1 new=0 ok=1
+{"ok":true,"profile":"powersave"}
+=== powersave ===
+policy0 gov=powersave min=339000 max=339000
+policy4 gov=powersave min=622000 max=622000
+policy7 gov=powersave min=798000 max=798000
+### profile set game
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_governor old=powersave new=performance ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq old=339000 new=1369500 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq old=339000 new=2400000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_governor old=powersave new=performance ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq old=622000 new=1961000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq old=622000 new=3300000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_governor old=powersave new=performance ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq old=798000 new=2264000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq old=798000 new=3730000 ok=1
+node=/sys/block/sda/queue/read_ahead_kb old=128 new=2048 ok=1
+node=/sys/block/sdb/queue/read_ahead_kb old=128 new=2048 ok=1
+node=/sys/block/sdc/queue/read_ahead_kb old=128 new=2048 ok=1
+node=/proc/sys/vm/swappiness old=160 new=100 ok=1
+node=/dev/cpuctl/cpu.schedtune.boost old=0 new=1 ok=1
+node=/dev/cpuctl/foreground/cpu.schedtune.boost old=0 new=1 ok=1
+{"ok":true,"profile":"game"}
+=== game ===
+policy0 gov=sugov_ext min=339000 max=2400000
+policy4 gov=sugov_ext min=622000 max=3300000
+policy7 gov=sugov_ext min=798000 max=3600000
+### profile set balanced
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_governor old=sugov_ext new=sugov_ext ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq old=339000 new=339000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq old=2400000 new=2400000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/sugov_ext/up_rate_limit_us old=10 new=0 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_governor old=sugov_ext new=sugov_ext ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq old=622000 new=622000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq old=3300000 new=3300000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/sugov_ext/up_rate_limit_us old=10 new=0 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_governor old=sugov_ext new=sugov_ext ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq old=798000 new=798000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq old=3600000 new=3730000 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/sugov_ext/up_rate_limit_us old=10 new=0 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+node=/sys/block/sda/queue/read_ahead_kb old=2048 new=1024 ok=1
+node=/sys/block/sdb/queue/read_ahead_kb old=2048 new=1024 ok=1
+node=/sys/block/sdc/queue/read_ahead_kb old=2048 new=1024 ok=1
+node=/proc/sys/vm/swappiness old=100 new=125 ok=1
+node=/dev/cpuctl/cpu.schedtune.boost old=1 new=0 ok=1
+node=/dev/cpuctl/foreground/cpu.schedtune.boost old=1 new=0 ok=1
+{"ok":true,"profile":"balanced"}
+=== balanced ===
+policy0 gov=sugov_ext min=339000 max=2400000
+policy4 gov=sugov_ext min=622000 max=3300000
+policy7 gov=sugov_ext min=798000 max=3600000
+### switch test complete

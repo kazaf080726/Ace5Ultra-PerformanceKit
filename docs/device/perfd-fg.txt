@@ -1,0 +1,46 @@
+﻿adb : /data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy0/scaling_g
+overnor: Permission denied
+所在位置 行:1 字符: 1
++ adb shell su 0 timeout 12 /data/adb/modules/ace5ultra_perfkit/bin/per ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (/data/adb/modul...rmission denied:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_governor old=sugov_ext new=sugov_ext ok=0
+/data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy0/scaling_min_fre
+q: Permission denied
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq old=339000 new=339000 ok=0
+/data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy0/scaling_max_fre
+q: Permission denied
+node=/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq old=2000000 new=2400000 ok=0
+node=/sys/devices/system/cpu/cpufreq/policy0/sugov_ext/up_rate_limit_us old=10 new=0 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy0/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+/data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy4/scaling_governo
+r: Permission denied
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_governor old=sugov_ext new=sugov_ext ok=0
+/data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy4/scaling_min_fre
+q: Permission denied
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq old=622000 new=622000 ok=0
+/data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy4/scaling_max_fre
+q: Permission denied
+node=/sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq old=2600000 new=3300000 ok=0
+node=/sys/devices/system/cpu/cpufreq/policy4/sugov_ext/up_rate_limit_us old=10 new=0 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy4/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+/data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy7/scaling_governo
+r: Permission denied
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_governor old=sugov_ext new=sugov_ext ok=0
+/data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy7/scaling_min_fre
+q: Permission denied
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq old=798000 new=798000 ok=0
+/data/adb/modules/ace5ultra_perfkit/bin/perfd[83]: can't create /sys/devices/system/cpu/cpufreq/policy7/scaling_max_fre
+q: Permission denied
+node=/sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq old=3000000 new=3730000 ok=0
+node=/sys/devices/system/cpu/cpufreq/policy7/sugov_ext/up_rate_limit_us old=10 new=0 ok=1
+node=/sys/devices/system/cpu/cpufreq/policy7/sugov_ext/down_rate_limit_us old=1000 new=1000 ok=1
+node=/sys/block/sda/queue/read_ahead_kb old=1024 new=1024 ok=1
+node=/sys/block/sdb/queue/read_ahead_kb old=1024 new=1024 ok=1
+node=/sys/block/sdc/queue/read_ahead_kb old=512 new=1024 ok=1
+node=/proc/sys/vm/swappiness old=125 new=125 ok=1
+node=/dev/cpuctl/cpu.schedtune.boost old=0 new=0 ok=1
+node=/dev/cpuctl/foreground/cpu.schedtune.boost old=0 new=0 ok=1
+Terminated 

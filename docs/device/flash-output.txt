@@ -1,0 +1,50 @@
+﻿  _  __                    _ ____  _   _ 
+ | |/ /___ _ __ _ __   ___| / ___|| | | |
+ | ' // _ \ '__| '_ \ / _ \ \___ \| | | |
+ | . \  __/ |  | | | |  __/ |___) | |_| |
+ |_|\_\___|_|  |_| |_|\___|_|____/ \___/ 
+
+- Module size: 36.80 kB
+- Installing to /data/adb/modules_update/ace5ultra_perfkit
+- Extracting module files
+- Running module installer
+- Hybrid Mount metainstall
+- Current boot slot: _a
+- Device is system-as-root
+adb : Archive:  /data/local/tmp/ace5ultra_perfkit-v1.0.0.zip
+所在位置 行:1 字符: 1
++ adb shell su 0 ksud module install /data/local/tmp/ace5ultra_perfkit- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Archive:  /data...fkit-v1.0.0.zip:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  inflating: module.prop
+**************************
+ Ace5Ultra PerformanceKit 
+ by Kazaf 
+**************************
+*********************
+ Powered by KernelSU 
+*********************
+Archive:  /data/local/tmp/ace5ultra_perfkit-v1.0.0.zip
+  inflating: customize.sh
+- Extracting module files
+Archive:  /data/local/tmp/ace5ultra_perfkit-v1.0.0.zip
+  inflating: action.sh
+  inflating: customize.sh
+  inflating: module.prop
+  inflating: post-fs-data.sh
+  inflating: service.sh
+  inflating: uninstall.sh
+  inflating: bin/perfctl
+  inflating: bin/perfd
+  inflating: bin/perflib.sh
+  inflating: system/placeholder
+- Ace5Ultra PerformanceKit
+- Setting permissions
+- Runtime dir /data/adb/ace5ultra_perfkit (0700 root) is created on first boot.
+- All tuning is reversible sysfs/procfs only; nothing touches boot/vendor/system.
+- Done
+- removed empty /system directory (skip system mount)
+- installation partition layout ready
+- Module installed successfully!

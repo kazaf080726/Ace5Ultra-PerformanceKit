@@ -16,8 +16,24 @@ need_root
 ensure_runtime
 discover
 
-# thresholds (Celsius / percent)
-THERMAL_HI=48000      # deci-Celsius: >=48.0C -> powersave (thermal safety; never disable thermal)
+# Duplicate-instance guard: if another real perfd is already running (cmdline
+# contains bin/perfd and is not our own PID), exit so we never double-run.
+SELF=$$
+for d in /proc/[0-9]*; do
+  pid=${d#/proc/}
+  [ "$pid" = "$SELF" ] && continue
+  if tr '\0' ' ' < "$d/cmdline" 2>/dev/null | grep -q "bin/perfd"; then
+    log "perfd: another instance $pid already running; exiting"
+    exit 0
+  fi
+done
+# Write our own pidfile (service.sh does not trust $! after setsid).
+echo "$SELF" > "$RUNDIR/perfd.pid" 2>/dev/null
+chmod 0600 "$RUNDIR/perfd.pid" 2>/dev/null
+
+# thresholds (milli-Celsius / percent). Real idle skin ~78C, die ~64C; trip
+# powersave only when something genuinely gets hot (>=85C).
+THERMAL_HI=85000      # milli-Celsius: >=85.0C -> powersave (thermal safety; never disable thermal)
 LOAD_HI=75            # percent
 LOAD_LO=15            # percent
 
@@ -26,7 +42,7 @@ boot_restore() {
   p=$(sg profile); [ -z "$p" ] && p=balanced
   # "adaptive" stored as a profile name means: pick now, do not force a fixed one
   if [ "$p" = "adaptive" ]; then
-    a=$(sg adaptive); [ -z "$a" ] && a=true
+    a=$(read_bool adaptive)
     if [ "$a" = "true" ]; then
       decide_and_apply "boot"
     else
@@ -84,7 +100,7 @@ boot_restore
 
 # idle check: if adaptive is off, stay resident but do nothing (per contract)
 while true; do
-  a=$(sg adaptive)
+  a=$(read_bool adaptive)
   if [ "$a" = "true" ]; then
     decide_and_apply "loop"
   fi
