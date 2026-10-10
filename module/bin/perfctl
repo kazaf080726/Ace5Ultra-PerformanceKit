@@ -24,7 +24,7 @@ expand_range() {
            out="$out,$i"; i=$((i+1))
          done
          echo "${out#,}" ;;
-    *) echo "$r" ;;
+    *) printf '%s' "$r" | tr -s ' ' | tr ' ' ',' | sed 's/^,//;s/,$//' ;;
   esac
 }
 
@@ -110,16 +110,28 @@ build_status() {
   st=$(memfield SwapTotal); [ -z "$st" ] && st=0
   sf=$(memfield SwapFree);  [ -z "$sf" ] && sf=0
   zt=$(tr -d '\n' < /sys/block/zram0/disksize 2>/dev/null); case "$zt" in ''|*[!0-9]*) zt=0;; esac
-  mtb=$((mt*1024)); mab=$((ma*1024)); stb=$((st*1024)); sfb=$((sf*1024))
+  mtb=$(kb2b "$mt"); mab=$(kb2b "$ma"); stb=$(kb2b "$st"); sfb=$(kb2b "$sf")
+  usedb=0
   if [ "$mt" -gt 0 ] 2>/dev/null; then
-    used=$((mt - ma)); rp=$(awk -v u="$used" -v t="$mt" 'BEGIN{printf "%.1f", (u/t)*100}')
+    used=$((mt - ma)); usedb=$(kb2b "$used"); rp=$(awk -v u="$used" -v t="$mt" 'BEGIN{printf "%.1f", (u/t)*100}')
   else used=0; rp=0.0; fi
 
-  # gpu (no util node on this device -> -1.0)
-  gpupresent=false; gpuname=""
-  [ -d /proc/gpufreqv2 ] && gpupresent=true
-  gpuname=$(head -n1 /sys/devices/platform/soc/*/mali/gpuinfo 2>/dev/null)
-  [ -z "$gpuname" ] && gpuname=""
+  # gpu: live freq from the Mali devfreq (Hz, converted to kHz), nominal DVFS
+  # bounds from the MTK working OPP table (already kHz). No util node -> -1.0.
+  gpupresent=false; gpuname=""; gpucur=0; gpumin=0; gpumax=0
+  if [ -d /proc/gpufreqv2 ]; then
+    gpupresent=true
+    gdf=$(for f in /sys/class/devfreq/*mali*/cur_freq; do [ -e "$f" ] && { echo "$f"; break; }; done)
+    gcurhz=$(tr -d '\n' < "$gdf" 2>/dev/null)
+    case "$gcurhz" in ''|*[!0-9]*) gcurhz=0;; esac
+    gpucur=$((gcurhz/1000))  # devfreq reports Hz; contract uses kHz
+    gpumax=$(awk 'match($0,/freq: *[0-9]+/){s=substr($0,RSTART,RLENGTH); sub(/freq: */,"",s); print s; exit}' /proc/gpufreqv2/gpu_working_opp_table 2>/dev/null)
+    gpumin=$(awk 'match($0,/freq: *[0-9]+/){s=substr($0,RSTART,RLENGTH); sub(/freq: */,"",s); last=s} END{print last}' /proc/gpufreqv2/gpu_working_opp_table 2>/dev/null)
+    case "$gpumax" in ''|*[!0-9]*) gpumax=0;; esac
+    case "$gpumin" in ''|*[!0-9]*) gpumin=0;; esac
+    # No sysfs node exposes the marketing name; this module targets mt6991 only.
+    gpuname="Immortalis-G925 MC12"
+  fi
 
   # thermal (all zones, deci-C -> C)
   th=""
@@ -157,8 +169,8 @@ build_status() {
   printf ' "adaptive":{"enabled":%s,"reason":"%s","load":%s,"tempC":%s},\n' "$adap" "$reason" "$load" "$tc"
   printf ' "cpufreqLocked":%s,\n' "$locked"
   printf ' "cpu":{"numCores":%d,"policies":[%s],"cores":[%s]},\n' "$num" "$pols" "$cores"
-  printf ' "memory":{"total":%d,"used":%d,"available":%d,"ramPercent":%s,"swapTotal":%d,"swapFree":%d,"zramTotal":%d},\n' "$mtb" "$((used*1024))" "$mab" "$rp" "$stb" "$sfb" "$zt"
-  printf ' "gpu":{"present":%s,"name":"%s","curFreq":0,"minFreq":0,"maxFreq":0,"util":-1.0},\n' "$gpupresent" "$gpuname"
+  printf ' "memory":{"total":%d,"used":%d,"available":%d,"ramPercent":%s,"swapTotal":%d,"swapFree":%d,"zramTotal":%d},\n' "$mtb" "$usedb" "$mab" "$rp" "$stb" "$sfb" "$zt"
+  printf ' "gpu":{"present":%s,"name":"%s","curFreq":%d,"minFreq":%d,"maxFreq":%d,"util":-1.0},\n' "$gpupresent" "$gpuname" "$gpucur" "$gpumin" "$gpumax"
   printf ' "thermal":[%s],\n' "$th"
   printf ' "battery":{"level":%d,"temperatureC":%s,"currentNowMa":%d,"status":"%s"},\n' "$bl" "$btc" "$bc" "$bs"
   printf ' "uptimeSeconds":%d}\n' "$up"

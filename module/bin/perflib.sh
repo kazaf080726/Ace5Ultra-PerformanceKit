@@ -489,6 +489,10 @@ gprop() { getprop "$1" 2>/dev/null; }
 
 memfield() { awk -v k="$1" '$1==k":"{print $2}' /proc/meminfo 2>/dev/null | head -n1; }
 
+# Convert kilobytes to bytes without shell integer overflow (awk uses 64-bit
+# doubles, exact for these magnitudes). Prints an integer.
+kb2b() { awk -v k="$1" 'BEGIN{printf "%.0f", (k+0)*1024}'; }
+
 max_temp_c() {
   local best=-1 z t
   for z in /sys/class/thermal/thermal_zone[0-9]*/temp; do
