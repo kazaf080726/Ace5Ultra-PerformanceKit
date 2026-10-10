@@ -37,3 +37,12 @@ Thumbs.db
 app/signing.properties
 release-signing/
 
+# ---- bulky / ad-hoc on-device test artifacts (curated copies in docs/screenshots) ----
+docs/device/screens/
+docs/device/ui-*.xml
+docs/device/logcat-*.txt
+docs/device/*.sh
+scripts/t2.sh
+scripts/test_loop*.sh
+scripts/test_write.sh
+scripts/tz.sh

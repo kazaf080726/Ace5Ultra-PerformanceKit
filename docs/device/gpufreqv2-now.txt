@@ -1,0 +1,71 @@
+﻿===== /proc/gpufreqv2/gpufreq_status =====
+[GPUFREQ-DEBUG] Current Status of GPUFREQ
+[GPU   OPP]      Index: 51, Freq:   26000, Volt:  50625, Vsram:  75000
+[STACK OPP]      Index: 51, Freq:   26000, Volt:  49500, Vsram:  75000
+[GPU   REALOPP]  FmeterFreq:       0, OutFreq:   26000, ReguVolt:      0, ReguVsram:      0
+[STACK REALOPP]  FmeterFreq:       0, OutFreq:   26000, ReguVolt:      0, ReguVsram:      0
+[GPU   Segment]  SegmentID: 3, WorkingOPPNum: 52, SignedOPPNum: 52, DACLow:      0
+[STACK Segment]  SegmentID: 3, WorkingOPPNum: 52, SignedOPPNum: 52, DACLow:      0
+[PPM Ceiling]    LimitIndex: 24, Limiter: 12, Priority:  6
+[PPM Floor]      LimitIndex: 51, Limiter:  0, Priority:  9
+[Power State]    PowerCount: 0, Active: 0, CG: 0, MTCMOS: 0, BUCK: 0
+[Power State]    Timestamp: 393631429322, DVFSState: 0x0022
+[Power State]    PowerStatus: 0x00000001, ShaderPresent: 0x00ee0077
+[MFGSYS Config]  DualBuck: True, GPUEBSupport: On, StressTest: Off
+[MFGSYS Config]  AgingMargin: Off, AVSMargin: On, GPM1.0: Off, GPM3.0: On, DFD: 6.0
+[MFGSYS Config]  Temperature: -274'C, GPUTemperComp: 0/0, STACKTemperComp: 0/0
+[MFGSYS Config]  DBGVer: 0x20250410, KDBGVer: 0x20241029, PTPVer: 0x0018, SBVer: 0x0000, CType: 0
+[PTP3 Config]    PTP3: 
+===== /proc/gpufreqv2/gpu_working_opp_table =====
+[00] freq: 1612000, volt:  83750, vsram:  83750
+[01] freq: 1612000, volt:  83750, vsram:  83750
+[02] freq: 1612000, volt:  83750, vsram:  83750
+[03] freq: 1612000, volt:  83750, vsram:  83750
+[04] freq: 1508000, volt:  81250, vsram:  81250
+[05] freq: 1508000, volt:  81250, vsram:  81250
+[06] freq: 1508000, volt:  81250, vsram:  81250
+[07] freq: 1430000, volt:  79375, vsram:  79375
+[08] freq: 1430000, volt:  79375, vsram:  79375
+[09] freq: 1430000, volt:  79375, vsram:  79375
+[10] freq: 1430000, volt:  79375, vsram:  79375
+[11] freq: 1430000, volt:  79375, vsram:  79375
+[12] freq: 1430000, volt:  79375, vsram:  79375
+[13] freq: 1430000, volt:  79375, vsram:  79375
+[14] freq: 1430000, volt:  79375, vsram:  79375
+[15] freq: 1430000, volt:  79375, vsram:  79375
+[16] freq: 1430000, volt:  79375, vsram:  79375
+[17] freq: 1430000, volt:  79375, vsram:  79375
+[18] freq: 1430000, volt:  79375, vsram:  79375
+[19] freq: 1430000, volt:  79375, vsram:  79375
+[20] freq: 1430000, volt:  79375, vsram:  79375
+[21] freq: 1430000, volt:  79375, vsram:  79375
+[22] freq: 1430000, volt:  79375, vsram:  79375
+[23] freq: 1430000, volt:  79375, vsram:  79375
+[24] freq: 1430000, volt:  79375, vsram:  79375
+
+===== /proc/gpufreqv2/limit_table =====
+[id]          [name]  [priority]  [ceiling]  [floor]  [c_enable]  [f_enable]
+   0         SEGMENT           9          0       51           1           1
+   1           DEBUG           8         -1       -1           1           1
+   2         GPM_3.0           7         -1       -1           1           1
+   3      PEAK_POWER           7          0       -1           1           1
+   4      THERMAL_AP           6         -1       -1           1           1
+   5      THERMAL_EB           6          7       -1           1           1
+   6          SRAMRC           5         -1       -1           1           1
+   7         BATT_OC           4         -1       -1           1           1
+   8    BATT_PERCENT           4         -1       -1           1           1
+   9        LOW_BATT           4         -1       -1           1           1
+  10             PBM           4         -1       -1           1           1
+  11        APIBOOST           3         -1       51           1           1
+  12        POWERHAL           2         24       51           1           1
+  13          FIXCMD           2         -1       -1           1           1
+
+===== /proc/gpufreqv2/asensor_info =====
+Aging table index: 0, MOST_AGRRESIVE_AGING_TABLE_ID: 0
+efuse1(0x00000000): 0x00000000, efuse2(0x00000000): 0x00000000
+efuse3(0x00000000): 0x00000000, efuse4(0x00000000): 0x00000000
+a_t0_efuse1: 0, a_t0_efuse2: 0, a_t0_efuse3: 0, a_t0_efuse4: 0
+a_tn_sensor1: 0, a_tn_sensor2: 0, a_tn_sensor3: 0, a_tn_sensor4: 0
+a_diff1: 0, a_diff2: 0, a_diff3: 0, a_diff4: 0
+tj_max: 0, lvts5_0_y_temperature: 0, leakage_power: 0
+
