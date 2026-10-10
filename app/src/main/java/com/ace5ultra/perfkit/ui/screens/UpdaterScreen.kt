@@ -27,7 +27,9 @@ import com.ace5ultra.perfkit.data.Updater
 import com.ace5ultra.perfkit.data.UpdateInfo
 import com.ace5ultra.perfkit.ui.PerfViewModel
 import com.ace5ultra.perfkit.ui.glass.GlassPanel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 @Composable
@@ -44,7 +46,7 @@ fun UpdaterScreen(vm: PerfViewModel) {
 
     suspend fun check() {
         checking = true
-        info = Updater.fetchUpdateJson()
+        info = withContext(Dispatchers.IO) { Updater.fetchUpdateJson() }
         checking = false
     }
 

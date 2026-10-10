@@ -30,7 +30,7 @@ object Fmt {
     }
 
     fun percent(v: Float): String {
-        if (v.isNaN()) return NA
+        if (v.isNaN() || v < 0f) return NA
         return String.format(Locale.US, "%.0f%%", v)
     }
 

@@ -9,16 +9,22 @@ import com.ace5ultra.perfkit.data.PerfStatus
 import com.ace5ultra.perfkit.data.Settings
 import com.ace5ultra.perfkit.data.TuningItem
 import com.ace5ultra.perfkit.root.RootBridge
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Holds the live dashboard state and drives the configurable 3-5 s refresh loop.
  * Never throws: every failure degrades to a N/A state.
+ *
+ * All blocking root / sysfs work (libsu Process.waitFor, /proc reads) runs on
+ * Dispatchers.IO so the main thread is never frozen. MutableStateFlow may be
+ * written from any thread; UI callbacks hop back to Dispatchers.Main.
  */
 class PerfViewModel(app: Application) : AndroidViewModel(app) {
 
@@ -54,7 +60,7 @@ class PerfViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun refreshRoot() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _root.value = RootUi.Checking
             val hasRoot = RootBridge.hasRoot()
             if (!hasRoot) {
@@ -72,7 +78,7 @@ class PerfViewModel(app: Application) : AndroidViewModel(app) {
     fun startPolling() {
         if (polling) return
         polling = true
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             while (isActive) {
                 pollOnce()
                 delay(settings.refreshSeconds * 1000L)
@@ -83,7 +89,7 @@ class PerfViewModel(app: Application) : AndroidViewModel(app) {
     fun stopPolling() { polling = false }
 
     fun pollOnce() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val s = repo.fetchStatus()
             if (s != null) {
                 _status.value = s
@@ -97,36 +103,43 @@ class PerfViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun reloadTuning() {
-        viewModelScope.launch { _tuning.value = repo.listTuning() }
+        viewModelScope.launch(Dispatchers.IO) { _tuning.value = repo.listTuning() }
     }
 
     fun setProfile(name: String, onDone: (Boolean) -> Unit) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val ok = repo.setProfile(name)
             if (ok) settings.lastProfile = name
-            onDone(ok)
+            withContext(Dispatchers.Main) { onDone(ok) }
             pollOnce()
         }
     }
 
     fun setAdaptive(on: Boolean, onDone: (Boolean) -> Unit) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val ok = repo.setAdaptive(on)
-            onDone(ok)
+            withContext(Dispatchers.Main) { onDone(ok) }
             pollOnce()
         }
     }
 
     fun setTuning(key: String, value: String, onDone: (Boolean) -> Unit) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val ok = repo.setTuning(key, value)
-            onDone(ok)
+            withContext(Dispatchers.Main) { onDone(ok) }
             reloadTuning()
         }
     }
 
-    fun snapshot(onDone: (Boolean) -> Unit) = viewModelScope.launch { onDone(repo.snapshot()) }
-    fun restore(onDone: (Boolean) -> Unit) = viewModelScope.launch { onDone(repo.restore()) }
+    fun snapshot(onDone: (Boolean) -> Unit) = viewModelScope.launch(Dispatchers.IO) {
+        val ok = repo.snapshot()
+        withContext(Dispatchers.Main) { onDone(ok) }
+    }
+
+    fun restore(onDone: (Boolean) -> Unit) = viewModelScope.launch(Dispatchers.IO) {
+        val ok = repo.restore()
+        withContext(Dispatchers.Main) { onDone(ok) }
+    }
 
     private fun pushHistory(s: PerfStatus) {
         val map = HashMap(history.value)
