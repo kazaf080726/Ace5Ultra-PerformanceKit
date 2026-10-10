@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -19,31 +20,27 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /**
- * Liquid-glass helpers.
- *
- * On Android 12+ (API 31) real GPU blur is available through [Modifier.blur]
- * (which uses RenderEffect.createBlurEffect under the hood). Below API 31 blur
- * is unsupported in Compose, so we fall back to a translucent frosted tint and
- * border — the panels still read as glass, just without backdrop sampling.
+ * Liquid-glass helpers. On Android 12+ (API 31) real GPU backdrop blur is
+ * available via [Modifier.blur] (RenderEffect.createBlurEffect). Below API 31
+ * we fall back to a translucent frosted tint + border; the panels still read as
+ * glass, just without backdrop sampling.
  */
 object Glass {
     val BlurSupported: Boolean get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
-    /** Soft neutral + red ambient blobs used as the app-wide blurred backdrop. */
     @Composable
     fun BackdropBrush(dark: Boolean): Brush {
-        val base = if (dark) Color(0xFF0E0F12) else Color(0xFFF2F3F6)
-        val red = MaterialTheme.colorScheme.primary.copy(alpha = if (dark) 0.55f else 0.45f)
-        val cool = if (dark) Color(0xFF223047) else Color(0xFFD9E2F2)
+        val base = Color(0xFFEEF1F5)
+        val cyan = MaterialTheme.colorScheme.primary.copy(alpha = 0.18f)
+        val cool = Color(0xFFDDE8F2)
         return Brush.radialGradient(
-            colors = listOf(red, cool, base),
-            center = Offset(600f, 300f),
-            radius = 1200f,
+            colors = listOf(cyan, cool, base),
+            center = Offset(600f, 200f),
+            radius = 1400f,
         )
     }
 }
 
-/** Full-screen ambient blurred backdrop. */
 @Composable
 fun GlassBackdrop(dark: Boolean, modifier: Modifier = Modifier) {
     Box(
@@ -54,47 +51,43 @@ fun GlassBackdrop(dark: Boolean, modifier: Modifier = Modifier) {
 }
 
 /**
- * A frosted glass panel. Translucent white scrim + hairline border. On API 31+
- * the scrim is layered over the already-blurred [GlassBackdrop] behind it.
+ * A frosted glass panel: near-opaque white card with soft shadow, hairline
+ * border, and a faint cyan tint. On API 31+ the scrim layers over the blurred
+ * [GlassBackdrop] behind it. Radius defaults to 24dp.
  */
 @Composable
 fun GlassPanel(
     modifier: Modifier = Modifier,
     shape: Shape = RoundedCornerShape(24.dp),
-    tintAlpha: Float = 0.14f,
+    tintAlpha: Float = 0.82f,
     content: @Composable () -> Unit,
 ) {
-    val onDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
-    val tint = if (onDark) Color.White else Color.White
     Box(
         modifier = modifier
+            .shadow(elevation = 10.dp, shape = shape, clip = false, spotColor = Color(0x220B1020))
             .clip(shape)
             .background(
                 Brush.verticalGradient(
                     listOf(
-                        tint.copy(alpha = tintAlpha + 0.05f),
-                        tint.copy(alpha = tintAlpha),
+                        Color.White.copy(alpha = tintAlpha + 0.08f),
+                        Color.White.copy(alpha = tintAlpha),
                     ),
                 ),
             )
             .border(
                 width = Dp.Hairline,
                 brush = Brush.verticalGradient(
-                    listOf(Color.White.copy(alpha = 0.35f), Color.White.copy(alpha = 0.08f)),
+                    listOf(Color.White.copy(alpha = 0.9f), Color(0xFFE6ECF3).copy(alpha = 0.6f)),
                 ),
                 shape = shape,
             ),
     ) { content() }
 }
 
-private fun Color.luminance(): Double =
-    (0.299 * red + 0.587 * green + 0.114 * blue).toDouble()
-
-/** Debug/metric helper: paint a subtle radial glow behind accent chips. */
 fun Modifier.accentGlow(color: Color, radius: Dp = 240.dp): Modifier = this.drawBehind {
     drawRect(
         brush = Brush.radialGradient(
-            colors = listOf(color.copy(alpha = 0.20f), Color.Transparent),
+            colors = listOf(color.copy(alpha = 0.16f), Color.Transparent),
             center = center,
             radius = radius.toPx() * 1.4f,
         ),

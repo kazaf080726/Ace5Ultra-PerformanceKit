@@ -11,42 +11,34 @@ import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
 
-/**
- * OTA updater. Fetches release/update.json, compares versionCode and either
- * hands the module zip to the root manager or offers the APK download.
- */
-data class UpdateInfo(
+/** Module manifest (release/update.json). */
+data class ModuleUpdateInfo(
     val version: String,
     val versionCode: Int,
     val zipUrl: String,
     val changelog: String,
-    val appVersion: String = "",
-    val appVersionCode: Int = -1,
-    val appUrl: String = "",
+)
+
+/** App-only manifest (release/app-update.json). */
+data class AppUpdateInfo(
+    val version: String,
+    val versionCode: Int,
+    val apkUrl: String,
+    val changelog: String,
 )
 
 object Updater {
 
-    fun fetchUpdateJson(timeoutMs: Int = 8000): UpdateInfo? {
+    private fun httpGet(url: String, timeoutMs: Int = 8000): String? {
         var conn: HttpURLConnection? = null
         return try {
-            conn = (URL(RepoConfig.UPDATE_JSON_URL).openConnection() as HttpURLConnection).apply {
+            conn = (URL(url).openConnection() as HttpURLConnection).apply {
                 connectTimeout = timeoutMs
                 readTimeout = timeoutMs
                 setRequestProperty("Cache-Control", "no-cache")
             }
-            if (conn.responseCode != 200) return null
-            val body = conn.inputStream.bufferedReader().use { it.readText() }
-            val o = JSONObject(body)
-            UpdateInfo(
-                version = o.optString("version", ""),
-                versionCode = o.optInt("versionCode", -1),
-                zipUrl = o.optString("zipUrl", ""),
-                changelog = o.optString("changelog", ""),
-                appVersion = o.optString("appVersion", ""),
-                appVersionCode = if (o.isNull("appVersionCode")) -1 else o.optInt("appVersionCode", -1),
-                appUrl = o.optString("appUrl", ""),
-            )
+            if (conn.responseCode != 200) null
+            else conn.inputStream.bufferedReader().use { it.readText() }
         } catch (t: Throwable) {
             null
         } finally {
@@ -54,25 +46,58 @@ object Updater {
         }
     }
 
-    /** True when the remote versionCode is strictly greater than the installed module's. */
-    fun moduleUpdateAvailable(localCode: Int, remote: UpdateInfo): Boolean =
-        remote.versionCode > localCode && remote.zipUrl.isNotBlank()
+    fun fetchModuleManifest(): ModuleUpdateInfo? {
+        val body = httpGet(RepoConfig.UPDATE_JSON_URL) ?: return null
+        return try {
+            val o = JSONObject(body)
+            ModuleUpdateInfo(
+                version = o.optString("version", ""),
+                versionCode = if (o.isNull("versionCode")) -1 else o.optInt("versionCode", -1),
+                zipUrl = o.optString("zipUrl", ""),
+                changelog = o.optString("changelog", ""),
+            )
+        } catch (t: Throwable) { null }
+    }
 
-    fun appUpdateAvailable(localCode: Int, remote: UpdateInfo): Boolean =
-        remote.appVersionCode > localCode && remote.appUrl.isNotBlank()
+    fun fetchAppManifest(): AppUpdateInfo? {
+        val body = httpGet(RepoConfig.APP_UPDATE_JSON_URL) ?: return null
+        return try {
+            val o = JSONObject(body)
+            AppUpdateInfo(
+                version = o.optString("version", ""),
+                versionCode = if (o.isNull("versionCode")) -1 else o.optInt("versionCode", -1),
+                apkUrl = o.optString("apkUrl", ""),
+                changelog = o.optString("changelog", ""),
+            )
+        } catch (t: Throwable) { null }
+    }
 
-    /** Download the zip into app cache and hand it to the root manager via VIEW intent. */
-    fun downloadAndHandZip(context: Context, zipUrl: String, onResult: (File?, String?) -> Unit) {
+    sealed class Channel {
+        /** Module remote code > installed module: flash zip only (carries bundled APK). */
+        data class ModuleApp(val info: ModuleUpdateInfo) : Channel()
+        /** No module update, but app-only remote code > installed app: self-update APK. */
+        data class AppOnly(val info: AppUpdateInfo) : Channel()
+        data object UpToDate : Channel()
+        data object Unavailable : Channel()
+    }
+
+    fun decide(localModuleCode: Int, localAppCode: Int): Channel {
+        val m = fetchModuleManifest() ?: return Channel.Unavailable
+        if (m.versionCode > localModuleCode && m.zipUrl.isNotBlank()) return Channel.ModuleApp(m)
+        val a = fetchAppManifest()
+        if (a != null && a.versionCode > localAppCode && a.apkUrl.isNotBlank()) return Channel.AppOnly(a)
+        return Channel.UpToDate
+    }
+
+    fun downloadFile(context: Context, url: String, outName: String, onResult: (File?, String?) -> Unit) {
         Thread {
             try {
-                val out = File(context.cacheDir, "perfkit-update.zip")
-                val conn = URL(zipUrl).openConnection() as HttpURLConnection
+                val out = File(context.cacheDir, outName)
+                val conn = URL(url).openConnection() as HttpURLConnection
                 conn.connectTimeout = 10000
-                conn.readTimeout = 30000
+                conn.readTimeout = 60000
                 conn.connect()
-                conn.inputStream.use { input ->
-                    out.outputStream().use { input.copyTo(it) }
-                }
+                conn.inputStream.use { input -> out.outputStream().use { input.copyTo(it) } }
                 conn.disconnect()
                 onResult(out, null)
             } catch (t: Throwable) {
@@ -81,13 +106,8 @@ object Updater {
         }.start()
     }
 
-    /** Open the downloaded zip with whatever root manager registered for it. */
     fun flashWithRootManager(context: Context, zip: File) {
-        val uri: Uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", zip)
-        } else {
-            Uri.fromFile(zip)
-        }
+        val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", zip)
         val intent = Intent(Intent.ACTION_VIEW).apply {
             setDataAndType(uri, "application/zip")
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -96,7 +116,16 @@ object Updater {
         runCatching { context.startActivity(intent) }
     }
 
-    /** Open the changelog in a browser. */
+    fun installApk(context: Context, apk: File) {
+        val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", apk)
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/vnd.android.package-archive")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        runCatching { context.startActivity(intent) }
+    }
+
     fun openChangelog(context: Context, url: String) {
         if (url.isBlank()) return
         runCatching {

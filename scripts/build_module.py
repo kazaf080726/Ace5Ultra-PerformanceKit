@@ -8,9 +8,11 @@ correct even when built on Windows, and writes
 This script is intentionally dependency-free and portable; it uses only the standard
 library. It never writes outside the repository.
 """
+import json
 import os
 import stat
 import sys
+import shutil
 import zipfile
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,12 +37,59 @@ EXEC_NAMES = {p.replace(os.sep, "/") for p in EXEC_NAMES}
 
 def read_version():
     prop = os.path.join(SRC, "module.prop")
+    ver = None
+    vcode = None
     with open(prop, "r", encoding="utf-8") as fh:
         for line in fh:
             line = line.strip()
             if line.startswith("version="):
-                return line.split("=", 1)[1].strip()
-    raise SystemExit("version= not found in module.prop")
+                ver = line.split("=", 1)[1].strip()
+            elif line.startswith("versionCode="):
+                vcode = int(line.split("=", 1)[1].strip())
+    if ver is None:
+        raise SystemExit("version= not found in module.prop")
+    if vcode is None:
+        raise SystemExit("versionCode= not found in module.prop")
+    return ver, vcode
+
+
+def bundle_apk(version, version_code):
+    """Copy the release APK into module/app/PerfKit.apk when it exists AND its
+    versionCode matches the module. Hard-fail on mismatch. With PERFKIT_NO_APK=1
+    (structural build before the app APK is ready), skip bundling but warn."""
+    apk_dir = os.path.join(REPO, "app", "build", "outputs", "apk", "release")
+    apk = os.path.join(apk_dir, "app-release.apk")
+    meta = os.path.join(apk_dir, "output-metadata.json")
+    app_dir = os.path.join(SRC, "app")
+    dst_apk = os.path.join(app_dir, "PerfKit.apk")
+    dst_vc = os.path.join(app_dir, "version_code.txt")
+
+    if not os.path.exists(apk):
+        print("note: no release APK at %s; building module-only (no bundle)" % apk)
+        return False
+
+    with open(meta, "r", encoding="utf-8") as fh:
+        md = json.load(fh)
+    apk_vc = md["elements"][0]["versionCode"]
+    apk_vn = md["elements"][0]["versionName"]
+
+    if os.environ.get("PERFKIT_NO_APK") == "1":
+        print("note: PERFKIT_NO_APK=1 -> NOT bundling existing APK "
+              "(apk vc=%s module vc=%s); structural build only" % (apk_vc, version_code))
+        return False
+
+    if apk_vc != version_code:
+        raise SystemExit(
+            "FATAL: bundled APK versionCode=%s (v%s) does not match module "
+            "versionCode=%s (v%s). Refusing to ship a mismatched bundle."
+            % (apk_vc, apk_vn, version_code, version))
+
+    os.makedirs(app_dir, exist_ok=True)
+    shutil.copyfile(apk, dst_apk)
+    with open(dst_vc, "w", encoding="utf-8") as fh:
+        fh.write("%d\n" % version_code)
+    print("bundled APK: %s -> module/app/PerfKit.apk (versionCode=%s)" % (apk_vn, apk_vc))
+    return True
 
 
 def is_exec(rel):
@@ -58,8 +107,15 @@ def is_exec(rel):
 def main():
     if not os.path.isdir(SRC):
         raise SystemExit("module/ source directory missing: %s" % SRC)
-    version = read_version()
+    version, version_code = read_version()
     os.makedirs(OUT, exist_ok=True)
+
+    # clean any previously bundled app so a no-APK build does not ship a stale one
+    prev_app = os.path.join(SRC, "app")
+    if os.path.isdir(prev_app):
+        shutil.rmtree(prev_app)
+    bundle_apk(version, version_code)
+
     zip_path = os.path.join(OUT, "ace5ultra_perfkit-v%s.zip" % version)
     if os.path.exists(zip_path):
         os.remove(zip_path)

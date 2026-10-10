@@ -40,6 +40,12 @@ LOAD_LO=15            # percent
 # ---- boot restore: apply the persisted profile ----
 boot_restore() {
   p=$(sg profile); [ -z "$p" ] && p=balanced
+  if [ "$p" = "system" ]; then
+    # monitor-only: restore stock (hand control to ColorOS), then no writes
+    do_restore >/dev/null 2>&1
+    log "boot_restore -> system (monitor-only)"
+    return
+  fi
   # "adaptive" stored as a profile name means: pick now, do not force a fixed one
   if [ "$p" = "adaptive" ]; then
     a=$(read_bool adaptive)
@@ -51,7 +57,7 @@ boot_restore() {
   else
     apply_profile "$p"
   fi
-  log "boot_restore -> $(sg profile) adaptive=$(sg adaptive)"
+  log "boot_restore -> $(sg profile) adaptive=$(read_bool adaptive)"
 }
 
 # choose a profile from current load/temp/fg and apply if it differs
@@ -98,11 +104,23 @@ decide_and_apply() {
 # ---- main ----
 boot_restore
 
-# idle check: if adaptive is off, stay resident but do nothing (per contract)
+# idle check: if adaptive is off OR profile=system, stay resident but do no
+# writes. system = monitor-only: sample + record load/temp, never touch nodes.
 while true; do
-  a=$(read_bool adaptive)
-  if [ "$a" = "true" ]; then
-    decide_and_apply "loop"
+  cur=$(sg profile)
+  if [ "$cur" = "system" ]; then
+    # monitor-only: keep state fresh for the UI, but write NOTHING
+    load=$(cpu_util_pct)
+    tc=$(max_temp_c)
+    tmp="$STATE.tmp"
+    printf '{"profile":"system","adaptive":false,"reason":"system_monitor","load":%s,"tempC":%s}\n' \
+      "$load" "$tc" > "$tmp"
+    chmod 0600 "$tmp" 2>/dev/null; mv -f "$tmp" "$STATE" 2>/dev/null
+  else
+    a=$(read_bool adaptive)
+    if [ "$a" = "true" ]; then
+      decide_and_apply "loop"
+    fi
   fi
   sleep 3
 done

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Render release/update.json from scripts/update.json.template.
+"""Render release/update.json (module channel) and release/app-update.json
+(app-only channel) from the templates in scripts/.
 
 Usage:
-  python scripts/render_update_json.py --version 1.0.0 --owner GITHUB_OWNER
+  python scripts/render_update_json.py --version 1.0.1 --owner GITHUB_OWNER
 versionCode is derived as MAJOR*10000 + MINOR*100 + PATCH.
 """
 import argparse
 import os
-import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,6 +20,18 @@ def code_for(version):
     return major * 10000 + minor * 100 + patch
 
 
+def render(template_name, dest_name, version, code, owner):
+    with open(os.path.join(REPO, "scripts", template_name), "r", encoding="utf-8") as fh:
+        tpl = fh.read()
+    out = (tpl.replace("__VERSION__", version)
+              .replace("__VERSION_CODE__", str(code))
+              .replace("__OWNER__", owner))
+    dest = os.path.join(REPO, "release", dest_name)
+    with open(dest, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(out)
+    print("rendered %s (versionCode %d)" % (dest, code))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--version", required=True)
@@ -27,16 +39,8 @@ def main():
     args = ap.parse_args()
     version = args.version.lstrip("v")
     code = code_for(version)
-    with open(os.path.join(REPO, "scripts", "update.json.template"),
-              "r", encoding="utf-8") as fh:
-        tpl = fh.read()
-    out = (tpl.replace("__VERSION__", version)
-              .replace("__VERSION_CODE__", str(code))
-              .replace("__OWNER__", args.owner))
-    dest = os.path.join(REPO, "release", "update.json")
-    with open(dest, "w", encoding="utf-8", newline="\n") as fh:
-        fh.write(out)
-    print("rendered %s (versionCode %d)" % (dest, code))
+    render("update.json.template", "update.json", version, code, args.owner)
+    render("app-update.json.template", "app-update.json", version, code, args.owner)
 
 
 if __name__ == "__main__":

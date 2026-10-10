@@ -2,22 +2,27 @@ package com.ace5ultra.perfkit.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Glass-neutral palette with a OnePlus-style red accent.
-val OnePlusRed = Color(0xFFEB0029)
-val OnePlusRedDim = Color(0xFFB3001F)
+// Neon cyan/blue accent pulled from the launcher icon (starry blue field,
+// cyan pulse waveform). No purple/indigo.
+val AccentCyan = Color(0xFF4FC3E8)
+val AccentBlue = Color(0xFF2B7FFF)
+val AccentCyanSoft = Color(0xFF7FE7FF)
 
-val GlassWhite = Color(0x33FFFFFF)
-val GlassStrong = Color(0x55FFFFFF)
-val GlassBorder = Color(0x55FFFFFF)
+val GlassWhite = Color(0x66FFFFFF)
+val GlassStrong = Color(0xAAFFFFFF)
+val GlassBorder = Color(0x33FFFFFF)
 
-val DarkBase = Color(0xFF0E0F12)
-val DarkSurface = Color(0xFF16181D)
-val OnSurfaceLight = Color(0xFFF2F3F5)
-val OnSurfaceVariantLight = Color(0xFFB8BDC7)
-val OnSurfaceDark = Color(0xFF141519)
-val OnSurfaceVariantDark = Color(0xFF5A5F6A)
+// Scene-like light surfaces.
+val AppBackground = Color(0xFFEEF1F5)
+val CardSurface = Color(0xFFFFFFFF)
+val OnSurface = Color(0xFF16181D)
+val OnSurfaceVariant = Color(0xFF5A6270)
+val OnSurfaceMuted = Color(0xFF8A91A0)
 
-val GoodGreen = Color(0xFF34C759)
+val RingTrack = Color(0xFFE3E7EE)
+val RingTrackSoft = Color(0xFFEEF2F7)
+
+val GoodGreen = Color(0xFF2EB86A)
 val WarnAmber = Color(0xFFFF9F0A)
 val HotRed = Color(0xFFFF3B30)
 val OfflineGray = Color(0xFF8E8E93)

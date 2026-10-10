@@ -4,7 +4,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 /**
- * Immutable, null-safe mirror of the `perfctl status --json` contract.
+ * Immutable, null-safe mirror of the `perfctl status --json` contract (v1.0.1).
  *
  * Contract rule: fields the CLI cannot read are `-1` / empty / -1.0 and are NEVER
  * guessed. The UI renders those as "N/A". We keep the raw sentinel here so the UI
@@ -47,8 +47,16 @@ data class CpuCore(
     val util: Float = Float.NaN, // 0..100, NaN = N/A
 )
 
+data class TopProc(
+    val pid: Int = -1,
+    val name: String = "",
+    val cpu: Float = Float.NaN,
+)
+
 data class CpuInfo(
     val numCores: Int = 0,
+    val loadPercent: Float = Float.NaN,
+    val topProcs: List<TopProc> = emptyList(),
     val policies: List<CpuPolicy> = emptyList(),
     val cores: List<CpuCore> = emptyList(),
 )
@@ -60,6 +68,8 @@ data class MemoryInfo(
     val ramPercent: Float = Float.NaN,
     val swapTotalBytes: Long = -1L,
     val swapFreeBytes: Long = -1L,
+    val swapCachedBytes: Long = -1L,
+    val swapPercent: Float = Float.NaN,
     val zramTotalBytes: Long = -1L,
 ) {
     val swapUsedBytes: Long get() = if (swapTotalBytes >= 0 && swapFreeBytes >= 0) swapTotalBytes - swapFreeBytes else -1L
@@ -68,11 +78,23 @@ data class MemoryInfo(
 data class GpuInfo(
     val present: Boolean = false,
     val name: String = "",
+    val driver: String = "",
     val curFreqKhz: Long = -1L,
     val minFreqKhz: Long = -1L,
     val maxFreqKhz: Long = -1L,
-    val util: Float = Float.NaN, // -1.0 sentinel from CLI
-)
+    val util: Float = Float.NaN,
+    // v1.0.1 explicit MHz fields (preferred over khz)
+    val curMhz: Long = -1L,
+    val minMhz: Long = -1L,
+    val maxMhz: Long = -1L,
+    val loadPercent: Float = Float.NaN,
+) {
+    /** Effective current MHz: explicit field, else derive from khz. */
+    val effCurMhz: Long get() = if (curMhz > 0) curMhz else if (curFreqKhz > 0) curFreqKhz / 1000 else -1L
+    val effMinMhz: Long get() = if (minMhz > 0) minMhz else if (minFreqKhz > 0) minFreqKhz / 1000 else -1L
+    val effMaxMhz: Long get() = if (maxMhz > 0) maxMhz else if (maxFreqKhz > 0) maxFreqKhz / 1000 else -1L
+    val effLoad: Float get() = if (!loadPercent.isNaN()) loadPercent else util
+}
 
 data class ThermalZone(
     val type: String = "",
@@ -85,6 +107,16 @@ data class BatteryInfo(
     val temperatureC: Float = Float.NaN,
     val currentNowMa: Long = Long.MIN_VALUE,
     val status: String = "",
+    // v1.0.1 rich battery object
+    val powerWatts: Float = Float.NaN,
+    val voltageVolts: Float = Float.NaN,
+    val currentUa: Long = Long.MIN_VALUE,
+)
+
+data class MountInfo(
+    val mode: String = "",
+    val provider: String = "",
+    val worldReadableTopology: Boolean = false,
 )
 
 data class PerfStatus(
@@ -99,6 +131,7 @@ data class PerfStatus(
     val gpu: GpuInfo = GpuInfo(),
     val thermal: List<ThermalZone> = emptyList(),
     val battery: BatteryInfo = BatteryInfo(),
+    val mount: MountInfo = MountInfo(),
     val uptimeSeconds: Long = -1L,
 )
 
@@ -138,6 +171,7 @@ fun parsePerfStatus(raw: String): PerfStatus {
     val gpu = obj.optJSONObject("gpu") ?: JSONObject()
     val bat = obj.optJSONObject("battery") ?: JSONObject()
     val cpu = obj.optJSONObject("cpu") ?: JSONObject()
+    val mount = obj.optJSONObject("mount") ?: JSONObject()
 
     val policies = cpu.optJSONArray("policies")?.let { arr ->
         (0 until arr.length()).map { i ->
@@ -170,6 +204,13 @@ fun parsePerfStatus(raw: String): PerfStatus {
         }
     } ?: emptyList()
 
+    val topProcs = cpu.optJSONArray("topProcs")?.let { arr ->
+        (0 until arr.length()).map { i ->
+            val o = arr.getJSONObject(i)
+            TopProc(pid = o.optInt("pid", -1), name = o.optStr("name"), cpu = o.optFloat2("cpu"))
+        }
+    } ?: emptyList()
+
     val thermals = obj.optJSONArray("thermal")?.let { arr ->
         (0 until arr.length()).map { i ->
             val t = arr.getJSONObject(i)
@@ -196,7 +237,13 @@ fun parsePerfStatus(raw: String): PerfStatus {
             load = a.optFloat2("load"),
             tempC = a.optFloat2("tempC"),
         ),
-        cpu = CpuInfo(numCores = cpu.optInt("numCores", 0), policies = policies, cores = cores),
+        cpu = CpuInfo(
+            numCores = cpu.optInt("numCores", 0),
+            loadPercent = cpu.optFloat2("loadPercent"),
+            topProcs = topProcs,
+            policies = policies,
+            cores = cores,
+        ),
         memory = MemoryInfo(
             totalBytes = mem.optLong2("total"),
             usedBytes = mem.optLong2("used"),
@@ -204,22 +251,37 @@ fun parsePerfStatus(raw: String): PerfStatus {
             ramPercent = mem.optFloat2("ramPercent"),
             swapTotalBytes = mem.optLong2("swapTotal"),
             swapFreeBytes = mem.optLong2("swapFree"),
+            swapCachedBytes = mem.optLong2("swapCachedBytes"),
+            swapPercent = mem.optFloat2("swapPercent"),
             zramTotalBytes = mem.optLong2("zramTotal"),
         ),
         gpu = GpuInfo(
             present = gpu.optBoolean("present", false),
             name = gpu.optStr("name"),
+            driver = gpu.optStr("driver"),
             curFreqKhz = gpu.optLong2("curFreq"),
             minFreqKhz = gpu.optLong2("minFreq"),
             maxFreqKhz = gpu.optLong2("maxFreq"),
             util = gpu.optFloat2("util"),
+            curMhz = gpu.optLong2("curMhz"),
+            minMhz = gpu.optLong2("minMhz"),
+            maxMhz = gpu.optLong2("maxMhz"),
+            loadPercent = gpu.optFloat2("loadPercent"),
         ),
         thermal = thermals,
         battery = BatteryInfo(
-            level = bat.optInt2("level"),
-            temperatureC = bat.optFloat2("temperatureC"),
+            level = bat.optInt2("level").let { if (it == -1) bat.optInt2("percent") else it },
+            temperatureC = bat.optFloat2("tempC").let { if (it.isNaN()) bat.optFloat2("temperatureC") else it },
             currentNowMa = if (bat.isNull("currentNowMa")) Long.MIN_VALUE else bat.optLong("currentNowMa", Long.MIN_VALUE),
             status = bat.optStr("status"),
+            powerWatts = bat.optFloat2("powerWatts"),
+            voltageVolts = bat.optFloat2("voltageVolts"),
+            currentUa = if (bat.isNull("currentUa")) Long.MIN_VALUE else bat.optLong("currentUa", Long.MIN_VALUE),
+        ),
+        mount = MountInfo(
+            mode = mount.optStr("mode"),
+            provider = mount.optStr("provider"),
+            worldReadableTopology = mount.optBoolean("worldReadableTopology", false),
         ),
         uptimeSeconds = obj.optLong2("uptimeSeconds"),
     )

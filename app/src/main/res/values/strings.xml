@@ -1,4 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PerfKit</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_tuning">Tuning</string>
+    <string name="nav_adaptive">Adaptive</string>
+    <string name="nav_updater">Updater</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">PerfKit</string>
+    <string name="soc_label">SoC</string>
+    <string name="model_label">Model</string>
+    <string name="kernel_label">Kernel</string>
+    <string name="uptime_label">Uptime</string>
+    <string name="refresh_label">Refresh</string>
+    <string name="memory_title">Memory</string>
+    <string name="memory_ram">Physical memory</string>
+    <string name="memory_swap">Swap</string>
+    <string name="memory_used">Used</string>
+    <string name="memory_swap_cached">SwapCached</string>
+    <string name="gpu_title">GPU</string>
+    <string name="gpu_load">Load</string>
+    <string name="gpu_driver">Driver</string>
+    <string name="cpu_title">CPU</string>
+    <string name="cpu_load">Load</string>
+    <string name="cpu_top_procs">Top processes</string>
+    <string name="battery_title">Battery</string>
+    <string name="device_title">Device</string>
+    <string name="android_version">Android</string>
+    <string name="uptime">Uptime</string>
+    <string name="active_profile">Profile</string>
+
+    <!-- Profiles -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_powersave">Powersave</string>
+    <string name="profile_balanced">Balanced</string>
+    <string name="profile_performance">Performance</string>
+    <string name="profile_game">Game</string>
+    <string name="profile_system">System</string>
+    <string name="profile_powersave_desc">Caps max freq, prefers efficient cores, lower boost.</string>
+    <string name="profile_balanced_desc">Stock EAS governor, max ceiling and instant up-ramp. Default.</string>
+    <string name="profile_performance_desc">CPU at peak dispatch, boost max, performance governor.</string>
+    <string name="profile_game_desc">Everything to the limit: performance CPU/GPU, lowest-latency IO, best-effort peak refresh.</string>
+    <string name="profile_game_extreme">Extreme</string>
+    <string name="profile_system_desc">Return to the OS\'s own adaptive scheduling. Daemon monitors only, performs no writes.</string>
+    <string name="apply">Apply</string>
+    <string name="active">ACTIVE</string>
+    <string name="safety_title">Safety</string>
+    <string name="safety_desc">Perfctl snapshots every original node before changing it. Use Restore to write them back.</string>
+    <string name="snapshot">Snapshot</string>
+    <string name="restore">Restore</string>
+
+    <!-- Tuning -->
+    <string name="tuning_title">Manual tuning</string>
+    <string name="tuning_desc">Only keys perfctl marks safe + in-range are editable. Out-of-range or unsafe writes are refused by perfctl.</string>
+    <string name="tuning_no_keys">No tunable keys discovered for this device.</string>
+    <string name="tuning_safe">safe</string>
+    <string name="tuning_readonly">read-only</string>
+
+    <!-- Adaptive -->
+    <string name="adaptive_title">Adaptive daemon</string>
+    <string name="adaptive_desc">The daemon picks powersave / balanced / performance / game from live load and temperature.</string>
+    <string name="adaptive_mode">Adaptive mode</string>
+    <string name="adaptive_on">ON</string>
+    <string name="adaptive_off">OFF</string>
+    <string name="adaptive_live">Live daemon state</string>
+    <string name="adaptive_reason">reason</string>
+    <string name="adaptive_load">load</string>
+    <string name="adaptive_temp">temp</string>
+
+    <!-- Updater -->
+    <string name="updater_title">Updater</string>
+    <string name="updater_desc">Compares module + APK versionCode against the release manifests.</string>
+    <string name="updater_checking">Checking GitHub…</string>
+    <string name="updater_unavailable">Could not fetch update manifests. Check network or repo config.</string>
+    <string name="updater_remote">Remote</string>
+    <string name="updater_installed">Installed</string>
+    <string name="updater_module_update">Module + App update</string>
+    <string name="updater_app_update">App update</string>
+    <string name="updater_up_to_date">Up to date.</string>
+    <string name="updater_flash_module">Flash module update</string>
+    <string name="updater_install_apk">Install App update</string>
+    <string name="updater_view_changelog">View changelog</string>
+    <string name="updater_recheck">Re-check</string>
+    <string name="updater_downloading">Downloading…</string>
+    <string name="updater_handing">Handing off to root manager…</string>
+    <string name="updater_channel_module">Channel: module zip (updates module + bundled APK together)</string>
+    <string name="updater_channel_app">Channel: App-only APK self-update</string>
+
+    <!-- Setup -->
+    <string name="setup_title">Almost there</string>
+    <string name="setup_no_root">Root not granted</string>
+    <string name="setup_no_root_desc">PerfKit needs a root shell (SukiSU / BakaSU / KernelSU) to talk to the module. Grant root in your root manager, then retry. Without root you can still see basic device info from /proc.</string>
+    <string name="setup_missing_module">Module not installed</string>
+    <string name="setup_missing_module_desc">Root is working but ace5ultra_perfkit is not installed. Flash the module zip with your root manager. Use the Updater tab to download + hand it off.</string>
+    <string name="setup_checking">Checking root…</string>
+    <string name="retry">Retry</string>
+
+    <!-- Settings / language -->
+    <string name="settings_language">Language</string>
+    <string name="lang_system">System default</string>
+    <string name="lang_english">English</string>
+    <string name="lang_chinese_cn">简体中文</string>
+    <string name="lang_chinese_tw">繁體中文</string>
 </resources>

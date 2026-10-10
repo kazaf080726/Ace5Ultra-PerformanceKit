@@ -109,12 +109,36 @@ build_status() {
   ma=$(memfield MemAvailable); [ -z "$ma" ] && ma=0
   st=$(memfield SwapTotal); [ -z "$st" ] && st=0
   sf=$(memfield SwapFree);  [ -z "$sf" ] && sf=0
+  sc=$(memfield SwapCached); [ -z "$sc" ] && sc=0
   zt=$(tr -d '\n' < /sys/block/zram0/disksize 2>/dev/null); case "$zt" in ''|*[!0-9]*) zt=0;; esac
-  mtb=$(kb2b "$mt"); mab=$(kb2b "$ma"); stb=$(kb2b "$st"); sfb=$(kb2b "$sf")
-  usedb=0
+  mtb=$(kb2b "$mt"); mab=$(kb2b "$ma"); stb=$(kb2b "$st"); sfb=$(kb2b "$sf"); scb=$(kb2b "$sc")
+  usedb=0; rp=0.0; swappct=0.0
   if [ "$mt" -gt 0 ] 2>/dev/null; then
     used=$((mt - ma)); usedb=$(kb2b "$used"); rp=$(awk -v u="$used" -v t="$mt" 'BEGIN{printf "%.1f", (u/t)*100}')
   else used=0; rp=0.0; fi
+  if [ "$st" -gt 0 ] 2>/dev/null; then
+    swu=$((st - sf)); swappct=$(awk -v u="$swu" -v t="$st" 'BEGIN{printf "%.1f", (u/t)*100}')
+  fi
+
+  # global cpu load 0..100
+  loadpct=$(cpu_util_pct)
+  case "$loadpct" in ''|*[!0-9.]*) loadpct=-1.0 ;; esac
+  tprocs=$(top_procs_json)
+
+  # mount decision
+  mmode=$(mount_mode); mprov=$(mount_provider); wt=$(topology_ready)
+
+  # battery object
+  bpercent=$(battery_percent)
+  btemp=$(battery_temp_c)
+  bvoltu=$(battery_voltage_uv)
+  bcurr=$(battery_current_ua)
+  if [ "$bvoltu" -gt 0 ] 2>/dev/null && [ "$bcurr" -gt 0 ] 2>/dev/null; then
+    bvoltv=$(awk -v v="$bvoltu" 'BEGIN{printf "%.3f", v/1000000}')
+    bpow=$(awk -v c="$bcurr" -v v="$bvoltv" 'BEGIN{printf "%.2f", (c/1000000)*v}')
+  else
+    bvoltv=-1.0; bpow=-1.0
+  fi
 
   # gpu: live freq from the Mali devfreq (Hz, converted to kHz), nominal DVFS
   # bounds from the MTK working OPP table (already kHz). No util node -> -1.0.
@@ -163,16 +187,21 @@ build_status() {
     case "$mm" in 444|400) locked="true"; break;; esac
   done
 
+  # gpu live MHz (devfreq Hz -> MHz); loadPercent=-1 (no util node on this part)
+  gcurmhz=$(gpu_cur_mhz); gminmhz=$(gpu_min_mhz); gmaxmhz=$(gpu_max_mhz)
+
   printf '{"version":"%s","versionCode":%d,"contract":%d,\n' "$VERSION" "$VERSIONCODE" "$CONTRACT"
   printf ' "device":{"brand":"%s","model":"%s","device":"%s","soc":"%s","android":"%s","kernel":"%s"},\n' "$brand" "$model" "$device" "$soc" "$android" "$kernel"
   printf ' "profile":"%s",\n' "$prof"
   printf ' "adaptive":{"enabled":%s,"reason":"%s","load":%s,"tempC":%s},\n' "$adap" "$reason" "$load" "$tc"
   printf ' "cpufreqLocked":%s,\n' "$locked"
-  printf ' "cpu":{"numCores":%d,"policies":[%s],"cores":[%s]},\n' "$num" "$pols" "$cores"
-  printf ' "memory":{"total":%d,"used":%d,"available":%d,"ramPercent":%s,"swapTotal":%d,"swapFree":%d,"zramTotal":%d},\n' "$mtb" "$usedb" "$mab" "$rp" "$stb" "$sfb" "$zt"
-  printf ' "gpu":{"present":%s,"name":"%s","curFreq":%d,"minFreq":%d,"maxFreq":%d,"util":-1.0},\n' "$gpupresent" "$gpuname" "$gpucur" "$gpumin" "$gpumax"
+  printf ' "mount":{"mode":"%s","provider":"%s","worldReadableTopology":%s},\n' "$mmode" "$mprov" "$wt"
+  # topProcs already emitted as a full JSON array by top_procs_json()
+  printf ' "cpu":{"numCores":%d,"loadPercent":%s,"topProcs":%s,"policies":[%s],"cores":[%s]},\n' "$num" "$loadpct" "$tprocs" "$pols" "$cores"
+  printf ' "memory":{"total":%d,"used":%d,"available":%d,"ramPercent":%s,"swapCachedBytes":%d,"swapPercent":%s,"swapTotal":%d,"swapFree":%d,"zramTotal":%d},\n' "$mtb" "$usedb" "$mab" "$rp" "$scb" "$swappct" "$stb" "$sfb" "$zt"
+  printf ' "gpu":{"present":%s,"name":"%s","curFreq":%d,"minFreq":%d,"maxFreq":%d,"curMhz":%d,"minMhz":%d,"maxMhz":%d,"loadPercent":-1.0,"util":-1.0},\n' "$gpupresent" "$gpuname" "$gpucur" "$gpumin" "$gpumax" "$gcurmhz" "$gminmhz" "$gmaxmhz"
   printf ' "thermal":[%s],\n' "$th"
-  printf ' "battery":{"level":%d,"temperatureC":%s,"currentNowMa":%d,"status":"%s"},\n' "$bl" "$btc" "$bc" "$bs"
+  printf ' "battery":{"percent":%d,"powerWatts":%s,"voltageVolts":%s,"tempC":%s,"currentUa":%d,"level":%d,"status":"%s"},\n' "$bpercent" "$bpow" "$bvoltv" "$btemp" "$bcurr" "$bl" "$bs"
   printf ' "uptimeSeconds":%d}\n' "$up"
 
   rm -f "$T1" "$T2" 2>/dev/null
@@ -195,20 +224,26 @@ cmd_profile_get() {
 cmd_profile_set() {
   v=$1
   case "$v" in
-    powersave|balanced|performance|game|adaptive) ;;
+    powersave|balanced|performance|game|system|adaptive) ;;
     *) printf '{"error":"bad_profile","message":"unknown profile %s"}\n' "$v"; exit 1;;
   esac
   if [ "$v" = "adaptive" ]; then
     # switching to adaptive turns the adaptive engine on; daemon takes over
     ensure_runtime
-    # flip state to adaptive on; leave actual profile choice to perfd
-    # (write a temp and reuse save_state by mutating fields)
-    # emulate by reading then writing adaptive=true
     _p=$(sg profile); [ -z "$_p" ] && _p=balanced
     tmp="$STATE.tmp"
     printf '{"profile":"%s","adaptive":true,"reason":"adaptive","load":0.0,"tempC":0.0}\n' "$_p" > "$tmp"
     chmod 0600 "$tmp" 2>/dev/null; mv -f "$tmp" "$STATE" 2>/dev/null
     printf '{"ok":true,"profile":"adaptive"}\n'
+  elif [ "$v" = "system" ]; then
+    # system = hand control back to ColorOS adaptive: restore every snapshot,
+    # then persist profile=system so perfd enters monitor-only.
+    ensure_runtime
+    n=$(do_restore)
+    tmp="$STATE.tmp"
+    printf '{"profile":"system","adaptive":false,"reason":"system_monitor","load":0.0,"tempC":0.0}\n' > "$tmp"
+    chmod 0600 "$tmp" 2>/dev/null; mv -f "$tmp" "$STATE" 2>/dev/null
+    printf '{"ok":true,"profile":"system","restored":%s}\n' "$n"
   else
     ensure_runtime
     tmp="$STATE.tmp"
@@ -218,6 +253,10 @@ cmd_profile_set() {
     apply_profile "$v"
     printf '{"ok":true,"profile":"%s"}\n' "$v"
   fi
+}
+
+cmd_profile_list() {
+  printf '{"profiles":["powersave","balanced","performance","game","system"]}\n'
 }
 
 cmd_adaptive_status() {
@@ -299,6 +338,7 @@ case "$cmd" in
   profile)        sub=$1; shift; case "$sub" in
                     get) cmd_profile_get ;;
                     set) cmd_profile_set "$1" ;;
+                    list) cmd_profile_list ;;
                     *) printf '{"error":"bad_arg"}\n'; exit 1;;
                   esac ;;
   adaptive)       sub=$1; shift; case "$sub" in

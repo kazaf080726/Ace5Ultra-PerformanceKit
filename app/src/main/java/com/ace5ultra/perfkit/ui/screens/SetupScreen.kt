@@ -12,13 +12,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.ace5ultra.perfkit.R
 import com.ace5ultra.perfkit.ui.PerfViewModel
 import com.ace5ultra.perfkit.ui.glass.GlassPanel
 
 /**
- * Shown when root is unavailable or the module isn't installed. Guides the user
- * through granting root + flashing the module zip (built-in updater does both).
+ * Shown when root is unavailable or the module isn't installed.
  */
 @Composable
 fun SetupScreen(vm: PerfViewModel, state: PerfViewModel.RootUi) {
@@ -29,39 +30,32 @@ fun SetupScreen(vm: PerfViewModel, state: PerfViewModel.RootUi) {
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         Spacer(Modifier.height(40.dp))
-        Text("Almost there", style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.onBackground)
+        Text(stringResource(R.string.setup_title), style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.onSurface)
         GlassPanel(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(18.dp)) {
                 when (state) {
                     is PerfViewModel.RootUi.NoRoot -> {
-                        Text("Root not granted", style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onBackground)
-                        Text(
-                            "PerfKit needs a root shell (SukiSU Ultra / BakaSU / KernelSU) to talk to the " +
-                                "module. Grant root in your root manager, then retry. " +
-                                "Without root you can still see basic device info from /proc.",
+                        Text(stringResource(R.string.setup_no_root), style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface)
+                        Text(stringResource(R.string.setup_no_root_desc),
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
+                            color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                     is PerfViewModel.RootUi.MissingModule -> {
-                        Text("Module not installed", style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onBackground)
-                        Text(
-                            "Root is working but ace5ultra_perfkit is not installed. Flash the module zip " +
-                                "with your root manager. Use the Updater tab to download + hand it off.",
+                        Text(stringResource(R.string.setup_missing_module), style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface)
+                        Text(stringResource(R.string.setup_missing_module_desc),
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
+                            color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                     else -> {
-                        Text("Checking root…", style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onBackground)
+                        Text(stringResource(R.string.setup_checking), style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface)
                     }
                 }
                 Spacer(Modifier.height(12.dp))
-                Button(onClick = { vm.refreshRoot() }) { Text("Retry") }
+                Button(onClick = { vm.refreshRoot() }) { Text(stringResource(R.string.retry)) }
             }
         }
     }

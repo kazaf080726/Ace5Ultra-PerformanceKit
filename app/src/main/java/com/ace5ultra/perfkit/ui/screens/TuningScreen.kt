@@ -22,7 +22,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.ace5ultra.perfkit.R
 import com.ace5ultra.perfkit.data.TuningItem
 import com.ace5ultra.perfkit.ui.PerfViewModel
 import com.ace5ultra.perfkit.ui.glass.GlassPanel
@@ -42,15 +44,15 @@ fun TuningScreen(vm: PerfViewModel) {
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Spacer(Modifier.height(32.dp))
-        Text("Manual tuning", style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.onBackground)
-        Text("Only keys perfctl marks safe + in-range are editable. Out-of-range or unsafe writes are refused by perfctl.",
+        Text(stringResource(R.string.tuning_title), style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.onSurface)
+        Text(stringResource(R.string.tuning_desc),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
 
         if (items.isEmpty()) {
             GlassPanel(Modifier.fillMaxWidth()) {
-                Text("No tunable keys discovered for this device.",
+                Text(stringResource(R.string.tuning_no_keys),
                     Modifier.padding(16.dp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
@@ -76,7 +78,7 @@ private fun TuningRow(item: TuningItem, onApply: (String) -> Unit) {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(item.key, style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onBackground)
-                Text(if (item.safe) "safe" else "read-only",
+                Text(if (item.safe) stringResource(R.string.tuning_safe) else stringResource(R.string.tuning_readonly),
                     style = MaterialTheme.typography.labelSmall,
                     color = if (item.safe) MaterialTheme.colorScheme.primary
                     else MaterialTheme.colorScheme.onSurfaceVariant)

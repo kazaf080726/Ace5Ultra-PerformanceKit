@@ -21,6 +21,8 @@ release.keystore
 # ---- module build intermediates ----
 out/
 *.zip.mtime
+# APK bundled into the flashable zip at build time; never commit the binary
+module/app/
 
 # ---- OS / editor ----
 .DS_Store
@@ -28,9 +30,10 @@ Thumbs.db
 *.log
 *.swp
 
-# ---- keep the release module zip and update.json tracked ----
+# ---- keep the release module zip and OTA manifests tracked ----
 !release/*.zip
 !release/update.json
+!release/app-update.json
 !release/changelog.md
 
 # ---- app signing (never commit) ----
@@ -42,6 +45,8 @@ docs/device/screens/
 docs/device/ui-*.xml
 docs/device/logcat-*.txt
 docs/device/*.sh
+# scratch on-device diagnostic dumps at docs/device top level (curated evidence lives under docs/device/raw/)
+docs/device/*.txt
 scripts/t2.sh
 scripts/test_loop*.sh
 scripts/test_write.sh

@@ -8,5 +8,9 @@ MODDIR=${0%/*}
 # Restore originals (writes back every snapshot)
 "$MODDIR/bin/perfctl" restore >/dev/null 2>&1
 
+# Tear down our non-persistent tmpfs mount if present
+umount /dev/perfkit >/dev/null 2>&1
+rmdir /dev/perfkit >/dev/null 2>&1
+
 # Remove the root-only runtime dir (state, snapshot, logs, capabilities)
 rm -rf /data/adb/ace5ultra_perfkit 2>/dev/null

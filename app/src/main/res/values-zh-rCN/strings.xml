@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PerfKit</string>
+
+    <string name="nav_dashboard">概览</string>
+    <string name="nav_profile">档位</string>
+    <string name="nav_tuning">调节</string>
+    <string name="nav_adaptive">自适应</string>
+    <string name="nav_updater">升级</string>
+
+    <string name="dashboard_title">PerfKit</string>
+    <string name="soc_label">芯片</string>
+    <string name="model_label">机型</string>
+    <string name="kernel_label">内核</string>
+    <string name="uptime_label">运行时长</string>
+    <string name="refresh_label">刷新</string>
+    <string name="memory_title">内存</string>
+    <string name="memory_ram">物理内存</string>
+    <string name="memory_swap">交换分区</string>
+    <string name="memory_used">已用</string>
+    <string name="memory_swap_cached">SwapCached</string>
+    <string name="gpu_title">GPU</string>
+    <string name="gpu_load">负载</string>
+    <string name="gpu_driver">驱动</string>
+    <string name="cpu_title">CPU</string>
+    <string name="cpu_load">负载</string>
+    <string name="cpu_top_procs">占用最高进程</string>
+    <string name="battery_title">电池</string>
+    <string name="device_title">设备</string>
+    <string name="android_version">Android</string>
+    <string name="uptime">已开机</string>
+    <string name="active_profile">档位</string>
+
+    <string name="profile_title">档位</string>
+    <string name="profile_powersave">省电</string>
+    <string name="profile_balanced">均衡</string>
+    <string name="profile_performance">性能</string>
+    <string name="profile_game">游戏</string>
+    <string name="profile_system">系统</string>
+    <string name="profile_powersave_desc">限制最高频率，优先大核小核、降低 boost。</string>
+    <string name="profile_balanced_desc">保持系统 EAS 调度，频率上限拉满、瞬时升频。默认。</string>
+    <string name="profile_performance_desc">CPU 保持峰值派发状态，boost 拉满，performance 调度器。</string>
+    <string name="profile_game_desc">全部拉满：CPU/GPU performance、最低延迟 IO、尽力拉满屏幕刷新率。</string>
+    <string name="profile_game_extreme">极限</string>
+    <string name="profile_system_desc">交还系统自适应调度：恢复开机快照，守护仅监控、不再写节点。</string>
+    <string name="apply">应用</string>
+    <string name="active">当前</string>
+    <string name="safety_title">安全</string>
+    <string name="safety_desc">perfctl 在改动前会快照每个原始节点，使用恢复即可写回。</string>
+    <string name="snapshot">快照</string>
+    <string name="restore">恢复</string>
+
+    <string name="tuning_title">手动调节</string>
+    <string name="tuning_desc">仅 perfctl 标记为安全且在范围内的键可编辑，越界/不安全的写入会被拒绝。</string>
+    <string name="tuning_no_keys">本设备未发现可调节项。</string>
+    <string name="tuning_safe">安全</string>
+    <string name="tuning_readonly">只读</string>
+
+    <string name="adaptive_title">自适应守护</string>
+    <string name="adaptive_desc">守护根据实时负载与温度在 省电/均衡/性能/游戏 间自动切换。</string>
+    <string name="adaptive_mode">自适应模式</string>
+    <string name="adaptive_on">开</string>
+    <string name="adaptive_off">关</string>
+    <string name="adaptive_live">守护实时状态</string>
+    <string name="adaptive_reason">原因</string>
+    <string name="adaptive_load">负载</string>
+    <string name="adaptive_temp">温度</string>
+
+    <string name="updater_title">升级</string>
+    <string name="updater_desc">对照 release 清单比较模块与 APK 的 versionCode。</string>
+    <string name="updater_checking">正在检查 GitHub…</string>
+    <string name="updater_unavailable">无法获取升级清单，请检查网络或仓库配置。</string>
+    <string name="updater_remote">远端</string>
+    <string name="updater_installed">已装</string>
+    <string name="updater_module_update">模块 + App 更新</string>
+    <string name="updater_app_update">App 更新</string>
+    <string name="updater_up_to_date">已是最新。</string>
+    <string name="updater_flash_module">刷入模块更新</string>
+    <string name="updater_install_apk">安装 App 更新</string>
+    <string name="updater_view_changelog">查看更新日志</string>
+    <string name="updater_recheck">重新检查</string>
+    <string name="updater_downloading">下载中…</string>
+    <string name="updater_handing">正在交给 Root 管理器…</string>
+    <string name="updater_channel_module">通道：模块 zip（模块与内置 APK 一起更新）</string>
+    <string name="updater_channel_app">通道：仅 App APK 自更新</string>
+
+    <string name="setup_title">还差一步</string>
+    <string name="setup_no_root">未授予 Root</string>
+    <string name="setup_no_root_desc">PerfKit 需要 Root（SukiSU / BakaSU / KernelSU）才能与模块通信，请在 Root 管理器授权后重试。无 Root 时仍可查看 /proc 的基础信息。</string>
+    <string name="setup_missing_module">模块未安装</string>
+    <string name="setup_missing_module_desc">Root 正常，但 ace5ultra_perfkit 模块未安装。请用 Root 管理器刷入模块 zip，可在「升级」页下载并交给管理器。</string>
+    <string name="setup_checking">正在检查 Root…</string>
+    <string name="retry">重试</string>
+
+    <string name="settings_language">语言</string>
+    <string name="lang_system">跟随系统</string>
+    <string name="lang_english">English</string>
+    <string name="lang_chinese_cn">简体中文</string>
+    <string name="lang_chinese_tw">繁體中文</string>
+</resources>

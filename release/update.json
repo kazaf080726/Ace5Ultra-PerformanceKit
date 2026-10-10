@@ -1,6 +1,8 @@
 {
-  "version": "1.0.0",
-  "versionCode": 10000,
-  "zipUrl": "https://github.com/kazaf080726/Ace5Ultra-PerformanceKit/releases/download/v1.0.0/ace5ultra_perfkit-v1.0.0.zip",
-  "changelog": "https://raw.githubusercontent.com/kazaf080726/Ace5Ultra-PerformanceKit/main/release/changelog.md"
+  "version": "1.0.1",
+  "versionCode": 10100,
+  "zipUrl": "https://github.com/kazaf080726/Ace5Ultra-PerformanceKit/releases/download/v1.0.1/ace5ultra_perfkit-v1.0.1.zip",
+  "changelog": "https://raw.githubusercontent.com/kazaf080726/Ace5Ultra-PerformanceKit/main/release/changelog.md",
+  "appVersionCode": 10100,
+  "apkUrl": "https://github.com/kazaf080726/Ace5Ultra-PerformanceKit/releases/download/v1.0.1/PerfKit-v1.0.1.apk"
 }

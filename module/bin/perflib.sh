@@ -35,9 +35,9 @@ LOG="$LOGDIR/perfkit.log"
 CAP="$RUNDIR/capabilities.json"
 
 # shellcheck disable=SC2034  # read by perfctl version/status
-VERSION="1.0.0"
-VERSIONCODE=10000
-CONTRACT=1
+VERSION="1.0.1"
+VERSIONCODE=10100
+CONTRACT=2
 
 # ---------- infra ----------
 log() {
@@ -163,6 +163,7 @@ do_restore() {
       fi
     done < "$SNAP/manifest.tsv"
   fi
+  restore_display_refresh
   echo "$n"
 }
 
@@ -310,7 +311,8 @@ pick_gov() {
   set -- $avail; echo "$1"
 }
 
-# sugov_ext rate-limit tunables per policy
+# sugov_ext rate-limit tunables per policy. Except powersave, every profile keeps
+# the CPU allowed to ramp up instantly (up_rate_limit=0 = fastest).
 apply_sugov_tunables() {
   local p="$1"; local prof="$2"
   local up down
@@ -318,16 +320,16 @@ apply_sugov_tunables() {
   { [ -e "$up" ] || [ -e "$down" ]; } || return 0
   case "$prof" in
     powersave)
-      [ -e "$up" ]   && write_node "$up"   "20000"   # slow ramp up
+      [ -e "$up" ]   && write_node "$up"   "20000"   # slow ramp up (relaxed)
       [ -e "$down" ] && write_node "$down" "0"        # quick drop
       ;;
     balanced)
-      [ -e "$up" ]   && write_node "$up"   "0"        # stock
-      [ -e "$down" ] && write_node "$down" "1000"     # stock
+      [ -e "$up" ]   && write_node "$up"   "0"        # instant ramp up
+      [ -e "$down" ] && write_node "$down" "1000"     # stock down-rate
       ;;
     performance)
-      [ -e "$up" ]   && write_node "$up"   "0"        # instant ramp
-      [ -e "$down" ] && write_node "$down" "50000"     # hold freq
+      [ -e "$up" ]   && write_node "$up"   "0"
+      [ -e "$down" ] && write_node "$down" "50000"     # hold freq once up
       ;;
     game)
       [ -e "$up" ]   && write_node "$up"   "0"
@@ -336,11 +338,20 @@ apply_sugov_tunables() {
   esac
 }
 
+# freq_fraction FMIN FMAX FRAC_KEEP -> floor freq = min + (max-min)*frac (kHz)
+freq_floor() {
+  awk -v lo="$1" -v hi="$2" -v f="$3" 'BEGIN{
+    lo=lo+0; hi=hi+0
+    if (hi<=lo) { print lo; exit }
+    printf "%d", lo + (hi-lo)*f
+  }'
+}
+
 apply_cpufreq_policy() {
   local p="$1"; local prof="$2"
-  local gov mn mx avail fmin fmax g mid
+  local gov mn mx avail fmin fmax g pol mid_prime
   gov="$p/scaling_governor"; mn="$p/scaling_min_freq"; mx="$p/scaling_max_freq"
-  [ -w "$gov" ] || return 0
+  pol=$(basename "$p" | sed 's/policy//')
   avail=$(tr '\n' ' ' < "$p/scaling_available_governors" 2>/dev/null)
   fmin=$(tr -d '\n' < "$p/cpuinfo_min_freq" 2>/dev/null)
   fmax=$(tr -d '\n' < "$p/cpuinfo_max_freq" 2>/dev/null)
@@ -351,45 +362,66 @@ apply_cpufreq_policy() {
       g=$(pick_gov "$avail" powersave conservative schedutil)
       write_node "$gov" "$g"
       [ "$fmin" -gt 0 ] && write_node "$mn" "$fmin"
-      [ "$fmin" -gt 0 ] && write_node "$mx" "$fmin"      # cap to min
+      [ "$fmin" -gt 0 ] && write_node "$mx" "$fmin"      # cap to efficient min
       ;;
     balanced)
-      g=$(pick_gov "$avail" sugov_ext schedutil scx)       # stock on this device
+      g=$(pick_gov "$avail" sugov_ext schedutil scx)       # stock EAS governor
       write_node "$gov" "$g"
-      [ "$fmin" -gt 0 ] && write_node "$mn" "$fmin"
-      [ "$fmax" -gt 0 ] && write_node "$mx" "$fmax"       # full range
+      [ "$fmin" -gt 0 ] && write_node "$mn" "$fmin"        # min stays stock
+      [ "$fmax" -gt 0 ] && write_node "$mx" "$fmax"        # unlock hw ceiling
       ;;
     performance)
       g=$(pick_gov "$avail" performance schedutil)
       write_node "$gov" "$g"
-      [ "$fmax" -gt 0 ] && write_node "$mn" "$fmax"       # floor = max
       [ "$fmax" -gt 0 ] && write_node "$mx" "$fmax"
+      # raise min floor only on mid (policy4) / prime (policy7), little cluster stays stock
+      case "$pol" in
+        4) [ "$fmin" -gt 0 ] && write_node "$mn" "$(freq_floor "$fmin" "$fmax" 0.35)" ;;
+        7) [ "$fmin" -gt 0 ] && write_node "$mn" "$(freq_floor "$fmin" "$fmax" 0.40)" ;;
+        *) [ "$fmin" -gt 0 ] && write_node "$mn" "$fmin" ;;
+      esac
       ;;
     game)
       g=$(pick_gov "$avail" performance schedutil)
       write_node "$gov" "$g"
-      if [ "$fmax" -gt 0 ]; then
-        mid=$(( (fmin + fmax) / 2 )); [ "$mid" -lt 1 ] && mid=$fmax
-        write_node "$mn" "$mid"                            # sustained floor
-        write_node "$mx" "$fmax"
-      fi
+      [ "$fmax" -gt 0 ] && write_node "$mx" "$fmax"
+      # high sustained floor on mid/prime
+      case "$pol" in
+        4) [ "$fmin" -gt 0 ] && write_node "$mn" "$(freq_floor "$fmin" "$fmax" 0.55)" ;;
+        7) [ "$fmin" -gt 0 ] && write_node "$mn" "$(freq_floor "$fmin" "$fmax" 0.65)" ;;
+        *) [ "$fmin" -gt 0 ] && write_node "$mn" "$fmin" ;;
+      esac
       ;;
   esac
   apply_sugov_tunables "$p" "$prof"
 }
 
+# block: scheduler is best-effort (only write if the target is offered by the
+# device); read-ahead is written directly.
 apply_block() {
   local prof="$1"
-  local ra d node
+  local ra d schednode avail want
   case "$prof" in
     powersave) ra=128 ;;
-    balanced) ra=1024 ;;        # matches stock sda/sdb
-    performance|game) ra=2048 ;;
+    balanced)  ra=1024 ;;        # matches stock sda/sdb
+    performance) ra=512 ;;       # low RA
+    game)      ra=256 ;;          # smallest RA, lowest latency
   esac
   for d in /sys/block/sd*; do
     [ -d "$d" ] || continue
     node="$d/queue/read_ahead_kb"
     [ -e "$node" ] && write_node "$node" "$ra"
+    schednode="$d/queue/scheduler"
+    [ -e "$schednode" ] || continue
+    avail=$(cat "$schednode" 2>/dev/null)
+    case "$prof" in
+      performance) want="mq-deadline" ;;
+      game)        want="none" ;;
+      *)           want="" ;;
+    esac
+    if [ -n "$want" ]; then
+      case " $avail " in *" $want "*) write_node "$schednode" "$want" ;; esac
+    fi
   done
 }
 
@@ -398,9 +430,9 @@ apply_vm() {
   local v
   [ -e "$node" ] || return 0
   case "$1" in
-    powersave) v=160 ;;          # more aggressive reclaim on battery
-    balanced) v=125 ;;           # this device's OEM stock
-    performance|game) v=100 ;;   # lighter swap penalty
+    powersave) v=160 ;;          # aggressive reclaim on battery
+    balanced)  v=125 ;;           # this device's OEM stock
+    performance|game) v=60 ;;     # low swap penalty for perf
   esac
   write_node "$node" "$v"
 }
@@ -408,30 +440,66 @@ apply_vm() {
 apply_schedtune() {
   local v node
   case "$1" in
-    powersave|balanced) v=0 ;;
-    performance|game) v=1 ;;
+    powersave)        v=0 ;;
+    balanced)         v=0 ;;      # stock on this device
+    performance|game) v=1 ;;      # high boost
   esac
   for node in /dev/cpuctl/cpu.schedtune.boost /dev/cpuctl/foreground/cpu.schedtune.boost; do
     [ -e "$node" ] && write_node "$node" "$v"
   done
 }
 
-# GPU DVFS: MTK /proc/gpufreqv2 only. The inventory shows status/opp/limit
-# tables but no confirmed writable min/max setter; only write a node if a known
-# setter name exists AND is writable. Never guess.
+# GPU DVFS via the Mali devfreq (the writable setter on this platform). The
+# /proc/gpufreqv2 tables are read-only; devfreq governor/min/max are the control.
+# Only write nodes that exist AND are writable; skip and log otherwise.
 apply_gpu() {
   local prof="$1"
-  local node
+  local dv govf minf maxf avail g floor
+  case "$prof" in performance|game) ;; *) return 0 ;; esac
+  dv=$(for x in /sys/class/devfreq/*mali*; do [ -d "$x" ] && { echo "$x"; break; }; done)
+  [ -n "$dv" ] || return 0
+  govf="$dv/governor"; minf="$dv/min_freq"; maxf="$dv/max_freq"
+  avail=$(cat "$dv/available_governors" 2>/dev/null)
+  g=$(pick_gov "$avail" performance simple_ondemand powersave)
+  # devfreq freqs are in Hz. GPU OPP 338000..1612000 kHz -> 338000000..1612000000 Hz.
   case "$prof" in
-    game) ;;
-    *) return 0 ;;
+    performance) floor=806000000 ;;   # ~50% OPP floor
+    game)        floor=1128000000 ;;  # ~70% OPP floor
   esac
-  for node in \
-    /proc/gpufreqv2/gpufreq_min_freq \
-    /proc/gpufreqv2/gpu_min_freq \
-    /proc/gpufreqv2/gpufreq_min_power_limit ; do
-    [ -e "$node" ] && [ -w "$node" ] && write_node "$node" "338000"
-  done
+  [ -e "$govf" ] && [ -w "$govf" ] && write_node "$govf" "$g"
+  [ -e "$minf" ] && [ -w "$minf" ] && write_node "$minf" "$floor"
+}
+
+# best-effort peak display refresh for game only. Uses the system settings provider
+# (a global/system setting), snapshots the original value, and restores on switch.
+# If `settings` is unavailable or the setting does not exist, skip quietly.
+DISP_SNAP="$SNAP/display_refresh.tsv"
+apply_display_refresh() {
+  [ "$1" = "game" ] || return 0
+  command -v settings >/dev/null 2>&1 || return 0
+  [ -f "$DISP_SNAP" ] && return 0          # already snapshot+applied
+  orig=$(settings get system peak_refresh_rate 2>/dev/null | tr -d '\r\n')
+  case "$orig" in ''|null|*[!0-9.]*) orig="" ;; esac
+  if [ -n "$orig" ]; then
+    printf 'peak_refresh_rate\t%s\n' "$orig" > "$DISP_SNAP" 2>/dev/null
+    chmod 0600 "$DISP_SNAP" 2>/dev/null
+  fi
+  if settings put system peak_refresh_rate 144.0 >/dev/null 2>&1; then
+    log "display refresh -> 144.0 (best-effort)"
+  else
+    log "display refresh: set failed, skipped"
+  fi
+}
+
+restore_display_refresh() {
+  [ -f "$DISP_SNAP" ] || return 0
+  command -v settings >/dev/null 2>&1 || return 0
+  o=$(sed -n '1s/^peak_refresh_rate\t//p' "$DISP_SNAP" 2>/dev/null)
+  if [ -n "$o" ]; then
+    settings put system peak_refresh_rate "$o" >/dev/null 2>&1 \
+      && log "display refresh restored -> $o"
+  fi
+  rm -f "$DISP_SNAP" 2>/dev/null
 }
 
 apply_profile() {
@@ -441,6 +509,8 @@ apply_profile() {
     *) log "apply_profile bad=$prof"; return 1 ;;
   esac
   log "apply_profile $prof"
+  # leaving game -> restore display refresh first
+  [ "$prof" != "game" ] && restore_display_refresh
   for p in /sys/devices/system/cpu/cpufreq/policy*; do
     [ -d "$p" ] || continue
     apply_cpufreq_policy "$p" "$prof"
@@ -449,6 +519,7 @@ apply_profile() {
   apply_vm "$prof"
   apply_schedtune "$prof"
   apply_gpu "$prof"
+  [ "$prof" = "game" ] && apply_display_refresh game
   # MTK HPS is ABSENT on this device; we never touch /proc/hps.
 }
 
@@ -549,3 +620,53 @@ num_cores() {
   n=$(cat /sys/devices/system/cpu/present 2>/dev/null)
   case "$n" in *-*) lo=${n%-*}; hi=${n#*-}; echo $((hi - lo + 1));; *) echo 1;; esac
 }
+
+# ---------- v1.0.1 status readers ----------
+# topProcs: top 5 processes by CPU. Bounded by timeout; best-effort.
+# Emits a JSON array fragment: {"pid":N,"name":"...","cpu":PCT},...
+top_procs_json() {
+  local out line pid name cpu
+  out=$(timeout 3 top -b -n 1 2>/dev/null)
+  [ -z "$out" ] && { echo "[]"; return; }
+  echo "$out" | awk '
+    /^[ ]*PID/ {hdr=1; next}
+    hdr && /^[ ]*[0-9]+/ {
+      # toybox top columns: USER PID ... %CPU ... NAME; pick numeric PID and last token
+      pid=$2; cpu=""; name=""
+      for (i=1;i<=NF;i++){ if ($i ~ /^[0-9]+(\.[0-9]+)?$/ && cpu=="") cpu=$i }
+      name=$NF
+      gsub(/[^A-Za-z0-9_.:_-]/,"",name)
+      if (pid != "" && name != "") printf "{\"pid\":%d,\"name\":\"%s\",\"cpu\":%s},", pid, name, cpu
+    }
+  ' | head -c 4000
+  # strip trailing comma -> wrap in array
+  out=$(echo "$out" | sed 's/,$//')
+  [ -z "$out" ] && out="[]" || out="[$out]"
+  echo "$out"
+}
+
+# battery object fields. Missing -> -1.
+battery_percent() { v=$(tr -d '\n\r' < /sys/class/power_supply/battery/capacity 2>/dev/null); case "$v" in ''|*[!0-9]*) echo -1;; *) echo "$v";; esac; }
+battery_temp_c()   { v=$(tr -d '\n\r' < /sys/class/power_supply/battery/temp 2>/dev/null); case "$v" in ''|*[!0-9-]*) echo -1.0;; *) awk -v x="$v" 'BEGIN{printf "%.1f", x/10}';; esac; }
+battery_voltage_uv() { v=$(tr -d '\n\r' < /sys/class/power_supply/battery/voltage_now 2>/dev/null); case "$v" in ''|*[!0-9-]*) echo -1;; *) echo "$v";; esac; }
+battery_current_ua() { v=$(tr -d '\n\r' < /sys/class/power_supply/battery/current_now 2>/dev/null); case "$v" in ''|*[!0-9-]*) echo -1;; *) echo "$v";; esac; }
+
+# GPU live frequencies in MHz (devfreq reports Hz). loadPercent=-1 (no util node).
+gpu_devfreq_node() { for x in /sys/class/devfreq/*mali*; do [ -d "$x" ] && { echo "$x"; break; }; done; }
+gpu_cur_mhz() {
+  d=$(gpu_devfreq_node); [ -n "$d" ] || { echo 0; return; }
+  v=$(tr -d '\n\r' < "$d/cur_freq" 2>/dev/null); case "$v" in ''|*[!0-9]*) echo 0;; *) echo $((v/1000000));; esac
+}
+gpu_min_mhz() {
+  d=$(gpu_devfreq_node); [ -n "$d" ] || { echo 0; return; }
+  v=$(tr -d '\n\r' < "$d/min_freq" 2>/dev/null); case "$v" in ''|*[!0-9]*) echo 0;; *) echo $((v/1000000));; esac
+}
+gpu_max_mhz() {
+  d=$(gpu_devfreq_node); [ -n "$d" ] || { echo 0; return; }
+  v=$(tr -d '\n\r' < "$d/max_freq" 2>/dev/null); case "$v" in ''|*[!0-9]*) echo 0;; *) echo $((v/1000000));; esac
+}
+
+# mount decision (written by perfmount.sh)
+mount_mode()    { [ -f "$RUNDIR/mount.mode" ] && sed -n '1p' "$RUNDIR/mount.mode" 2>/dev/null || echo none; }
+mount_provider() { [ -f "$RUNDIR/mount.mode" ] && sed -n '2p' "$RUNDIR/mount.mode" 2>/dev/null || echo none; }
+topology_ready() { [ -r /dev/perfkit/topology.json ] && echo true || echo false; }

@@ -26,9 +26,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.ace5ultra.perfkit.R
 import com.ace5ultra.perfkit.ui.glass.GlassPanel
 import com.ace5ultra.perfkit.ui.nav.Route
+
+private fun Route.labelRes(): Int = when (this) {
+    Route.Dashboard -> R.string.nav_dashboard
+    Route.Profile -> R.string.nav_profile
+    Route.Tuning -> R.string.nav_tuning
+    Route.Adaptive -> R.string.nav_adaptive
+    Route.Updater -> R.string.nav_updater
+}
 
 /** Floating, rounded, blurred bottom navigation bar. */
 @Composable
@@ -64,12 +74,12 @@ fun GlassBottomBar(
                     ) {
                         Icon(
                             imageVector = routeIcon(r),
-                            contentDescription = r.label,
+                            contentDescription = stringResource(r.labelRes()),
                             tint = tint,
                             modifier = Modifier.size(22.dp),
                         )
                         Text(
-                            r.label,
+                            stringResource(r.labelRes()),
                             style = MaterialTheme.typography.labelSmall,
                             color = tint,
                             modifier = Modifier.padding(top = 2.dp),

@@ -89,16 +89,23 @@ def bump_app(version, code):
                lambda m: re.sub(r'"[^"]*"', '"%s"' % version, m.group(0)))
 
 
-def write_update_json(version, code, owner):
-    tpl_path = os.path.join(REPO, "scripts", "update.json.template")
+def _render(template_name, dest_name, version, code, owner):
+    tpl_path = os.path.join(REPO, "scripts", template_name)
     with open(tpl_path, "r", encoding="utf-8") as fh:
         tpl = fh.read()
     out = (tpl.replace("__VERSION__", version)
               .replace("__VERSION_CODE__", str(code))
               .replace("__OWNER__", owner))
-    with open(os.path.join(REPO, "release", "update.json"), "w",
+    with open(os.path.join(REPO, "release", dest_name), "w",
               encoding="utf-8", newline="\n") as fh:
         fh.write(out)
+    print("  rendered release/%s" % dest_name)
+
+
+def write_update_json(version, code, owner):
+    # Module channel (zip + the matching bundled APK) and app-only channel.
+    _render("update.json.template", "update.json", version, code, owner)
+    _render("app-update.json.template", "app-update.json", version, code, owner)
 
 
 def refresh_changelog(version):
@@ -129,19 +136,42 @@ def build_apk():
         wrapper_path = os.path.join(REPO, wrapper)
         if os.path.exists(wrapper_path):
             os.chmod(wrapper_path, 0o755)
-    run_visible([wrapper, "assembleRelease"], cwd=REPO)
+    run_visible([wrapper, "assembleRelease", "assembleDebug"])
+
+
+def stage_apks(version):
+    """Copy APKs to release/ with the canonical asset names the OTA URLs use."""
+    pairs = [
+        (os.path.join("app", "build", "outputs", "apk", "release", "app-release.apk"),
+         os.path.join("release", "PerfKit-v%s.apk" % version)),
+        (os.path.join("app", "build", "outputs", "apk", "debug", "app-debug.apk"),
+         os.path.join("release", "PerfKit-v%s-debug.apk" % version)),
+    ]
+    import shutil
+    staged = []
+    for src_rel, dst_rel in pairs:
+        src, dst = os.path.join(REPO, src_rel), os.path.join(REPO, dst_rel)
+        if not os.path.exists(src):
+            raise SystemExit("expected APK missing: %s" % src)
+        shutil.copyfile(src, dst)
+        staged.append(dst)
+        print("  staged %s (%d bytes)" % (dst_rel, os.path.getsize(dst)))
+    return staged
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("version")
+    ap.add_argument("--code", type=int, default=None,
+                    help="pin versionCode explicitly (defaults to MAJOR*10000+MINOR*100+PATCH); "
+                         "use this when the built APK/module already carry a chosen code")
     ap.add_argument("--skip-apk", action="store_true", help="do not build the release APK")
     ap.add_argument("--dry-run", action="store_true",
                     help="make file changes but do not git push or create a release")
     args = ap.parse_args()
 
     version = args.version.strip().lstrip("v")
-    code = code_for(version)
+    code = args.code if args.code is not None else code_for(version)
     print("Releasing v%s (versionCode %d)" % (version, code))
 
     print("Resolving owner...")
@@ -154,19 +184,23 @@ def main():
     write_update_json(version, code, owner)
     refresh_changelog(version)
 
-    print("Building module zip...")
-    build_module_zip()
+    # Build the APK FIRST so the module zip can bundle the matching release APK.
+    staged_apks = []
     if not args.skip_apk:
-        print("Building release APK...")
+        print("Building release + debug APK...")
         build_apk()
+        staged_apks = stage_apks(version)
+
+    print("Building module zip (bundles the release APK when present)...")
+    build_module_zip()
 
     zip_path = os.path.join(REPO, "release",
                             "ace5ultra_perfkit-v%s.zip" % version)
-    assets = [zip_path, os.path.join(REPO, "release", "update.json"),
+    assets = [zip_path,
+              os.path.join(REPO, "release", "update.json"),
+              os.path.join(REPO, "release", "app-update.json"),
               os.path.join(REPO, "release", "changelog.md")]
-    apks = glob.glob(os.path.join(REPO, "app", "build", "outputs", "apk",
-                                  "release", "*.apk"))
-    assets.extend(apks)
+    assets.extend(staged_apks)
     for a in assets:
         if not os.path.exists(a):
             raise SystemExit("expected asset missing: %s" % a)

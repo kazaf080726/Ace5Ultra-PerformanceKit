@@ -2,5 +2,7 @@
   "version": "__VERSION__",
   "versionCode": __VERSION_CODE__,
   "zipUrl": "https://github.com/__OWNER__/Ace5Ultra-PerformanceKit/releases/download/v__VERSION__/ace5ultra_perfkit-v__VERSION__.zip",
-  "changelog": "https://raw.githubusercontent.com/__OWNER__/Ace5Ultra-PerformanceKit/main/release/changelog.md"
+  "changelog": "https://raw.githubusercontent.com/__OWNER__/Ace5Ultra-PerformanceKit/main/release/changelog.md",
+  "appVersionCode": __VERSION_CODE__,
+  "apkUrl": "https://github.com/__OWNER__/Ace5Ultra-PerformanceKit/releases/download/v__VERSION__/PerfKit-v__VERSION__.apk"
 }

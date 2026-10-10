@@ -20,7 +20,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.ace5ultra.perfkit.R
 import com.ace5ultra.perfkit.ui.PerfViewModel
 import com.ace5ultra.perfkit.ui.components.Fmt
 import com.ace5ultra.perfkit.ui.glass.GlassPanel
@@ -31,7 +33,6 @@ fun AdaptiveScreen(vm: PerfViewModel) {
     var msg by remember { mutableStateOf<String?>(null) }
     val a = status?.adaptive
 
-    // Keep refreshing while this screen is open so the daemon reason stays live.
     LaunchedEffect(Unit) {
         while (true) { vm.pollOnce(); kotlinx.coroutines.delay(2000) }
     }
@@ -43,9 +44,9 @@ fun AdaptiveScreen(vm: PerfViewModel) {
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Spacer(Modifier.height(32.dp))
-        Text("Adaptive daemon", style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.onBackground)
-        Text("The daemon picks powersave / balanced / performance / game from live load and temperature.",
+        Text(stringResource(R.string.adaptive_title), style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.onSurface)
+        Text(stringResource(R.string.adaptive_desc),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
 
@@ -56,9 +57,9 @@ fun AdaptiveScreen(vm: PerfViewModel) {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column {
-                    Text("Adaptive mode", style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onBackground)
-                    Text("Current: ${if (a?.enabled == true) "ON" else "OFF"}",
+                    Text(stringResource(R.string.adaptive_mode), style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurface)
+                    Text("${stringResource(R.string.active_profile)}: ${status?.profile?.ifBlank { "N/A" }}",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
@@ -73,13 +74,12 @@ fun AdaptiveScreen(vm: PerfViewModel) {
 
         GlassPanel(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(16.dp)) {
-                Text("Live daemon state", style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onBackground)
+                Text(stringResource(R.string.adaptive_live), style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSurface)
                 Spacer(Modifier.height(8.dp))
-                DV("reason", a?.reason?.ifBlank { "N/A" } ?: "N/A")
-                DV("load", Fmt.percent(a?.load ?: Float.NaN))
-                DV("temp", Fmt.temp(a?.tempC ?: Float.NaN))
-                DV("active profile", status?.profile?.ifBlank { "N/A" } ?: "N/A")
+                DV(stringResource(R.string.adaptive_reason), a?.reason?.ifBlank { "N/A" } ?: "N/A")
+                DV(stringResource(R.string.adaptive_load), Fmt.percent(a?.load ?: Float.NaN))
+                DV(stringResource(R.string.adaptive_temp), Fmt.temp(a?.tempC ?: Float.NaN))
             }
         }
         msg?.let { Text(it, color = MaterialTheme.colorScheme.primary) }
@@ -90,5 +90,5 @@ fun AdaptiveScreen(vm: PerfViewModel) {
 private fun DV(k: String, v: String) =
     Row(Modifier.fillMaxWidth().padding(vertical = 2.dp), horizontalArrangement = Arrangement.SpaceBetween) {
         Text(k, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text(v, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onBackground)
+        Text(v, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface)
     }
